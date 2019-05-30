@@ -4,6 +4,7 @@ import { allMembers } from "../../Actions/index";
 import { fetchMembers } from "../../api/apiCalls";
 import BandMembers from "../BandMembers/BandMembers";
 import "./BandBio.scss";
+import MemberInfo from "../MemberInfo/MemberInfo";
 
 class BandBio extends Component {
   componentDidMount() {
@@ -22,6 +23,7 @@ class BandBio extends Component {
   };
 
   render() {
+    const { member } = this.props;
     return (
       <div className="band-bio">
         <div className="band-img" />
@@ -111,6 +113,7 @@ class BandBio extends Component {
             </p>
           </article>
         </section>
+        {Object.keys(member).length > 0 ? <MemberInfo currentMember={member} /> : null}
         <h2>Members:</h2>
         <section className="band-members">{this.renderBandMembers()}</section>
       </div>
@@ -119,7 +122,8 @@ class BandBio extends Component {
 }
 
 export const mapStateToProps = state => ({
-  members: state.members
+  members: state.members,
+  member: state.member
 });
 
 export const mapDispatchToProps = dispatch => ({
