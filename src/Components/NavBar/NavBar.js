@@ -1,12 +1,26 @@
 import React, {Component} from 'react';
+import './NavBar.scss';
 
 class NavBar extends Component {
   render() {
     return (
-      <div className="nav-bar-component">
-        <h1>NavBar</h1> 
-      </div>
-    )
+      <header>
+        <div className="container">
+          <nav>
+            <h1 className="logo">
+              PH<span>I</span>SH
+            </h1>
+            <ul>
+              <li>Band</li>
+              <li>Years</li>
+              <li>Venues</li>
+              <li>Songs</li>
+              <li>Tours</li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    );
   }
 }
 
