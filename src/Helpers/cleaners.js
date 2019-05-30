@@ -10,7 +10,6 @@ const cleanSongs = data => {
 };
 
 const cleanVenues = data => {
-  console.log(data);
   const venueInfo = data.map(venue => {
     return {
       country: venue.country,
@@ -26,52 +25,28 @@ const cleanVenues = data => {
   return venueInfo;
 };
 
-const cleanRandomMovie = data => {
-  const movieInfo = {
-    summary: data.opening_crawl,
-    title: data.title,
-    releaseDate: data.release_date
-  };
-  return movieInfo;
-};
-
-const cleanPeopleData = data => {
-  const peopleInfo = data.map(person => {
+const cleanTours = data => {
+  const tourInfo = data.map(tour => {
     return {
-      name: person.name,
-      homeworld: person.homeworld,
-      species: person.species,
-      population: person.population.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    };
-  });
-  return peopleInfo;
-};
-
-const cleanVehiclesData = data => {
-  const vehicleInfo = data.map(vehicle => {
-    return {
-      name: vehicle.name,
-      model: vehicle.model,
-      starship_class: vehicle.starship_class,
-      passengers: vehicle.passengers.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    };
-  });
-  return vehicleInfo;
-};
-
-const cleanPlanetsData = data => {
-  const planetInfo = data.map(planet => {
-    return {
-      name: planet.name,
-      terrain: planet.terrain,
-      climate: planet.climate,
-      population: planet.population.replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-      residents: planet.residents.map((resident, index) => {
-        return (index ? ", " : "") + resident.name;
+      ends_on: tour.ends_on,
+      id: tour.id,
+      name: tour.name,
+      shows_count: tour.shows_count,
+      slug: tour.slug,
+      starts_on: tour.starts_on,
+      shows: tour.shows.map(show => {
+        return {
+          date: show.date,
+          id: show.id,
+          location: show.location,
+          tour_id: show.tour_id,
+          venue_id: show.venue_id,
+          venue_name: show.venue_name
+        };
       })
     };
   });
-  return planetInfo;
+  return tourInfo;
 };
 
-export { cleanSongs, cleanVenues };
+export { cleanSongs, cleanVenues, cleanTours };
