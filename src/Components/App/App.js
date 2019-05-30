@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.scss";
 import NavBar from "../NavBar/NavBar";
 import MainPage from "../MainPage/MainPage";
+import NotFound from "../NotFound/NotFound";
 import { Route, Switch } from "react-router-dom";
 
 export class App extends Component {
@@ -12,6 +13,7 @@ export class App extends Component {
         <NavBar />
         <Switch>
           <Route exact path="/" component={MainPage} />
+          <Route path="" component={NotFound} />
         </Switch>
       </div>
       );
