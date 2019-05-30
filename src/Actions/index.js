@@ -12,3 +12,8 @@ export const allYears = years => ({
   type: "ALL_YEARS",
   years
 });
+
+export const allTours = tours => ({
+  type: "ALL_TOURS",
+  tours
+});
