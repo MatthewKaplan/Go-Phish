@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./App.scss";
-// import { fetchData } from "../../api/apiCalls";
 import NavBar from "../NavBar/NavBar";
-import { Route } from "react-router-dom";
+import MainPage from "../MainPage/MainPage";
+import { Route, Switch } from "react-router-dom";
 
 export class App extends Component {
   
@@ -10,21 +10,12 @@ export class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <h1>Phish.in</h1>
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+        </Switch>
       </div>
       );
     }
   }
   
   export default App;
-
-
-    // componentDidMount() {
-    //   this.fetchPropertyData();
-    // }
-  
-    // fetchPropertyData = () => {
-    //   fetchData(`https://cors-anywhere.herokuapp.com/http://phish.in/api/v1/years`).then(response =>
-    //     console.log(response)
-    //   );
-    // }
