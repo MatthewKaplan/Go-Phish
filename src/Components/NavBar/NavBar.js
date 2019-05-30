@@ -10,7 +10,7 @@ class NavBar extends Component {
           <nav>
             <Link to="/" className="link logo-link">
               <h1 className="logo">
-                PH<span>I</span>SH
+                G<span>O</span>PH<span>I</span>SH
               </h1>
             </Link>
             <ul>
