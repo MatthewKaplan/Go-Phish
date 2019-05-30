@@ -1,7 +1,20 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { allMembers } from "../../Actions/index";
+import { fetchMembers } from "../../api/apiCalls";
 import "./BandBio.scss";
 
 class BandBio extends Component {
+  componentDidMount() {
+    this.fetchPhishData()
+  }
+
+  fetchPhishData = () => {
+    fetchMembers(
+      `https://cors-anywhere.herokuapp.com/https://peaceful-castle-66511.herokuapp.com/api/v1/phish/members`
+    ).then(results => this.props.allMembers(results));
+  };
+
   render() {
     return (
       <div className="band-bio">
@@ -97,4 +110,15 @@ class BandBio extends Component {
   }
 }
 
-export default BandBio;
+export const mapStateToProps = state => ({
+  members: state.members
+});
+
+export const mapDispatchToProps = dispatch => ({
+  allMembers: members => dispatch(allMembers(members))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BandBio);
