@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
-import './NavBar.scss';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./NavBar.scss";
 
 class NavBar extends Component {
   render() {
@@ -7,11 +8,15 @@ class NavBar extends Component {
       <header>
         <div className="container">
           <nav>
-            <h1 className="logo">
-              PH<span>I</span>SH
-            </h1>
+            <Link to="/" className="link logo-link">
+              <h1 className="logo">
+                PH<span>I</span>SH
+              </h1>
+            </Link>
             <ul>
-              <li>Band</li>
+              <Link to="/BandBio" className="link">
+                <li>Band</li>
+              </Link>
               <li>Years</li>
               <li>Venues</li>
               <li>Songs</li>
