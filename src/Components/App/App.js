@@ -7,8 +7,7 @@ import BandBio from "../BandBio/BandBio";
 import { Route, Switch } from "react-router-dom";
 
 export class App extends Component {
-  
-  render() {  
+  render() {
     return (
       <div className="App">
         <NavBar />
@@ -22,8 +21,8 @@ export class App extends Component {
           <Route path="" component={NotFound} />
         </Switch>
       </div>
-      );
-    }
+    );
   }
-  
-  export default App;
+}
+
+export default App;

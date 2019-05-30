@@ -22,3 +22,8 @@ export const allSongs = songs => ({
   type: "ALL_SONGS",
   songs
 });
+
+export const allVenues = venues => ({
+  type: "ALL_VENUES",
+  venues
+});

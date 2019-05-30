@@ -108,6 +108,25 @@ nav ul li:hover::after {
   transform: scaleX(1);
 }
 
+.sub-nav {
+  color: #666666;
+  font-size: 13px;
+  margin: 0 auto;
+  width: 940px;
+  background-color: #d9dbdc;
+  height: 21px;
+  text-align: center;
+  background-color: #d9dbdc;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 16px 9px 16px 9px;
+}
+
+a {
+  text-decoration: none;
+  color: #772953;
+}
+
 @keyframes slideIn {
   from {
 
