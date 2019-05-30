@@ -4,14 +4,24 @@ import "./Shows.scss";
 class Shows extends Component {
   render() {
     const { show } = this.props;
-    console.log(show)
 
     return (
       <div className="shows-component">
-        <h1>{show.venue_name}</h1>
-        <p>{show.venue.location}</p>
-        <p>{show.date}</p>
-
+        <section className="show-top">
+          <h1 className="venue-name">{show.venue_name}</h1>
+        </section>
+        <section className="show-bottom">
+          <article className="show-info">
+            <div>
+              <h4>Date:</h4>
+              <p className="venue-date">{show.date}</p>
+            </div>
+            <div>
+              <h4>Location:</h4>
+              <p className="venue-location">{show.venue.location}</p>
+            </div>
+          </article>
+        </section>
       </div>
     );
   }
