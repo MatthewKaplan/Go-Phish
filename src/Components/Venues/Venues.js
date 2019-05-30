@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import "./Venues.scss";
 
 class Venues extends Component {
+
+
+
+
+  
   render() {
     const { venue } = this.props;
     return (

@@ -49,4 +49,28 @@ const cleanTours = data => {
   return tourInfo;
 };
 
-export { cleanSongs, cleanVenues, cleanTours };
+const cleanShows = data => {
+  const showInfo = data.map(show => {
+    return {
+      date: show.date,
+      id: show.id,
+      tour_id: show.tour_id,
+      venue_name: show.venue_name,
+      tracks: show.tracks.map(track => {
+        return {
+          id: track.id,
+          mp3: track.mp3,
+          position: track.position,
+          set_name: track.set_name,
+          show_id: track.show_id,
+          title: track.title,
+          song_ids: track.song_ids[0]
+        }
+      }),
+      venue: show.venue
+    }
+  })
+  return showInfo;
+}
+
+export { cleanSongs, cleanVenues, cleanTours, cleanShows };

@@ -5,6 +5,7 @@ import { yearsReducer } from "./yearsReducer";
 import { toursReducer } from "./toursReducer";
 import { songsReducer } from "./songsReducer";
 import { venuesReducer } from "./venuesReducer";
+import { showsReducer } from "./showsReducer";
 
 export const rootReducer = combineReducers({
   members: memberReducer,
@@ -12,7 +13,8 @@ export const rootReducer = combineReducers({
   years: yearsReducer,
   tours: toursReducer,
   songs: songsReducer,
-  venues: venuesReducer
+  venues: venuesReducer,
+  shows: showsReducer
 });
 
 export default rootReducer;
