@@ -58,6 +58,12 @@ nav ul li {
   color: #eee;
 }
 
+.navbar .nav-pills .active {
+  background-color: gold;
+  color:Black ;
+  font-weight:bold;
+}
+
 nav ul li:nth-child(1) {
   animation-delay: 0s;
 }
@@ -126,6 +132,10 @@ nav ul li:hover::after {
 a {
   text-decoration: none;
   color: #772953;
+}
+
+.active {
+  color:crimson;
 }
 
 @keyframes slideIn {

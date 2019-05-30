@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./NavBar.scss";
 
 class NavBar extends Component {
@@ -15,29 +15,29 @@ class NavBar extends Component {
             </Link>
             <ul>
               <li>
-                <Link to="/BandBio" className="link">
+                <NavLink to="/BandBio" activeClassName="active" className="link">
                   Band
-                </Link>
+                </NavLink>
               </li>
               <li>
-              <Link to="/Years" className="link">
+              <NavLink to="/Years" activeClassName="active" className="link">
                 Years
-              </Link>
+              </NavLink>
               </li>
               <li>
-              <Link to="/Venues" className="link">
+              <NavLink to="/Venues" activeClassName="active" className="link">
                 Venues
-              </Link>
+              </NavLink>
               </li>
               <li>
-              <Link to="/Songs" className="link">
+              <NavLink to="/Songs" activeClassName="active" className="link">
                 Songs
-              </Link>
+              </NavLink>
               </li>
               <li>
-              <Link to="/Tours" className="link">
+              <NavLink to="/Tours" activeClassName="active" className="link">
                 Tours
-              </Link>
+              </NavLink>
               </li>
             </ul>
           </nav>
