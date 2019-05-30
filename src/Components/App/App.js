@@ -4,6 +4,7 @@ import NavBar from "../NavBar/NavBar";
 import MainPage from "../MainPage/MainPage";
 import NotFound from "../NotFound/NotFound";
 import BandBio from "../BandBio/BandBio";
+import Shows from "../Shows/Shows";
 import { Route, Switch } from "react-router-dom";
 
 export class App extends Component {
@@ -18,6 +19,7 @@ export class App extends Component {
           <Route path="/Venues" component={MainPage} />
           <Route path="/Songs" component={MainPage} />
           <Route path="/Tours" component={MainPage} />
+          <Route path="/Shows" component={MainPage} />
           <Route path="" component={NotFound} />
         </Switch>
       </div>
