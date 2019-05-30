@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './MainPage.scss';
+import "./MainPage.scss";
 import { fetchData } from "../../api/apiCalls";
 import {
   allMembers,
@@ -14,6 +14,7 @@ import Tours from "../Tours/Tours";
 import Years from "../Years/Years";
 import Songs from "../Songs/Songs";
 import Venues from "../Venues/Venues";
+import Shows from "../Shows/Shows";
 import { cleanSongs, cleanVenues, cleanTours } from "../../Helpers/cleaners";
 
 class MainPage extends Component {
@@ -74,6 +75,11 @@ class MainPage extends Component {
     return venues.map(venue => <Venues key={venue.id} venue={venue} />);
   };
 
+  renderShows = () => {
+    const { shows } = this.props;
+    return shows.map(show => <Shows key={show.id} show={show} />);
+  };
+
   render() {
     const currentPath = this.props.location.pathname;
     let dataToRender;
@@ -86,6 +92,8 @@ class MainPage extends Component {
       dataToRender = this.renderSongs();
     } else if (currentPath === "/Venues") {
       dataToRender = this.renderVenues();
+    } else if (currentPath === "/Shows") {
+      dataToRender = this.renderShows();
     } else {
       return true;
     }
@@ -104,7 +112,8 @@ export const mapStateToProps = state => ({
   years: state.years,
   tours: state.tours,
   songs: state.songs,
-  venues: state.venues
+  venues: state.venues,
+  shows: state.shows
 });
 
 export const mapDispatchToProps = dispatch => ({
