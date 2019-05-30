@@ -27,3 +27,8 @@ export const allVenues = venues => ({
   type: "ALL_VENUES",
   venues
 });
+
+export const currentShows = shows => ({
+  type: "CURRENT_SHOWS",
+  shows
+});
