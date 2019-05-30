@@ -29,6 +29,7 @@
 
 .band-member-cards:hover :not(section) {
   opacity: 1;
+  transition: 1s;
 }
 
 .band-member-cards:hover section {

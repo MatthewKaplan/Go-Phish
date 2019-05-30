@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './MainPage.scss';
 import { fetchData } from "../../api/apiCalls";
 import {
   allMembers,
@@ -89,7 +90,11 @@ class MainPage extends Component {
       return true;
     }
 
-    return <div className="main-page">{dataToRender}</div>;
+    return (
+      <div className="main-page">
+        <section className="page-to-render">{dataToRender}</section>
+      </div>
+    );
   }
 }
 

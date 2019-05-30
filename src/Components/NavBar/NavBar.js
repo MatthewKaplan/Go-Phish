@@ -15,29 +15,33 @@ class NavBar extends Component {
             </Link>
             <ul>
               <li>
-                <NavLink to="/BandBio" activeClassName="active" className="link">
+                <NavLink
+                  to="/BandBio"
+                  activeClassName="active"
+                  className="link"
+                >
                   Band
                 </NavLink>
               </li>
               <li>
-              <NavLink to="/Years" activeClassName="active" className="link">
-                Years
-              </NavLink>
+                <NavLink to="/Years" activeClassName="active" className="link">
+                  Years
+                </NavLink>
               </li>
               <li>
-              <NavLink to="/Venues" activeClassName="active" className="link">
-                Venues
-              </NavLink>
+                <NavLink to="/Venues" activeClassName="active" className="link">
+                  Venues
+                </NavLink>
               </li>
               <li>
-              <NavLink to="/Songs" activeClassName="active" className="link">
-                Songs
-              </NavLink>
+                <NavLink to="/Songs" activeClassName="active" className="link">
+                  Songs
+                </NavLink>
               </li>
               <li>
-              <NavLink to="/Tours" activeClassName="active" className="link">
-                Tours
-              </NavLink>
+                <NavLink to="/Tours" activeClassName="active" className="link">
+                  Tours
+                </NavLink>
               </li>
             </ul>
           </nav>
