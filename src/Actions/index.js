@@ -32,3 +32,8 @@ export const currentShows = shows => ({
   type: "CURRENT_SHOWS",
   shows
 });
+
+export const currentSetList = setlist => ({
+  type: "CURRENT_SETLIST",
+  setlist
+});

@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { currentSetList } from "../../Actions/index";
+import SetLists from "../SetLists/SetLists";
 import "./Shows.scss";
 
 class Shows extends Component {
-
-  handleClick = (show) => {
-    console.log(show)
-  }
+  handleClick = show => {
+    this.props.currentSetList(show.tracks);
+  };
 
   render() {
     const { show } = this.props;
@@ -32,4 +34,15 @@ class Shows extends Component {
   }
 }
 
-export default Shows;
+export const mapStateToProps = state => ({
+  setList: state.setList
+});
+
+export const mapDispatchToProps = dispatch => ({
+  currentSetList: setList => dispatch(currentSetList(setList))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Shows);
