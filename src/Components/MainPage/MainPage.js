@@ -13,6 +13,7 @@ import Tours from "../Tours/Tours";
 import Years from "../Years/Years";
 import Songs from "../Songs/Songs";
 import Venues from "../Venues/Venues";
+import {cleanSongs} from "../../Helpers/cleaners";
 
 class MainPage extends Component {
   componentDidMount() {
@@ -37,7 +38,9 @@ class MainPage extends Component {
   fetchSongs = () => {
     fetchData(
       `https://cors-anywhere.herokuapp.com/http://phish.in/api/v1/songs.json?per_page=901`
-    ).then(results => this.props.allSongs(results.data));
+    )
+    .then(response => cleanSongs(response.data))
+    .then(results => console.log(results));
   };
 
   fetchVenues = () => {
