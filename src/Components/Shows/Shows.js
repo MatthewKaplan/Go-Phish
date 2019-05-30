@@ -2,12 +2,17 @@ import React, { Component } from "react";
 import "./Shows.scss";
 
 class Shows extends Component {
+
+  handleClick = (show) => {
+    console.log(show)
+  }
+
   render() {
     const { show } = this.props;
 
     return (
       <div className="shows-component">
-        <section className="show-top">
+        <section className="show-top" onClick={() => this.handleClick(show)}>
           <h1 className="venue-name">{show.venue_name}</h1>
         </section>
         <section className="show-bottom">

@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import "./Venues.scss";
 
 class Venues extends Component {
-
-
-
-
-  
   render() {
     const { venue } = this.props;
     return (
@@ -19,7 +14,9 @@ class Venues extends Component {
             <h4>Location:</h4>
             <p>{venue.location}</p>
             <h4>Amount of shows at venue:</h4>
-            <p>{venue.shows_count}</p><br/><br/>
+            <p>{venue.shows_count}</p>
+            <br />
+            <br />
             <section className="right-info">
               <h4>First time playing venue:</h4>
               <p>{venue.show_dates[0]}</p>
