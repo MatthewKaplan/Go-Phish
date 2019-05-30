@@ -1,12 +1,39 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { allMembers, currentMember } from "../../Actions/index";
+import { fetchMembers } from "../../api/apiCalls";
+import BandMembers from "../BandMembers/BandMembers";
 import "./BandBio.scss";
+import MemberInfo from "../MemberInfo/MemberInfo";
 
 class BandBio extends Component {
+  componentDidMount() {
+    this.fetchPhishData();
+  }
+
+  fetchPhishData = () => {
+    fetchMembers(
+      `https://cors-anywhere.herokuapp.com/https://peaceful-castle-66511.herokuapp.com/api/v1/phish/members`
+    ).then(results => this.props.allMembers(results));
+  };
+
+  renderBandMembers = () => {
+    const { members } = this.props;
+    return members.map(member => (
+      <BandMembers key={member.id} member={member} />
+    ));
+  };
+
+  closePopup = () => {
+    this.props.currentMember({});
+  };
+
   render() {
+    const { member } = this.props;
     return (
       <div className="band-bio">
         <div className="band-img" />
-        <h3>Brief history of Phish:</h3>
+        <h2>Brief history of Phish:</h2>
         <section className="phish-history">
           <article className="phish-bio-left">
             <p>
@@ -92,9 +119,27 @@ class BandBio extends Component {
             </p>
           </article>
         </section>
+        {Object.keys(member).length > 0 ? (
+          <MemberInfo currentMember={member} closePopup={this.closePopup} />
+        ) : null}
+        <h2>Members:</h2>
+        <section className="band-members">{this.renderBandMembers()}</section>
       </div>
     );
   }
 }
 
-export default BandBio;
+export const mapStateToProps = state => ({
+  members: state.members,
+  member: state.member
+});
+
+export const mapDispatchToProps = dispatch => ({
+  allMembers: members => dispatch(allMembers(members)),
+  currentMember: member => dispatch(currentMember(member))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BandBio);
