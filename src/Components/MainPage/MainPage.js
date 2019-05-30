@@ -5,18 +5,21 @@ import {
   currentMember,
   allYears,
   allTours,
-  allSongs
+  allSongs,
+  allVenues
 } from "../../Actions/index";
 import { connect } from "react-redux";
 import Tours from "../Tours/Tours";
 import Years from "../Years/Years";
 import Songs from "../Songs/Songs";
+import Venues from "../Venues/Venues";
 
 class MainPage extends Component {
   componentDidMount() {
     this.fetchYears();
     this.fetchTours();
     this.fetchSongs();
+    this.fetchVenues();
   }
 
   fetchYears = () => {
@@ -35,7 +38,13 @@ class MainPage extends Component {
     fetchData(
       `https://cors-anywhere.herokuapp.com/http://phish.in/api/v1/songs.json?per_page=901`
     ).then(results => this.props.allSongs(results.data));
-  }
+  };
+
+  fetchVenues = () => {
+    fetchData(
+      `https://cors-anywhere.herokuapp.com/http://phish.in/api/v1/venues.json?per_page=651`
+    ).then(results => this.props.allVenues(results.data));
+  };
 
   renderYears = () => {
     const { years } = this.props;
@@ -52,6 +61,11 @@ class MainPage extends Component {
     return songs.map(song => <Songs key={song.id} song={song} />);
   };
 
+  renderVenues = () => {
+    const { venues } = this.props;
+    return venues.map(venue => <Venues key={venue.id} venue={venue} />);
+  };
+
   render() {
     const currentPath = this.props.location.pathname;
     console.log(currentPath);
@@ -65,14 +79,10 @@ class MainPage extends Component {
     } else if (currentPath === "/Songs") {
       dataToRender = this.renderSongs();
     } else {
-      console.log('HI!')
+      dataToRender = this.renderVenues();
     }
 
-    return (
-      <div className="main-page">
-        {dataToRender}
-      </div>
-    );
+    return <div className="main-page">{dataToRender}</div>;
   }
 }
 
@@ -81,7 +91,8 @@ export const mapStateToProps = state => ({
   member: state.member,
   years: state.years,
   tours: state.tours,
-  songs: state.songs
+  songs: state.songs,
+  venues: state.venues
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -89,7 +100,8 @@ export const mapDispatchToProps = dispatch => ({
   currentMember: member => dispatch(currentMember(member)),
   allYears: years => dispatch(allYears(years)),
   allTours: tours => dispatch(allTours(tours)),
-  allSongs: songs => dispatch(allSongs(songs))
+  allSongs: songs => dispatch(allSongs(songs)),
+  allVenues: venues => dispatch(allVenues(venues))
 });
 
 export default connect(
