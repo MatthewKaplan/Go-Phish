@@ -6,4 +6,9 @@ export const allMembers = members => ({
 export const currentMember = member => ({
   type: "CURRENT_MEMBER",
   member
-})
+});
+
+export const allYears = years => ({
+  type: "ALL_YEARS",
+  years
+});
