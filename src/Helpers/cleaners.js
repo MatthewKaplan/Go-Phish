@@ -1,12 +1,29 @@
 const cleanSongs = data => {
-  const songInfo = data.map(song =>{
+  const songInfo = data.map(song => {
     return {
       id: song.id,
       slug: song.slug,
       title: song.title
-    }
+    };
   });
   return songInfo;
+};
+
+const cleanVenues = data => {
+  console.log(data);
+  const venueInfo = data.map(venue => {
+    return {
+      country: venue.country,
+      id: venue.id,
+      location: venue.location,
+      name: venue.name,
+      show_dates: venue.show_dates,
+      show_ids: venue.show_ids,
+      shows_count: venue.shows_count,
+      slug: venue.slug
+    };
+  });
+  return venueInfo;
 };
 
 const cleanRandomMovie = data => {
@@ -57,4 +74,4 @@ const cleanPlanetsData = data => {
   return planetInfo;
 };
 
-export { cleanSongs };
+export { cleanSongs, cleanVenues };
