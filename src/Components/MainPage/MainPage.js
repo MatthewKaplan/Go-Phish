@@ -75,8 +75,6 @@ class MainPage extends Component {
 
   render() {
     const currentPath = this.props.location.pathname;
-    console.log(currentPath);
-
     let dataToRender;
 
     if (currentPath === "/Years") {
@@ -85,8 +83,10 @@ class MainPage extends Component {
       dataToRender = this.renderTours();
     } else if (currentPath === "/Songs") {
       dataToRender = this.renderSongs();
-    } else {
+    } else if (currentPath === "/Venues") {
       dataToRender = this.renderVenues();
+    } else {
+      return true;
     }
 
     return <div className="main-page">{dataToRender}</div>;

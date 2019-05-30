@@ -14,21 +14,31 @@ class NavBar extends Component {
               </h1>
             </Link>
             <ul>
-              <Link to="/BandBio" className="link">
-                <li>Band</li>
-              </Link>
+              <li>
+                <Link to="/BandBio" className="link">
+                  Band
+                </Link>
+              </li>
+              <li>
               <Link to="/Years" className="link">
-                <li>Years</li>
+                Years
               </Link>
+              </li>
+              <li>
               <Link to="/Venues" className="link">
-                <li>Venues</li>
+                Venues
               </Link>
+              </li>
+              <li>
               <Link to="/Songs" className="link">
-                <li>Songs</li>
+                Songs
               </Link>
+              </li>
+              <li>
               <Link to="/Tours" className="link">
-                <li>Tours</li>
+                Tours
               </Link>
+              </li>
             </ul>
           </nav>
           <nav className="sub-nav">
