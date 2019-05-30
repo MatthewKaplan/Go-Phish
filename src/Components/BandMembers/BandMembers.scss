@@ -1,4 +1,4 @@
-.band-members-component {
+.band-member-cards {
   display: inline-block;
   margin: 4px;
   position: relative;
@@ -15,7 +15,7 @@
   }
 }
 
-.band-members-component :not(section) {
+.band-member-cards :not(section) {
   position: absolute;
   top: 50%;
   z-index: 1;
@@ -27,11 +27,15 @@
   font-size: 55px;
 }
 
-.band-members-component:hover :not(section) {
+.band-member-cards:hover :not(section) {
   opacity: 1;
 }
 
-.band-members-component:hover section {
+.band-member-cards:hover section {
   filter:blur(2px) brightness(60%);
   box-shadow: 0 0 16px #772954;
+}
+
+.member-info {
+  position: relative;
 }
