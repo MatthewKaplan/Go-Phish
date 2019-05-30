@@ -27,4 +27,10 @@
   .phish-bio-right {
     // border: 4px solid green;
   }
+
+  .band-members {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 25px;
+  }
 }

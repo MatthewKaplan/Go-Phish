@@ -1,0 +1,37 @@
+.band-members-component {
+  display: inline-block;
+  margin: 4px;
+  position: relative;
+  
+  .member {
+    border-radius: 4px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 550px;
+    width: 650px;
+    margin: 50px auto;
+    cursor: pointer;
+    transition: .3s;
+  }
+}
+
+.band-members-component :not(section) {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  opacity: 0;
+  transition: .3s;
+  font-size: 55px;
+}
+
+.band-members-component:hover :not(section) {
+  opacity: 1;
+}
+
+.band-members-component:hover section {
+  filter:blur(2px) brightness(60%);
+  box-shadow: 0 0 16px #772954;
+}

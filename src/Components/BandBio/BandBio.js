@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { allMembers } from "../../Actions/index";
 import { fetchMembers } from "../../api/apiCalls";
+import BandMembers from "../BandMembers/BandMembers";
 import "./BandBio.scss";
 
 class BandBio extends Component {
   componentDidMount() {
-    this.fetchPhishData()
+    this.fetchPhishData();
   }
 
   fetchPhishData = () => {
@@ -15,11 +16,16 @@ class BandBio extends Component {
     ).then(results => this.props.allMembers(results));
   };
 
+  renderBandMembers = () => {
+    const { members } = this.props;
+    return members.map(member => <BandMembers key={member.id} member={member} />);
+  };
+
   render() {
     return (
       <div className="band-bio">
         <div className="band-img" />
-        <h3>Brief history of Phish:</h3>
+        <h2>Brief history of Phish:</h2>
         <section className="phish-history">
           <article className="phish-bio-left">
             <p>
@@ -105,6 +111,8 @@ class BandBio extends Component {
             </p>
           </article>
         </section>
+        <h2>Members:</h2>
+        <section className="band-members">{this.renderBandMembers()}</section>
       </div>
     );
   }
