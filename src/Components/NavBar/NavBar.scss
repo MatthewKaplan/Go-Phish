@@ -2,8 +2,12 @@ body {
   overflow-x: hidden;
 }
 
-li {
-  color: #eee;
+.link {
+  text-decoration: none;
+}
+
+.logo-link {
+  color: black;
 }
 
 header {
@@ -50,6 +54,7 @@ nav ul li {
   letter-spacing: 2px;
   transform: translateX(100rem);
   animation: slideIn .5s forwards;
+  color: #eee;
 }
 
 nav ul li:nth-child(1) {

@@ -3,6 +3,7 @@ import "./App.scss";
 import NavBar from "../NavBar/NavBar";
 import MainPage from "../MainPage/MainPage";
 import NotFound from "../NotFound/NotFound";
+import BandBio from "../BandBio/BandBio";
 import { Route, Switch } from "react-router-dom";
 
 export class App extends Component {
@@ -13,6 +14,7 @@ export class App extends Component {
         <NavBar />
         <Switch>
           <Route exact path="/" component={MainPage} />
+          <Route path="/BandBio" component={BandBio} />
           <Route path="" component={NotFound} />
         </Switch>
       </div>
