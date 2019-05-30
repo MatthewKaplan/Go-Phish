@@ -119,9 +119,9 @@ class BandBio extends Component {
             </p>
           </article>
         </section>
-        {Object.keys(member).length > 0 ? (
+        {Object.keys(member).length > 0 && (
           <MemberInfo currentMember={member} closePopup={this.closePopup} />
-        ) : null}
+        )}
         <h2>Members:</h2>
         <section className="band-members">{this.renderBandMembers()}</section>
       </div>

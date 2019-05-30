@@ -17,10 +17,18 @@ class NavBar extends Component {
               <Link to="/BandBio" className="link">
                 <li>Band</li>
               </Link>
-              <li>Years</li>
-              <li>Venues</li>
-              <li>Songs</li>
-              <li>Tours</li>
+              <Link to="/Years" className="link">
+                <li>Years</li>
+              </Link>
+              <Link to="/Venues" className="link">
+                <li>Venues</li>
+              </Link>
+              <Link to="/Songs" className="link">
+                <li>Songs</li>
+              </Link>
+              <Link to="/Tours" className="link">
+                <li>Tours</li>
+              </Link>
             </ul>
           </nav>
         </div>
