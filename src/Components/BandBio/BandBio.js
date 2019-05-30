@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { allMembers } from "../../Actions/index";
+import { allMembers, currentMember } from "../../Actions/index";
 import { fetchMembers } from "../../api/apiCalls";
 import BandMembers from "../BandMembers/BandMembers";
 import "./BandBio.scss";
@@ -19,7 +19,13 @@ class BandBio extends Component {
 
   renderBandMembers = () => {
     const { members } = this.props;
-    return members.map(member => <BandMembers key={member.id} member={member} />);
+    return members.map(member => (
+      <BandMembers key={member.id} member={member} />
+    ));
+  };
+
+  closePopup = () => {
+    this.props.currentMember({});
   };
 
   render() {
@@ -113,7 +119,9 @@ class BandBio extends Component {
             </p>
           </article>
         </section>
-        {Object.keys(member).length > 0 ? <MemberInfo currentMember={member} /> : null}
+        {Object.keys(member).length > 0 ? (
+          <MemberInfo currentMember={member} closePopup={this.closePopup} />
+        ) : null}
         <h2>Members:</h2>
         <section className="band-members">{this.renderBandMembers()}</section>
       </div>
@@ -127,7 +135,8 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  allMembers: members => dispatch(allMembers(members))
+  allMembers: members => dispatch(allMembers(members)),
+  currentMember: member => dispatch(currentMember(member))
 });
 
 export default connect(

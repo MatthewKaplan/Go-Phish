@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import './MemberInfo.scss';
+import React, { Component } from "react";
+import "./MemberInfo.scss";
 
 class MemberInfo extends Component {
   render() {
@@ -7,15 +7,27 @@ class MemberInfo extends Component {
     return (
       <div className="member-info-popup">
         <div className="member-info">
-          <h1 className="member-name">{currentMember.member}</h1>
-          <p className="nick-names">{currentMember.also_known_as}</p>
-          <h2 className="band-role">{currentMember.instruments}</h2>
-          <h2 className="birth">{currentMember.date_of_birth}</h2>
-          <h2 className="born">{currentMember.born}</h2>
-          <h2 className="side-projects">{currentMember.side_projects}</h2>
+          <div className="close-popup" onClick={() => this.props.closePopup()} />
+          <section className="info">
+            <h1>{currentMember.member}</h1>
+            <h4>{currentMember.instruments}</h4>
+            <section className="member-body">
+              <h3>Also known as:</h3>
+              <p>{currentMember.also_known_as}</p>
+              <br />
+              <h3>Side Projects:</h3>
+              <p>{currentMember.side_projects}</p>
+            </section>
+            <br />
+            <section className="member-footer">
+              <h3>Born:</h3>
+              <h4>{currentMember.date_of_birth}</h4>
+              <h4>{currentMember.born}</h4>
+            </section>
+          </section>
         </div>
       </div>
-    )
+    );
   }
 }
 
