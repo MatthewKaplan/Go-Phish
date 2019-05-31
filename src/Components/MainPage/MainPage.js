@@ -76,20 +76,27 @@ class MainPage extends Component {
     let dataToRender;
     const {isLoading} = this.props;
 
-    if (currentPath === "/Years") {
-      dataToRender = this.renderYears();
-    } else if (currentPath === "/Tours") {
-      dataToRender = this.renderTours();
-    } else if (currentPath === "/Songs") {
-      dataToRender = this.renderSongs();
-    } else if (currentPath === "/Venues") {
-      dataToRender = this.renderVenues();
-    } else if (currentPath === "/Shows") {
-      dataToRender = this.renderShows();
-    } else if (currentPath === "/SetList") {
-      dataToRender = this.renderSetList();
-    } else {
-      return true;
+    switch (currentPath) {
+      case "/Years":
+        dataToRender = this.renderYears();
+        break;
+      case "/Tours":
+        dataToRender = this.renderTours();
+        break;
+      case "/Songs":
+        dataToRender = this.renderSongs();
+        break;
+      case "/Venues":
+        dataToRender = this.renderVenues();
+        break;
+      case "/Shows":
+        dataToRender = this.renderShows();
+        break;
+      case "/SetList":
+        dataToRender = this.renderSetList();
+        break;
+      default:
+        break;
     }
 
     return (

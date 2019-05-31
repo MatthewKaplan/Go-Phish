@@ -31,6 +31,8 @@ class NavBar extends Component {
   };
 
   render() {
+    const currentPath = window.location.href;
+    console.log(currentPath)
     return (
       <header>
         <div className="container">

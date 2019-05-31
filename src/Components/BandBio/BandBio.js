@@ -6,7 +6,6 @@ import "./BandBio.scss";
 import MemberInfo from "../MemberInfo/MemberInfo";
 
 class BandBio extends Component {
-
   renderBandMembers = () => {
     const { members } = this.props;
     return members.map(member => (
@@ -22,13 +21,16 @@ class BandBio extends Component {
     const { member } = this.props;
     return (
       <div className="band-bio-component">
-      <div className="band-bio">
-        <img src="https://i.imgur.com/bLCGyR3.jpg" alt="Band Photo" className="band-photo"/>
-        <section className="phish-history">
-          <article className="phish-bio-left">
+        <div className="band-bio">
+          <img
+            src="https://i.imgur.com/bLCGyR3.jpg"
+            alt="Band Photo"
+            className="band-photo"
+          />
+          <section className="phish-history">
             <p>
-              <span className="name">Phish</span> was formed on the campus of the University of Vermont in
-              Burlington in 1983
+              <span className="name">Phish</span> was formed on the campus of
+              the University of Vermont in Burlington in 1983
             </p>
             <p>
               Ernesto Giuseppie “Trey” Anastasio III started playing guitar with
@@ -52,8 +54,6 @@ class BandBio extends Component {
               Goddard College. Over the next year Daubs would move and Jeff
               would drop out of the band and so the modern Phish was born.
             </p>
-          </article>
-          <article className="phish-bio-center">
             <p>
               Their first studio album, The White Tape, was compiled by Trey,
               Mike, Jon, Jeff, Marc Daubert, Tom Marshall and Page between 1984
@@ -77,8 +77,6 @@ class BandBio extends Component {
               again and producing more studio albums under their own record
               label, JEMP Records.
             </p>
-          </article>
-          <article className="phish-bio-right">
             <p>
               Phish, by most respects, is a jam band, but to label them is
               difficult because their song choices range across multiple musical
@@ -107,8 +105,7 @@ class BandBio extends Component {
               big dance party with the band creating a funky vibe to keep
               everyone loose and having a good time.
             </p>
-          </article>
-        </section>
+          </section>
         </div>
         {Object.keys(member).length > 0 && (
           <MemberInfo currentMember={member} closePopup={this.closePopup} />
