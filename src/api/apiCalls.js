@@ -1,7 +1,8 @@
 import { bearer } from "./apiKey";
+const urll = 'https://cors-anywhere.herokuapp.com/http://phish.in/api/v1/'
 
-const fetchData = url => {
-  return fetch(url, {
+const fetchData = (path) => {
+  return fetch(urll + path, {
     method: "GET",
     headers: {
       Authorization: bearer,
