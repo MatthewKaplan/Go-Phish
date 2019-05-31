@@ -1,0 +1,69 @@
+
+$size: 111px;
+$color: #FD744F;
+
+
+.loader {
+  width: $size;
+  height: $size;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  > div {
+    border-radius: 50%;
+    position: absolute;
+    animation-name: spin;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 1.5s;
+  }
+  .one {
+    width: 100%;
+    height: 100%;
+    transform: rotate(45deg);
+    border-top: $size / 10 solid $color;
+    border-left: $size / 10 solid transparent;
+    border-right: $size / 10 solid transparent;
+    border-bottom: $size / 10 solid transparent;
+    animation-delay: 0s;
+  }
+  .two {
+    width: $size / 1.5;
+    height: $size / 1.5;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: rotate(45deg);
+    border-top: $size / 10 solid $color;
+    border-left: $size / 10 solid rgba(#fff, .5);
+    border-right: $size / 10 solid rgba(#fff, .5);
+    border-bottom: $size / 10 solid rgba(#fff, .5);
+    animation-delay: .25s;
+  }
+  .three {
+    width: $size / 3;
+    height: $size / 3;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: rotate(45deg);
+    border-top: $size / 10 solid $color;
+    border-left: $size / 10 solid rgba(#fff, .5);
+    border-right: $size / 10 solid rgba(#fff, .5);
+    border-bottom: $size / 10 solid rgba(#fff, .5);
+    animation-delay: .5s;
+  }
+}
+
+@keyframes spin {
+  50%, 100% {
+    transform: rotate(405deg);
+  }
+}
