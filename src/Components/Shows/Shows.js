@@ -12,8 +12,6 @@ class Shows extends Component {
   render() {
     const { show } = this.props;
 
-    console.log(show)
-
     return (
       <div className="shows-component">
         <section className="show-top" onClick={() => this.handleClick(show)}>

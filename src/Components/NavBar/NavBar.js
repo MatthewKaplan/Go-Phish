@@ -1,8 +1,35 @@
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import { fetchData, fetchMembers } from "../../api/apiCalls";
+import { allYears, allTours, allMembers, loadingData } from "../../Actions/index";
+import { cleanTours } from "../../Helpers/cleaners";
 import "./NavBar.scss";
 
 class NavBar extends Component {
+  fetchYears = () => {
+    this.props.loadingData(true);
+    fetchData(
+      `https://cors-anywhere.herokuapp.com/http://phish.in/api/v1/years?include_show_counts=true`
+    ).then(results => (this.props.allYears(results.data), this.props.loadingData(false)));
+  };
+
+  fetchTours = () => {
+    this.props.loadingData(true);
+    fetchData(
+      `https://cors-anywhere.herokuapp.com/http://phish.in/api/v1/tours.json?per_page=99`
+    )
+      .then(response => cleanTours(response.data))
+      .then(results => (this.props.allTours(results), this.props.loadingData(false)));
+  };
+
+  fetchPhishData = () => {
+    this.props.loadingData(true);
+    fetchMembers(
+      `https://cors-anywhere.herokuapp.com/https://peaceful-castle-66511.herokuapp.com/api/v1/phish/members`
+    ).then(results => (this.props.allMembers(results), this.props.loadingData(false)));
+  };
+
   render() {
     return (
       <header>
@@ -19,12 +46,18 @@ class NavBar extends Component {
                   to="/BandBio"
                   activeClassName="active"
                   className="link"
+                  onClick={() => this.fetchPhishData()}
                 >
                   Band
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/Years" activeClassName="active" className="link">
+                <NavLink
+                  to="/Years"
+                  activeClassName="active"
+                  className="link"
+                  onClick={() => this.fetchYears()}
+                >
                   Years
                 </NavLink>
               </li>
@@ -39,7 +72,12 @@ class NavBar extends Component {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/Tours" activeClassName="active" className="link">
+                <NavLink
+                  to="/Tours"
+                  activeClassName="active"
+                  className="link"
+                  onClick={() => this.fetchTours()}
+                >
                   Tours
                 </NavLink>
               </li>
@@ -134,4 +172,14 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export const mapDispatchToProps = dispatch => ({
+  allYears: years => dispatch(allYears(years)),
+  allTours: tours => dispatch(allTours(tours)),
+  allMembers: members => dispatch(allMembers(members)),
+  loadingData: bool => dispatch(loadingData(bool))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(NavBar);

@@ -2,13 +2,10 @@ import React, { Component } from "react";
 import "./MainPage.scss";
 import { fetchData } from "../../api/apiCalls";
 import {
-  allMembers,
-  currentMember,
-  allYears,
-  allTours,
   allSongs,
   allVenues,
-  currentSetList
+  currentSetList,
+  loadingData
 } from "../../Actions/index";
 import { connect } from "react-redux";
 import Tours from "../Tours/Tours";
@@ -17,44 +14,31 @@ import Songs from "../Songs/Songs";
 import Venues from "../Venues/Venues";
 import Shows from "../Shows/Shows";
 import SetLists from "../SetLists/SetLists";
-import { cleanSongs, cleanVenues, cleanTours } from "../../Helpers/cleaners";
+import Loading from "../Loading/Loading";
+import { cleanSongs, cleanVenues } from "../../Helpers/cleaners";
 
 class MainPage extends Component {
   componentDidMount() {
-    this.fetchYears();
-    this.fetchTours();
     this.fetchSongs();
     this.fetchVenues();
   }
 
-  fetchYears = () => {
-    fetchData(
-      `https://cors-anywhere.herokuapp.com/http://phish.in/api/v1/years?include_show_counts=true`
-    ).then(results => this.props.allYears(results.data));
-  };
-
-  fetchTours = () => {
-    fetchData(
-      `https://cors-anywhere.herokuapp.com/http://phish.in/api/v1/tours.json?per_page=99`
-    )
-      .then(response => cleanTours(response.data))
-      .then(results => this.props.allTours(results));
-  };
-
   fetchSongs = () => {
+    this.props.loadingData(true)
     fetchData(
       `https://cors-anywhere.herokuapp.com/http://phish.in/api/v1/songs.json?per_page=901`
     )
       .then(response => cleanSongs(response.data))
-      .then(results => this.props.allSongs(results));
+      .then(results => (this.props.allSongs(results), this.props.loadingData(false)));
   };
 
   fetchVenues = () => {
+    this.props.loadingData(true)
     fetchData(
       `https://cors-anywhere.herokuapp.com/http://phish.in/api/v1/venues.json?per_page=651`
     )
       .then(response => cleanVenues(response.data))
-      .then(results => this.props.allVenues(results));
+      .then(results => (this.props.allVenues(results), this.props.loadingData(false)));
   };
 
   renderYears = () => {
@@ -90,6 +74,7 @@ class MainPage extends Component {
   render() {
     const currentPath = this.props.location.pathname;
     let dataToRender;
+    const {isLoading} = this.props;
 
     if (currentPath === "/Years") {
       dataToRender = this.renderYears();
@@ -109,31 +94,29 @@ class MainPage extends Component {
 
     return (
       <div className="main-page">
-        <section className="page-to-render">{dataToRender}</section>
+        <section className="page-to-render">
+          {isLoading === true ? <Loading /> : dataToRender}
+        </section>
       </div>
     );
   }
 }
 
 export const mapStateToProps = state => ({
-  members: state.members,
-  member: state.member,
   years: state.years,
   tours: state.tours,
   songs: state.songs,
   venues: state.venues,
   shows: state.shows,
-  setList: state.setList
+  setList: state.setList,
+  isLoading: state.loadingData
 });
 
 export const mapDispatchToProps = dispatch => ({
-  allMembers: members => dispatch(allMembers(members)),
-  currentMember: member => dispatch(currentMember(member)),
-  allYears: years => dispatch(allYears(years)),
-  allTours: tours => dispatch(allTours(tours)),
   allSongs: songs => dispatch(allSongs(songs)),
   allVenues: venues => dispatch(allVenues(venues)),
-  currentSetList: setList => dispatch(currentSetList(setList))
+  currentSetList: setList => dispatch(currentSetList(setList)),
+  loadingData: bool => dispatch(loadingData(bool))
 });
 
 export default connect(

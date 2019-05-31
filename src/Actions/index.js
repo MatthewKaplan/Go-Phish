@@ -37,3 +37,8 @@ export const currentSetList = setlist => ({
   type: "CURRENT_SETLIST",
   setlist
 });
+
+export const loadingData = bool => ({
+  type: "LOADING",
+  isLoading: bool
+});

@@ -7,6 +7,7 @@ import { songsReducer } from "./songsReducer";
 import { venuesReducer } from "./venuesReducer";
 import { showsReducer } from "./showsReducer";
 import { setListReducer } from "./setListReducer";
+import { loadingReducer } from "./loadingReducer";
 
 export const rootReducer = combineReducers({
   members: memberReducer,
@@ -16,7 +17,8 @@ export const rootReducer = combineReducers({
   songs: songsReducer,
   venues: venuesReducer,
   shows: showsReducer,
-  setList: setListReducer
+  setList: setListReducer,
+  loadingData: loadingReducer
 });
 
 export default rootReducer;
