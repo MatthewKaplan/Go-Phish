@@ -1,3 +1,5 @@
+import React from "react";
+
 const cleanSongs = data => {
   const songInfo = data.map(song => {
     return {
@@ -67,25 +69,24 @@ const cleanShows = data => {
           show_id: track.show_id,
           title: track.title,
           song_ids: track.song_ids[0]
-        }
+        };
       }),
       venue: show.venue
-    }
-  })
+    };
+  });
   return showInfo;
-}
+};
 
-const cleanTourShows = data => {
-  const showInfo = data.map(show => {
-    return {
-      date: show.date,
-      id: show.id,
-      tour_id: show.tour_id,
-      venue_name: show.venue_name,
+// const cleanTourShows = data => {
+//   const showInfo = data.map(show => {
+//     return {
+//       date: show.date,
+//       id: show.id,
+//       tour_id: show.tour_id,
+//       venue_name: show.venue_name,
 
-      
-    }
-  })
-}
+//     }
+//   })
+// }
 
 export { cleanSongs, cleanVenues, cleanTours, cleanShows };

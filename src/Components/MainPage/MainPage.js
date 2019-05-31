@@ -26,7 +26,7 @@ class MainPage extends Component {
   fetchSongs = () => {
     this.props.loadingData(true)
     fetchData(
-      `https://cors-anywhere.herokuapp.com/http://phish.in/api/v1/songs.json?per_page=901`
+      `songs.json?per_page=901`
     )
       .then(response => cleanSongs(response.data))
       .then(results => (this.props.allSongs(results), this.props.loadingData(false)));
@@ -35,7 +35,7 @@ class MainPage extends Component {
   fetchVenues = () => {
     this.props.loadingData(true)
     fetchData(
-      `https://cors-anywhere.herokuapp.com/http://phish.in/api/v1/venues.json?per_page=651`
+      `venues.json?per_page=651`
     )
       .then(response => cleanVenues(response.data))
       .then(results => (this.props.allVenues(results), this.props.loadingData(false)));
