@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { currentSetList } from "../../Actions/index";
-import SetLists from "../SetLists/SetLists";
+import { Link } from "react-router-dom";
 import "./Shows.scss";
 
 class Shows extends Component {
@@ -15,7 +15,9 @@ class Shows extends Component {
     return (
       <div className="shows-component">
         <section className="show-top" onClick={() => this.handleClick(show)}>
+        <Link to="/SetList" >
           <h1 className="venue-name">{show.venue_name}</h1>
+        </Link>
         </section>
         <section className="show-bottom">
           <article className="show-info">

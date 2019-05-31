@@ -46,85 +46,85 @@ class NavBar extends Component {
             </ul>
           </nav>
           <nav className="sub-nav">
-            <a class="char_link" href="/songs?char=B">
+            <a className="char_link" href="/songs?char=B">
               A
             </a>
-            <a class="char_link" href="/songs?char=B">
+            <a className="char_link" href="/songs?char=B">
               B
             </a>
-            <a class="char_link" href="/songs?char=C">
+            <a className="char_link" href="/songs?char=C">
               C
             </a>
-            <a class="char_link" href="/songs?char=D">
+            <a className="char_link" href="/songs?char=D">
               D
             </a>
-            <a class="char_link" href="/songs?char=E">
+            <a className="char_link" href="/songs?char=E">
               E
             </a>
-            <a class="char_link" href="/songs?char=F">
+            <a className="char_link" href="/songs?char=F">
               F
             </a>
-            <a class="char_link" href="/songs?char=G">
+            <a className="char_link" href="/songs?char=G">
               G
             </a>
-            <a class="char_link" href="/songs?char=H">
+            <a className="char_link" href="/songs?char=H">
               H
             </a>
-            <a class="char_link" href="/songs?char=I">
+            <a className="char_link" href="/songs?char=I">
               I
             </a>
-            <a class="char_link" href="/songs?char=J">
+            <a className="char_link" href="/songs?char=J">
               J
             </a>
-            <a class="char_link" href="/songs?char=K">
+            <a className="char_link" href="/songs?char=K">
               K
             </a>
-            <a class="char_link" href="/songs?char=L">
+            <a className="char_link" href="/songs?char=L">
               L
             </a>
-            <a class="char_link" href="/songs?char=M">
+            <a className="char_link" href="/songs?char=M">
               M
             </a>
-            <a class="char_link" href="/songs?char=N">
+            <a className="char_link" href="/songs?char=N">
               N
             </a>
-            <a class="char_link" href="/songs?char=O">
+            <a className="char_link" href="/songs?char=O">
               O
             </a>
-            <a class="char_link" href="/songs?char=P">
+            <a className="char_link" href="/songs?char=P">
               P
             </a>
-            <a class="char_link" href="/songs?char=Q">
+            <a className="char_link" href="/songs?char=Q">
               Q
             </a>
-            <a class="char_link" href="/songs?char=R">
+            <a className="char_link" href="/songs?char=R">
               R
             </a>
-            <a class="char_link" href="/songs?char=S">
+            <a className="char_link" href="/songs?char=S">
               S
             </a>
-            <a class="char_link" href="/songs?char=T">
+            <a className="char_link" href="/songs?char=T">
               T
             </a>
-            <a class="char_link" href="/songs?char=U">
+            <a className="char_link" href="/songs?char=U">
               U
             </a>
-            <a class="char_link" href="/songs?char=V">
+            <a className="char_link" href="/songs?char=V">
               V
             </a>
-            <a class="char_link" href="/songs?char=W">
+            <a className="char_link" href="/songs?char=W">
               W
             </a>
-            <a class="char_link" href="/songs?char=X">
+            <a className="char_link" href="/songs?char=X">
               X
             </a>
-            <a class="char_link" href="/songs?char=Y">
+            <a className="char_link" href="/songs?char=Y">
               Y
             </a>
-            <a class="char_link" href="/songs?char=Z">
+            <a className="char_link" href="/songs?char=Z">
               Z
             </a>
-            <a class="char_link" href="/songs?char=%23">
+            <a className="char_link" href="/songs?char=%23">
               #
             </a>
           </nav>

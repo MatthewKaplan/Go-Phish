@@ -3,9 +3,10 @@ import './SetLists.scss';
 
 class SetLists extends Component {
   render() {
+    const {setList} = this.props;
     return (
       <div className="set-lists-component">
-        <h1>SETLISTS!</h1>
+        <h1>{setList.title}</h1>
       </div>
     )
   }
