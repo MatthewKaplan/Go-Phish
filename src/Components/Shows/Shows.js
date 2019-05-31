@@ -12,6 +12,8 @@ class Shows extends Component {
   render() {
     const { show } = this.props;
 
+    console.log(show)
+
     return (
       <div className="shows-component">
         <section className="show-top" onClick={() => this.handleClick(show)}>
@@ -27,7 +29,7 @@ class Shows extends Component {
             </div>
             <div>
               <h4>Location:</h4>
-              <p className="venue-location">{show.venue.location}</p>
+              <p className="venue-location">{show.location}</p>
             </div>
           </article>
         </section>
