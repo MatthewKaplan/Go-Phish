@@ -8,8 +8,6 @@ import {currentShows} from "../../Actions/index";
 class Tours extends Component {
 
   handleClick = tour => {
-    console.log(tour.shows);
-    // tour.shows.map(show => <Shows key={show.id} show={show} />);
     this.props.currentShows(tour.shows);
   };
 
