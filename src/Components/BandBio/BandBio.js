@@ -31,13 +31,13 @@ class BandBio extends Component {
   render() {
     const { member } = this.props;
     return (
+      <div className="band-bio-component">
       <div className="band-bio">
-        <div className="band-img" />
-        <h2>Brief history of Phish:</h2>
+        <img src="https://i.imgur.com/bLCGyR3.jpg" alt="Band Photo" className="band-photo"/>
         <section className="phish-history">
           <article className="phish-bio-left">
             <p>
-              Phish was formed on the campus of the University of Vermont in
+              <span className="name">Phish</span> was formed on the campus of the University of Vermont in
               Burlington in 1983
             </p>
             <p>
@@ -119,10 +119,10 @@ class BandBio extends Component {
             </p>
           </article>
         </section>
+        </div>
         {Object.keys(member).length > 0 && (
           <MemberInfo currentMember={member} closePopup={this.closePopup} />
         )}
-        <h2>Members:</h2>
         <section className="band-members">{this.renderBandMembers()}</section>
       </div>
     );
