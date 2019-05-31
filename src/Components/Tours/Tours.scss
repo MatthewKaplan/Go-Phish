@@ -1,8 +1,15 @@
 .tour-name {
-  color: #413648;
+  color: #eee;
   cursor: pointer;
+  margin-top: 30px;
 
   &:hover {
     color: #e36740;
   }
+}
+
+.tours-component {
+  background-color: #772853;
+  height: 100px;
+  border-radius: 12px;
 }
