@@ -3,7 +3,8 @@ const cleanSongs = data => {
     return {
       id: song.id,
       slug: song.slug,
-      title: song.title
+      title: song.title,
+      tracks_count: song.tracks_count
     };
   });
   return songInfo;

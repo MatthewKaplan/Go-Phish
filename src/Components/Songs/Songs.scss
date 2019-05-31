@@ -1,5 +1,25 @@
+.songs-container {
+  background-image: url('https://i.imgur.com/9GB0xeq.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 150px;
+  border-radius: 12px;
+}
+
+.song-info {
+  position: relative;
+  top: 20px;
+  background-color: rgba(0, 0, 0, 0.706);
+  border-radius: 12px;
+  color: #fff;
+  height: 110px;
+  margin: auto;
+  padding: 10px;
+  width: 90%;
+}
+
 .song-name {
-  color: #413648;
+  color: #eee;
   cursor: pointer;
 
   &:hover {
