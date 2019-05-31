@@ -7,7 +7,8 @@ import {
   allYears,
   allTours,
   allSongs,
-  allVenues
+  allVenues,
+  currentSetList
 } from "../../Actions/index";
 import { connect } from "react-redux";
 import Tours from "../Tours/Tours";
@@ -15,6 +16,7 @@ import Years from "../Years/Years";
 import Songs from "../Songs/Songs";
 import Venues from "../Venues/Venues";
 import Shows from "../Shows/Shows";
+import SetLists from "../SetLists/SetLists";
 import { cleanSongs, cleanVenues, cleanTours } from "../../Helpers/cleaners";
 
 class MainPage extends Component {
@@ -57,7 +59,7 @@ class MainPage extends Component {
 
   renderYears = () => {
     const { years } = this.props;
-    return years.map(year => <Years key={years.id} year={year} />);
+    return years.map(year => <Years key={year.date} year={year} />);
   };
 
   renderTours = () => {
@@ -80,6 +82,11 @@ class MainPage extends Component {
     return shows.map(show => <Shows key={show.id} show={show} />);
   };
 
+  renderSetList = () => {
+    const { setList } = this.props;
+    return setList.map(set => <SetLists key={set.id} setList={set} />);
+  };
+
   render() {
     const currentPath = this.props.location.pathname;
     let dataToRender;
@@ -94,6 +101,8 @@ class MainPage extends Component {
       dataToRender = this.renderVenues();
     } else if (currentPath === "/Shows") {
       dataToRender = this.renderShows();
+    } else if (currentPath === "/SetList") {
+      dataToRender = this.renderSetList();
     } else {
       return true;
     }
@@ -113,7 +122,8 @@ export const mapStateToProps = state => ({
   tours: state.tours,
   songs: state.songs,
   venues: state.venues,
-  shows: state.shows
+  shows: state.shows,
+  setList: state.setList
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -122,7 +132,8 @@ export const mapDispatchToProps = dispatch => ({
   allYears: years => dispatch(allYears(years)),
   allTours: tours => dispatch(allTours(tours)),
   allSongs: songs => dispatch(allSongs(songs)),
-  allVenues: venues => dispatch(allVenues(venues))
+  allVenues: venues => dispatch(allVenues(venues)),
+  currentSetList: setList => dispatch(currentSetList(setList))
 });
 
 export default connect(

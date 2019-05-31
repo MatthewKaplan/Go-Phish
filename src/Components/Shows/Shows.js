@@ -1,14 +1,23 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { currentSetList } from "../../Actions/index";
+import { Link } from "react-router-dom";
 import "./Shows.scss";
 
 class Shows extends Component {
+  handleClick = show => {
+    this.props.currentSetList(show.tracks);
+  };
+
   render() {
     const { show } = this.props;
 
     return (
       <div className="shows-component">
-        <section className="show-top">
+        <section className="show-top" onClick={() => this.handleClick(show)}>
+        <Link to="/SetList" >
           <h1 className="venue-name">{show.venue_name}</h1>
+        </Link>
         </section>
         <section className="show-bottom">
           <article className="show-info">
@@ -27,4 +36,15 @@ class Shows extends Component {
   }
 }
 
-export default Shows;
+export const mapStateToProps = state => ({
+  setList: state.setList
+});
+
+export const mapDispatchToProps = dispatch => ({
+  currentSetList: setList => dispatch(currentSetList(setList))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Shows);

@@ -17,6 +17,7 @@ class Years extends Component {
 
   render() {
     const { year } = this.props;
+    console.log(year)
     return (
       <div
         className="years-component"
