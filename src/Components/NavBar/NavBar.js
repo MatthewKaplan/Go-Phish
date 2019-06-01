@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchData, fetchMembers } from "../../api/apiCalls";
+import SubNav from "../SubNav/SubNav";
 import {
   allYears,
   allTours,
@@ -12,36 +13,45 @@ import { cleanTours } from "../../Helpers/cleaners";
 import "./NavBar.scss";
 
 class NavBar extends Component {
+  state = { subNav: false };
   fetchYears = () => {
+    this.toggleSubNav(false);
     this.props.loadingData(true);
     fetchData(`years?include_show_counts=true`).then(
-      results => (
+      results =>
         this.props.allYears(results.data) && this.props.loadingData(false)
-      )
     );
   };
 
   fetchTours = () => {
+    this.toggleSubNav(false);
     this.props.loadingData(true);
     fetchData(`tours.json?per_page=99`)
       .then(response => cleanTours(response.data))
       .then(
-        results => (this.props.allTours(results) && this.props.loadingData(false))
+        results => this.props.allTours(results) && this.props.loadingData(false)
       );
   };
 
   fetchPhishData = () => {
+    this.toggleSubNav(false);
     this.props.loadingData(true);
     fetchMembers(
       `https://cors-anywhere.herokuapp.com/https://peaceful-castle-66511.herokuapp.com/api/v1/phish/members`
-      ).then(
-        results => (this.props.allMembers(results) && this.props.loadingData(false))
-        );
+    ).then(
+      results => this.props.allMembers(results) && this.props.loadingData(false)
+    );
   };
 
+  toggleSubNav = (bool) => {
+    this.setState({
+      subNav: bool
+    })
+  }
+
   render() {
-    const {years} = this.props;
-    console.log(years)
+    const { years } = this.props;
+    console.log(years);
     return (
       <header>
         <div className="container">
@@ -73,12 +83,22 @@ class NavBar extends Component {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/Venues" activeClassName="active" className="link">
+                <NavLink
+                  to="/Venues"
+                  activeClassName="active"
+                  className="link"
+                  onClick={() => this.toggleSubNav(true)}
+                >
                   Venues
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/Songs" activeClassName="active" className="link">
+                <NavLink
+                  to="/Songs"
+                  activeClassName="active"
+                  className="link"
+                  onClick={() => this.toggleSubNav(true)}
+                >
                   Songs
                 </NavLink>
               </li>
@@ -94,89 +114,9 @@ class NavBar extends Component {
               </li>
             </ul>
           </nav>
-          <nav className="sub-nav">
-            <a className="char_link" href="/songs?char=B">
-              A
-            </a>
-            <a className="char_link" href="/songs?char=B">
-              B
-            </a>
-            <a className="char_link" href="/songs?char=C">
-              C
-            </a>
-            <a className="char_link" href="/songs?char=D">
-              D
-            </a>
-            <a className="char_link" href="/songs?char=E">
-              E
-            </a>
-            <a className="char_link" href="/songs?char=F">
-              F
-            </a>
-            <a className="char_link" href="/songs?char=G">
-              G
-            </a>
-            <a className="char_link" href="/songs?char=H">
-              H
-            </a>
-            <a className="char_link" href="/songs?char=I">
-              I
-            </a>
-            <a className="char_link" href="/songs?char=J">
-              J
-            </a>
-            <a className="char_link" href="/songs?char=K">
-              K
-            </a>
-            <a className="char_link" href="/songs?char=L">
-              L
-            </a>
-            <a className="char_link" href="/songs?char=M">
-              M
-            </a>
-            <a className="char_link" href="/songs?char=N">
-              N
-            </a>
-            <a className="char_link" href="/songs?char=O">
-              O
-            </a>
-            <a className="char_link" href="/songs?char=P">
-              P
-            </a>
-            <a className="char_link" href="/songs?char=Q">
-              Q
-            </a>
-            <a className="char_link" href="/songs?char=R">
-              R
-            </a>
-            <a className="char_link" href="/songs?char=S">
-              S
-            </a>
-            <a className="char_link" href="/songs?char=T">
-              T
-            </a>
-            <a className="char_link" href="/songs?char=U">
-              U
-            </a>
-            <a className="char_link" href="/songs?char=V">
-              V
-            </a>
-            <a className="char_link" href="/songs?char=W">
-              W
-            </a>
-            <a className="char_link" href="/songs?char=X">
-              X
-            </a>
-            <a className="char_link" href="/songs?char=Y">
-              Y
-            </a>
-            <a className="char_link" href="/songs?char=Z">
-              Z
-            </a>
-            <a className="char_link" href="/songs?char=%23">
-              #
-            </a>
-          </nav>
+          {this.state.subNav === true &&
+            <SubNav />
+          }
         </div>
       </header>
     );
