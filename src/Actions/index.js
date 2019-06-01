@@ -42,3 +42,8 @@ export const loadingData = bool => ({
   type: "LOADING",
   isLoading: bool
 });
+
+export const randomShow = show => ({
+  type: "RANDOM_SHOW",
+  show
+});

@@ -13,6 +13,7 @@ import Years from "../Years/Years";
 import Songs from "../Songs/Songs";
 import Venues from "../Venues/Venues";
 import Shows from "../Shows/Shows";
+import HomePage from "../HomePage/HomePage";
 import SetLists from "../SetLists/SetLists";
 import Loading from "../Loading/Loading";
 import { cleanSongs, cleanVenues } from "../../Helpers/cleaners";
@@ -96,6 +97,7 @@ class MainPage extends Component {
         dataToRender = this.renderSetList();
         break;
       default:
+        dataToRender = <HomePage />
         break;
     }
 
