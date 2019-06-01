@@ -12,9 +12,9 @@ class HomePage extends Component {
     console.log(show);
     return (
       <React.Fragment>
-        <h1>{show[0].venue_name}</h1>
-        <p>{show[0].date}</p>
-        <p>{show[0].location}</p>
+        <h1 className="venue-name venue-info">{show[0].venue_name}</h1>
+        <p className="venue-location venue-info">{show[0].location}</p>
+        <p className="date venue-info">{show[0].date}</p>
       </React.Fragment>
     );
   };
@@ -23,9 +23,7 @@ class HomePage extends Component {
     const { show } = this.props;
     const setOne = show[0].tracks.filter(track => track.set_name === "Set 1");
     return setOne.map(firstSet => {
-      return (
-          <h1 key={firstSet.id}>{firstSet.title}</h1>
-      );
+      return <h4 key={firstSet.id}>{firstSet.title}</h4>;
     });
   };
 
@@ -33,9 +31,7 @@ class HomePage extends Component {
     const { show } = this.props;
     const setTwo = show[0].tracks.filter(track => track.set_name === "Set 2");
     return setTwo.map(secondSet => {
-      return (
-          <h1 key={secondSet.id}>{secondSet.title}</h1>
-      );
+      return <h4 key={secondSet.id}>{secondSet.title}</h4>;
     });
   };
 
@@ -44,7 +40,9 @@ class HomePage extends Component {
     const encores = show[0].tracks.filter(track => track.set_name === "Encore");
     return encores.map(encore => {
       return (
-          <h1 key={encore.id}>{encore.title}</h1>
+        <h4 key={encore.id} className="encore-songs">
+          {encore.title}
+        </h4>
       );
     });
   };
@@ -54,15 +52,21 @@ class HomePage extends Component {
     return (
       <div className="home-page-component">
         <h1>Show of the Day:</h1>
-        <div className="randomShow">
+        <div className="random-show">
           <section className="random-show-top">
             {show.length ? this.renderRandomInfo() : null}
           </section>
-          <section className="random-show-bottom">
-            <h1>Set 1:</h1>
-            {show.length && this.renderSetOne()}
-            <h2>Set 2:</h2>
-            {show.length && this.renderSetTwo()}
+          <div className="sets">
+            <section className="set-one">
+              <h2>Set 1:</h2>
+              {show.length && this.renderSetOne()}
+            </section>
+            <section className="set-two">
+              <h2>Set 2:</h2>
+              {show.length && this.renderSetTwo()}
+            </section>
+          </div>
+          <section className="encore">
             <h2>Encore:</h2>
             {show.length && this.renderEncore()}
           </section>
