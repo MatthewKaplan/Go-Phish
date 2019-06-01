@@ -3,7 +3,9 @@
 
   .random-show {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .sets {
@@ -24,6 +26,11 @@
     &:hover {
       color: #e36740;
     }
+  }
+
+  .song-title {
+    color: #eee;
+    font-size: 22px;
   }
 
   .random-show-top {
@@ -51,6 +58,10 @@
       margin-left: 5px;
     }
 
+    div {
+      margin: 10px;
+    }
+
   }
 
   .set-two {
@@ -62,13 +73,18 @@
 
     h2 {
       color: #eee;
-      margin-top: 50px;
+      margin-top: 25%;
+    }
+    
+    div {
+      margin: 10px;
     }
   }
 
   .encore-songs {
     color: #eee;
   }
+
 }
 
 .venues-component {
