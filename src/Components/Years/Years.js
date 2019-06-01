@@ -10,7 +10,7 @@ class Years extends Component {
   handleClick = year => {
     this.props.loadingData(true)
     fetchData(
-      `https://cors-anywhere.herokuapp.com/http://phish.in/api/v1/years/${year}`
+      `years/${year}`
     )
       .then(response => cleanShows(response.data))
       .then(result => (this.props.currentShows(result), this.props.loadingData(false)));

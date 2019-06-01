@@ -77,6 +77,28 @@ const cleanShows = data => {
   return showInfo;
 };
 
+const cleanRandomShow = data => {
+  return {
+    date: data.date,
+    id: data.id,
+    tour_id: data.tour_id,
+    venue_name: data.venue_name,
+    location: data.venue.location,
+    tracks: data.tracks.map(track => {
+      return {
+        id: track.id,
+        mp3: track.mp3,
+        position: track.position,
+        set_name: track.set_name,
+        show_id: track.show_id,
+        title: track.title,
+        song_ids: track.song_ids[0]
+      };
+    }),
+    venue: data.venue
+  };
+};
+
 // const cleanTourShows = data => {
 //   const showInfo = data.map(show => {
 //     return {
@@ -89,4 +111,4 @@ const cleanShows = data => {
 //   })
 // }
 
-export { cleanSongs, cleanVenues, cleanTours, cleanShows };
+export { cleanSongs, cleanVenues, cleanTours, cleanShows, cleanRandomShow };
