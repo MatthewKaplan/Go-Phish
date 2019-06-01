@@ -22,29 +22,37 @@ class HomePage extends Component {
   renderSetOne = () => {
     const { show } = this.props;
     const setOne = show[0].tracks.filter(track => track.set_name === "Set 1");
-    return setOne.map(firstSet => {
-      return <h4 key={firstSet.id}>{firstSet.title}</h4>;
-    });
+    return setOne
+      .map(firstSet => (
+        <span key={firstSet.id} className="song-title">
+          {firstSet.title}
+        </span>
+      ))
+      .reduce((prev, curr) => [prev, ", ", curr]);
   };
 
   renderSetTwo = () => {
     const { show } = this.props;
     const setTwo = show[0].tracks.filter(track => track.set_name === "Set 2");
-    return setTwo.map(secondSet => {
-      return <h4 key={secondSet.id}>{secondSet.title}</h4>;
-    });
+    return setTwo
+      .map(secondSet => (
+        <span key={secondSet.id} className="song-title">
+          {secondSet.title}
+        </span>
+      ))
+      .reduce((prev, curr) => [prev, ", ", curr]);
   };
 
   renderEncore = () => {
     const { show } = this.props;
     const encores = show[0].tracks.filter(track => track.set_name === "Encore");
-    return encores.map(encore => {
-      return (
-        <h4 key={encore.id} className="encore-songs">
+    return encores
+      .map(encore => (
+        <span key={encore.id} className="song-title">
           {encore.title}
-        </h4>
-      );
-    });
+        </span>
+      ))
+      .reduce((prev, curr) => [prev, ", ", curr]);
   };
 
   render() {
@@ -59,16 +67,16 @@ class HomePage extends Component {
           <div className="sets">
             <section className="set-one">
               <h2>Set 1:</h2>
-              {show.length && this.renderSetOne()}
+              <div>{show.length && this.renderSetOne()}</div>
             </section>
             <section className="set-two">
               <h2>Set 2:</h2>
-              {show.length && this.renderSetTwo()}
+              <div>{show.length && this.renderSetTwo()}</div>
             </section>
           </div>
           <section className="encore">
             <h2>Encore:</h2>
-            {show.length && this.renderEncore()}
+            <div>{show.length && this.renderEncore()}</div>
           </section>
         </div>
       </div>
