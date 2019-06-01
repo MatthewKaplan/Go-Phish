@@ -6,7 +6,26 @@ import "./SubNav.scss";
 import { cleanSongs, cleanVenues } from "../../Helpers/cleaners";
 
 class SubNav extends Component {
-  handleClick = path => {
+  state = { venues: [], songs: [] };
+  componentDidMount() {
+    this.fetchVenues();
+    this.fetchSongs();
+  }
+
+  fetchVenues = path => {
+    fetchData(`venues.json?per_page=651`)
+      .then(response => cleanVenues(response.data))
+      .then(results => this.setState({ venues: results }));
+  };
+
+  fetchSongs = () => {
+    fetchData(`songs.json?per_page=901`)
+      .then(response => cleanSongs(response.data))
+      .then(results => this.setState({ songs: results }));
+  };
+
+  filterVenues = async path => {
+    await this.props.allVenues(this.state.venues);
     const { venues } = this.props;
     const filteredVenues = venues.filter(venue => {
       return venue.name[0] === path;
@@ -14,104 +33,102 @@ class SubNav extends Component {
     this.props.allVenues(filteredVenues);
   };
 
-  fetchVenues = (path) => {
-    this.props.loadingData(true);
-    fetchData(`venues.json?per_page=651`)
-      .then(response => cleanVenues(response.data))
-      .then(
-        results =>
-          this.props.allVenues(results) && this.props.loadingData(false) && this.handleClick(path)
-      );
+  filterSongs = async path => {
+    await this.props.allSongs(this.state.songs);
+    const { songs } = this.props;
+    const filteredSongs = songs.filter(song => {
+      return song.title[0] === path;
+    });
+    this.props.allSongs(filteredSongs);
   };
 
   render() {
     const currentPath = window.location.href;
-    console.log(currentPath);
+    let whatToFetch;
+    if (currentPath === "http://localhost:3000/Venues") {
+      whatToFetch = this.filterVenues;
+    } else {
+      whatToFetch = this.filterSongs;
+    }
     return (
       <nav className="sub-nav">
-        <div className="char_link" onClick={() => this.fetchVenues("A")}>
+        <div className="char_link" onClick={() => whatToFetch("A")}>
           A
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("B")}>
+        <div className="char_link" onClick={() => whatToFetch("B")}>
           B
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("C")}>
+        <div className="char_link" onClick={() => whatToFetch("C")}>
           C
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("D")}>
+        <div className="char_link" onClick={() => whatToFetch("D")}>
           D
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("E")}>
+        <div className="char_link" onClick={() => whatToFetch("E")}>
           E
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("F")}>
+        <div className="char_link" onClick={() => whatToFetch("F")}>
           F
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("G")}>
+        <div className="char_link" onClick={() => whatToFetch("G")}>
           G
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("H")}>
+        <div className="char_link" onClick={() => whatToFetch("H")}>
           H
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("I")}>
+        <div className="char_link" onClick={() => whatToFetch("I")}>
           I
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("J")}>
+        <div className="char_link" onClick={() => whatToFetch("J")}>
           J
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("K")}>
+        <div className="char_link" onClick={() => whatToFetch("K")}>
           K
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("L")}>
+        <div className="char_link" onClick={() => whatToFetch("L")}>
           L
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("M")}>
+        <div className="char_link" onClick={() => whatToFetch("M")}>
           M
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("N")}>
+        <div className="char_link" onClick={() => whatToFetch("N")}>
           N
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("O")}>
+        <div className="char_link" onClick={() => whatToFetch("O")}>
           O
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("P")}>
+        <div className="char_link" onClick={() => whatToFetch("P")}>
           P
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("Q")}>
+        <div className="char_link" onClick={() => whatToFetch("Q")}>
           Q
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("R")}>
+        <div className="char_link" onClick={() => whatToFetch("R")}>
           R
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("S")}>
+        <div className="char_link" onClick={() => whatToFetch("S")}>
           S
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("T")}>
+        <div className="char_link" onClick={() => whatToFetch("T")}>
           T
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("U")}>
+        <div className="char_link" onClick={() => whatToFetch("U")}>
           U
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("V")}>
+        <div className="char_link" onClick={() => whatToFetch("V")}>
           V
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("W")}>
+        <div className="char_link" onClick={() => whatToFetch("W")}>
           W
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("X")}>
+        <div className="char_link" onClick={() => whatToFetch("X")}>
           X
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("Y")}>
+        <div className="char_link" onClick={() => whatToFetch("Y")}>
           Y
         </div>
-        <div className="char_link" onClick={() => this.fetchVenues("Z")}>
+        <div className="char_link" onClick={() => whatToFetch("Z")}>
           Z
-        </div>
-        <div
-          className="char_link"
-          onClick={() => this.handleClick("venues?char=%23")}
-        >
-          #
         </div>
       </nav>
     );
@@ -125,8 +142,7 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch => ({
   allSongs: songs => dispatch(allSongs(songs)),
-  allVenues: venues => dispatch(allVenues(venues)),
-  loadingData: bool => dispatch(loadingData(bool))
+  allVenues: venues => dispatch(allVenues(venues))
 });
 
 export default connect(
