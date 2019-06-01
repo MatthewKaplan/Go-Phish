@@ -16,7 +16,7 @@ class NavBar extends Component {
     this.props.loadingData(true);
     fetchData(`years?include_show_counts=true`).then(
       results => (
-        this.props.allYears(results.data), this.props.loadingData(false)
+        this.props.allYears(results.data) && this.props.loadingData(false)
       )
     );
   };
@@ -26,7 +26,7 @@ class NavBar extends Component {
     fetchData(`tours.json?per_page=99`)
       .then(response => cleanTours(response.data))
       .then(
-        results => (this.props.allTours(results), this.props.loadingData(false))
+        results => (this.props.allTours(results) && this.props.loadingData(false))
       );
   };
 
@@ -35,11 +35,13 @@ class NavBar extends Component {
     fetchMembers(
       `https://cors-anywhere.herokuapp.com/https://peaceful-castle-66511.herokuapp.com/api/v1/phish/members`
       ).then(
-        results => (this.props.allMembers(results), this.props.loadingData(false))
+        results => (this.props.allMembers(results) && this.props.loadingData(false))
         );
   };
 
   render() {
+    const {years} = this.props;
+    console.log(years)
     return (
       <header>
         <div className="container">

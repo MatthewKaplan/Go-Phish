@@ -113,13 +113,19 @@ const cleanRandomShow = data => {
 
 const setData = (setList, name) => {
   const setOne = setList.filter(track => track.set_name === name);
-  return setOne
-    .map(firstSet => (
-      <span key={firstSet.id} className="song-title">
-        {firstSet.title}
-      </span>
-    ))
-    .reduce((prev, curr) => [prev, ", ", curr]);
+  if(setOne.length > 0) {
+    return setOne
+      .map(firstSet => (
+        <span key={firstSet.id} className="song-title">
+          {firstSet.title}
+        </span>
+      ))
+      .reduce((prev, curr) => [prev, ", ", curr]);
+  } else {
+    return (
+      <h1>Phish didnt play a/an {name} or that data is unavaiable.</h1>
+    )
+  }
 };
 
 export {
