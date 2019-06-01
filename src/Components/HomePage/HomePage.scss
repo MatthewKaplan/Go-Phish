@@ -63,10 +63,7 @@
     }
 
   }
-
-  .set-two {
-  }
-
+  
   .encore {
     background-color: #772953;
     border-radius: 0 14px 14px 0;
@@ -85,56 +82,4 @@
     color: #eee;
   }
 
-}
-
-.venues-component {
-  height: 350px;
-
-  .venue-name {
-    color: #eee;
-    padding-top: 25px;
-    cursor: pointer;
-  
-    &:hover {
-      color: #e36740;
-    }
-  }
-
-  .venue-top {
-    height: 100px;
-    background-color: #772953;
-    border-radius: 14px 14px 0 0;
-  }
-
-  .venue-bottom {
-    position: static;
-    text-align: left;
-    height: 250px;
-    background-image: url('https://i.imgur.com/9GB0xeq.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 0 0 14px 14px;
-  }
-
-  .venue-info {
-    position: relative;
-    top: 20px;
-    background-color: rgba(0, 0, 0, 0.706);
-    border-radius: 12px;
-    color: #fff;
-    height: 210px;
-    margin: auto;
-    padding: 10px;
-    width: 90%;
-  }
-
-  .right-info {
-    text-align: right;
-  }
-
-  h4 {
-    color: #C7142D;
-    -webkit-text-stroke-width: .2px;
-    -webkit-text-stroke-color: #004D95;
-  }
 }

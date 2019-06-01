@@ -1,0 +1,51 @@
+.set-list-component {
+  width: 90vw;
+
+  .set-list {
+    width: 80vw;
+    margin: 50px auto;
+  }
+  
+  .sets {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 400px;
+    background-image: url('https://i.imgur.com/9GB0xeq.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 14px 14px 0 0;
+    color: #eee;
+  }
+
+  .encore {
+    background-color: #772953;
+    color: #eee;
+    border-radius: 0 0 14px 14px;
+  }
+
+  .set-one,
+  .set-two {
+    position: relative;
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.706);
+    border-radius: 12px;
+    color: #fff;
+    height: auto;
+    margin: auto;
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 10px;
+    font-size: 28px;
+
+    h1 {
+      text-align: left;
+      margin-left: 5px;
+    }
+
+    div {
+      margin: 10px;
+    }
+  }
+}

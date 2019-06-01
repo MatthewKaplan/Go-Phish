@@ -34,9 +34,9 @@ class NavBar extends Component {
     this.props.loadingData(true);
     fetchMembers(
       `https://cors-anywhere.herokuapp.com/https://peaceful-castle-66511.herokuapp.com/api/v1/phish/members`
-    ).then(
-      results => (this.props.allMembers(results), this.props.loadingData(false))
-    );
+      ).then(
+        results => (this.props.allMembers(results), this.props.loadingData(false))
+        );
   };
 
   render() {
@@ -180,6 +180,19 @@ class NavBar extends Component {
     );
   }
 }
+
+export const mapStateToProps = state => ({
+  years: state.years,
+  tours: state.tours,
+  songs: state.songs,
+  venues: state.venues,
+  shows: state.shows,
+  setList: state.setList,
+  isLoading: state.loadingData,
+  show: state.show,
+  members: state.members,
+  member: state.member
+});
 
 export const mapDispatchToProps = dispatch => ({
   allYears: years => dispatch(allYears(years)),

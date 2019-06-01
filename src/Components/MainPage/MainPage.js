@@ -34,28 +34,35 @@ class MainPage extends Component {
 
   fetchRandomShow = () => {
     this.props.loadingData(true);
-    this.setState({randomShowFetching: true})
+    this.setState({ randomShowFetching: true });
     fetchData(`random-show`)
       .then(response => cleanRandomShow(response.data))
       .then(
         results => (
-          this.props.randomShow(results), this.setState({randomShowFetching: false})
+          this.props.randomShow(results),
+          this.setState({ randomShowFetching: false })
         )
       );
   };
 
   fetchSongs = () => {
-    this.props.loadingData(true)
+    this.props.loadingData(true);
     fetchData(`songs.json?per_page=901`)
       .then(response => cleanSongs(response.data))
-      .then(results => (this.props.allSongs(results), this.props.loadingData(false)));
+      .then(
+        results => (this.props.allSongs(results), this.props.loadingData(false))
+      );
   };
 
   fetchVenues = () => {
-    this.props.loadingData(true)
+    this.props.loadingData(true);
     fetchData(`venues.json?per_page=651`)
       .then(response => cleanVenues(response.data))
-      .then(results => (this.props.allVenues(results), this.props.loadingData(false)));
+      .then(
+        results => (
+          this.props.allVenues(results), this.props.loadingData(false)
+        )
+      );
   };
 
   renderYears = () => {
@@ -83,11 +90,6 @@ class MainPage extends Component {
     return shows.map(show => <Shows key={show.id} show={show} />);
   };
 
-  renderSetList = () => {
-    const { setList } = this.props;
-    return setList.map(set => <SetLists key={set.id} setList={set} />);
-  };
-
   render() {
     const currentPath = this.props.location.pathname;
     let dataToRender;
@@ -111,7 +113,7 @@ class MainPage extends Component {
         dataToRender = this.renderShows();
         break;
       case "/SetList":
-        dataToRender = this.renderSetList();
+        dataToRender = <SetLists />;
         break;
       default:
         dataToRender = <HomePage />;
@@ -121,7 +123,11 @@ class MainPage extends Component {
     return (
       <div className="main-page">
         <section className="page-to-render">
-          {isLoading === true || randomShowFetching === true ? <Loading /> : dataToRender}
+          {isLoading === true || randomShowFetching === true ? (
+            <Loading />
+          ) : (
+            dataToRender
+          )}
         </section>
       </div>
     );
@@ -136,7 +142,8 @@ export const mapStateToProps = state => ({
   shows: state.shows,
   setList: state.setList,
   isLoading: state.loadingData,
-  show: state.show
+  show: state.show,
+  members: state.members
 });
 
 export const mapDispatchToProps = dispatch => ({
