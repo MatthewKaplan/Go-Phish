@@ -111,4 +111,22 @@ const cleanRandomShow = data => {
 //   })
 // }
 
-export { cleanSongs, cleanVenues, cleanTours, cleanShows, cleanRandomShow };
+const setData = (setList, name) => {
+  const setOne = setList.filter(track => track.set_name === name);
+  return setOne
+    .map(firstSet => (
+      <span key={firstSet.id} className="song-title">
+        {firstSet.title}
+      </span>
+    ))
+    .reduce((prev, curr) => [prev, ", ", curr]);
+};
+
+export {
+  cleanSongs,
+  cleanVenues,
+  cleanTours,
+  cleanShows,
+  cleanRandomShow,
+  setData
+};

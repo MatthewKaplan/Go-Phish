@@ -25,7 +25,7 @@ class BandBio extends Component {
         <div className="band-bio">
           <img
             src="https://i.imgur.com/bLCGyR3.jpg"
-            alt="Band Photo"
+            alt="Phish Members"
             className="band-photo"
           />
           <section className="phish-history">{bandBio()}</section>
