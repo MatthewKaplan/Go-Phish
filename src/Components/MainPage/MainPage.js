@@ -38,10 +38,9 @@ class MainPage extends Component {
     fetchData(`random-show`)
       .then(response => cleanRandomShow(response.data))
       .then(
-        results => (
-          this.props.randomShow(results),
+        results =>
+          this.props.randomShow(results) &&
           this.setState({ randomShowFetching: false })
-        )
       );
   };
 
@@ -50,7 +49,7 @@ class MainPage extends Component {
     fetchData(`songs.json?per_page=901`)
       .then(response => cleanSongs(response.data))
       .then(
-        results => (this.props.allSongs(results), this.props.loadingData(false))
+        results => this.props.allSongs(results) && this.props.loadingData(false)
       );
   };
 
@@ -59,66 +58,36 @@ class MainPage extends Component {
     fetchData(`venues.json?per_page=651`)
       .then(response => cleanVenues(response.data))
       .then(
-        results => (
-          this.props.allVenues(results), this.props.loadingData(false)
-        )
+        results =>
+          this.props.allVenues(results) && this.props.loadingData(false)
       );
   };
 
-  renderYears = () => {
-    const { years } = this.props;
-    return years.map(year => <Years key={year.date} year={year} />);
-  };
-
-  renderTours = () => {
-    const { tours } = this.props;
-    return tours.map(tour => <Tours key={tour.id} tour={tour} />);
-  };
-
-  renderSongs = () => {
-    const { songs } = this.props;
-    return songs.map(song => <Songs key={song.id} song={song} />);
-  };
-
-  renderVenues = () => {
-    const { venues } = this.props;
-    return venues.map(venue => <Venues key={venue.id} venue={venue} />);
-  };
-
-  renderShows = () => {
-    const { shows } = this.props;
-    return shows.map(show => <Shows key={show.id} show={show} />);
-  };
-
-  render() {
+  pathToRender = () => {
     const currentPath = this.props.location.pathname;
-    let dataToRender;
-    const { isLoading } = this.props;
-    const { randomShowFetching } = this.state;
+    const { years, tours, songs, shows, venues } = this.props;
 
     switch (currentPath) {
       case "/Years":
-        dataToRender = this.renderYears();
-        break;
+        return years.map(year => <Years key={year.date} year={year} />);
       case "/Tours":
-        dataToRender = this.renderTours();
-        break;
+        return tours.map(tour => <Tours key={tour.id} tour={tour} />);
       case "/Songs":
-        dataToRender = this.renderSongs();
-        break;
+        return songs.map(song => <Songs key={song.id} song={song} />);
       case "/Venues":
-        dataToRender = this.renderVenues();
-        break;
+        return venues.map(venue => <Venues key={venue.id} venue={venue} />);
       case "/Shows":
-        dataToRender = this.renderShows();
-        break;
+        return shows.map(show => <Shows key={show.id} show={show} />);
       case "/SetList":
-        dataToRender = <SetLists />;
-        break;
+        return <SetLists />;
       default:
-        dataToRender = <HomePage />;
-        break;
+        return <HomePage />;
     }
+  };
+
+  render() {
+    const { isLoading } = this.props;
+    const { randomShowFetching } = this.state;
 
     return (
       <div className="main-page">
@@ -126,7 +95,7 @@ class MainPage extends Component {
           {isLoading === true || randomShowFetching === true ? (
             <Loading />
           ) : (
-            dataToRender
+            this.pathToRender()
           )}
         </section>
       </div>
