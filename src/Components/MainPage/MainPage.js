@@ -5,7 +5,8 @@ import {
   allSongs,
   allVenues,
   currentSetList,
-  loadingData
+  loadingData,
+  randomShow
 } from "../../Actions/index";
 import { connect } from "react-redux";
 import Tours from "../Tours/Tours";
@@ -16,28 +17,43 @@ import Shows from "../Shows/Shows";
 import HomePage from "../HomePage/HomePage";
 import SetLists from "../SetLists/SetLists";
 import Loading from "../Loading/Loading";
-import { cleanSongs, cleanVenues } from "../../Helpers/cleaners";
+import {
+  cleanSongs,
+  cleanVenues,
+  cleanRandomShow
+} from "../../Helpers/cleaners";
 
 class MainPage extends Component {
+  state = { randomShowFetching: false };
+
   componentDidMount() {
     this.fetchSongs();
     this.fetchVenues();
+    this.fetchRandomShow();
   }
+
+  fetchRandomShow = () => {
+    this.props.loadingData(true);
+    this.setState({randomShowFetching: true})
+    fetchData(`random-show`)
+      .then(response => cleanRandomShow(response.data))
+      .then(
+        results => (
+          this.props.randomShow(results), this.setState({randomShowFetching: false})
+        )
+      );
+  };
 
   fetchSongs = () => {
     this.props.loadingData(true)
-    fetchData(
-      `songs.json?per_page=901`
-    )
+    fetchData(`songs.json?per_page=901`)
       .then(response => cleanSongs(response.data))
       .then(results => (this.props.allSongs(results), this.props.loadingData(false)));
   };
 
   fetchVenues = () => {
     this.props.loadingData(true)
-    fetchData(
-      `venues.json?per_page=651`
-    )
+    fetchData(`venues.json?per_page=651`)
       .then(response => cleanVenues(response.data))
       .then(results => (this.props.allVenues(results), this.props.loadingData(false)));
   };
@@ -75,7 +91,8 @@ class MainPage extends Component {
   render() {
     const currentPath = this.props.location.pathname;
     let dataToRender;
-    const {isLoading} = this.props;
+    const { isLoading } = this.props;
+    const { randomShowFetching } = this.state;
 
     switch (currentPath) {
       case "/Years":
@@ -97,14 +114,14 @@ class MainPage extends Component {
         dataToRender = this.renderSetList();
         break;
       default:
-        dataToRender = <HomePage />
+        dataToRender = <HomePage />;
         break;
     }
 
     return (
       <div className="main-page">
         <section className="page-to-render">
-          {isLoading === true ? <Loading /> : dataToRender}
+          {isLoading === true || randomShowFetching === true ? <Loading /> : dataToRender}
         </section>
       </div>
     );
@@ -118,14 +135,16 @@ export const mapStateToProps = state => ({
   venues: state.venues,
   shows: state.shows,
   setList: state.setList,
-  isLoading: state.loadingData
+  isLoading: state.loadingData,
+  show: state.show
 });
 
 export const mapDispatchToProps = dispatch => ({
   allSongs: songs => dispatch(allSongs(songs)),
   allVenues: venues => dispatch(allVenues(venues)),
   currentSetList: setList => dispatch(currentSetList(setList)),
-  loadingData: bool => dispatch(loadingData(bool))
+  loadingData: bool => dispatch(loadingData(bool)),
+  randomShow: show => dispatch(randomShow(show))
 });
 
 export default connect(
