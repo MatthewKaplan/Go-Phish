@@ -10,7 +10,6 @@ class UpcomingShows extends Component {
     const { shows } = this.props;
     const removeCommas = shows.date.replace(/,/g, "");
     const splitDates = removeCommas.split(" ");
-    console.log(splitDates);
     return (
       <React.Fragment>
         <p className="month">{splitDates[0]}</p>
