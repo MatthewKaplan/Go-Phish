@@ -50,7 +50,6 @@ class NavBar extends Component {
   };
 
   render() {
-    const { years } = this.props;
     return (
       <header>
         <div className="container">

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Tours.scss";
-import Shows from "../Shows/Shows";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { currentShows } from "../../Actions/index";

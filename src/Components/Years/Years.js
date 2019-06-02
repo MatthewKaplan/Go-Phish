@@ -13,7 +13,7 @@ class Years extends Component {
       .then(response => cleanShows(response.data))
       .then(
         result => (
-          this.props.currentShows(result), this.props.loadingData(false)
+          this.props.currentShows(result) && this.props.loadingData(false)
         )
       );
   };

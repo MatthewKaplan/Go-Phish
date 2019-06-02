@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { fetchData } from "../../api/apiCalls";
 import { connect } from "react-redux";
-import { allSongs, allVenues, loadingData } from "../../Actions/index";
+import { allSongs, allVenues } from "../../Actions/index";
 import "./SubNav.scss";
 import { cleanSongs, cleanVenues } from "../../Helpers/cleaners";
 
