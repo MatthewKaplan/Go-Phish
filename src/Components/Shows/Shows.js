@@ -5,16 +5,32 @@ import { Link } from "react-router-dom";
 import "./Shows.scss";
 
 class Shows extends Component {
+  state = { inList: false };
+
   handleClick = show => {
     this.props.currentSetList(show.tracks);
   };
 
+  addToList = show => {
+    this.setState({ inList: !this.state.inList });
+    console.log(show);
+  };
+
   render() {
     const { show } = this.props;
+    const { inList } = this.state;
 
     return (
       <div className="shows-component">
         <section className="show-top" onClick={() => this.handleClick(show)}>
+          {inList === true ? (
+            <div
+              className="removeFromList"
+              onClick={() => this.addToList(show)}
+            />
+          ) : (
+            <div className="addToList" onClick={() => this.addToList(show)} />
+          )}
           <Link to="/SetList">
             <h1 className="venue-name">{show.venue_name}</h1>
           </Link>
