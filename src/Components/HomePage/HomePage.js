@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import "./HomePage.scss";
 import { setData } from "../../Helpers/cleaners";
 import { connect } from "react-redux";
+import { ReactComponent as Arrow } from "../../Assets/arrow.svg";
 import UpcomingShows from "../UpcomingShows/UpcomingShows";
 
 class HomePage extends Component {
+  state = { showTour: false };
   renderRandomInfo = () => {
     const { show } = this.props;
     return (
@@ -23,12 +25,29 @@ class HomePage extends Component {
     ));
   };
 
+  toggleTour = () => {
+    this.setState({
+      showTour: !this.state.showTour
+    });
+  };
+
   render() {
     const { show } = this.props;
+    const { showTour } = this.state;
     return (
       <div className="home-page-component">
-        <h1>Show of the Day:</h1>
-        <div className="random-show">
+        <div className="slideshow-section">
+          <div className="summer-tour-artwork">
+            <Arrow
+              className={showTour ? "arrow-up arrow" : "arrow-down arrow"}
+              onClick={() => this.toggleTour()}
+            />
+          </div>
+        </div>
+        <section className={showTour ? "summer-tour-active" : "summer-tour"}>
+          {this.renderUpcomingShows()}
+        </section>
+        <div className={showTour ? "random-show" : "random-show-active"}>
           <section className="random-show-top">
             {show.length ? this.renderRandomInfo() : null}
           </section>
@@ -47,8 +66,6 @@ class HomePage extends Component {
             <div>{show.length && setData(show[0].tracks, "Encore")}</div>
           </section>
         </div>
-        <h1>PHISH SUMMER TOUR 2018</h1>
-        {this.renderUpcomingShows()}
       </div>
     );
   }
