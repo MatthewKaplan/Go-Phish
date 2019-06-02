@@ -95,6 +95,7 @@ class MainPage extends Component {
   render() {
     const { isLoading } = this.props;
     const { randomShowFetching } = this.state;
+    console.log('HI')
 
     return (
       <div className="main-page">

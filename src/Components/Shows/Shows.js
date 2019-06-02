@@ -1,19 +1,27 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { currentSetList } from "../../Actions/index";
+import { currentSetList, userShowList } from "../../Actions/index";
 import { Link } from "react-router-dom";
 import "./Shows.scss";
 
 class Shows extends Component {
-  state = { inList: false };
+  state = { inList: false, showList: [] };
 
   handleClick = show => {
     this.props.currentSetList(show.tracks);
   };
 
   addToList = show => {
+    this.setState({
+      inList: !this.state.inList
+    });
+    this.props.userShowList(show)
+    console.log("add to list", show);
+  };
+
+  removeFromList = show => {
     this.setState({ inList: !this.state.inList });
-    console.log(show);
+    console.log("remove from list", show);
   };
 
   render() {
@@ -26,7 +34,7 @@ class Shows extends Component {
           {inList === true ? (
             <div
               className="removeFromList"
-              onClick={() => this.addToList(show)}
+              onClick={() => this.removeFromList(show)}
             />
           ) : (
             <div className="addToList" onClick={() => this.addToList(show)} />
@@ -57,7 +65,8 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  currentSetList: setList => dispatch(currentSetList(setList))
+  currentSetList: setList => dispatch(currentSetList(setList)),
+  userShowList: userList => dispatch(userShowList(userList))
 });
 
 export default connect(
