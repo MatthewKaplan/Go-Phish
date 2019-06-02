@@ -53,7 +53,6 @@ const cleanTours = data => {
 };
 
 const cleanShows = data => {
-  console.log('data', data)
   const showInfo = data.map(show => {
     return {
       date: show.date,
