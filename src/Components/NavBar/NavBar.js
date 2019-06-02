@@ -51,11 +51,10 @@ class NavBar extends Component {
 
   render() {
     const { years } = this.props;
-    console.log(years);
     return (
       <header>
         <div className="container">
-          <nav>
+          <nav className="main-nav">
             <Link to="/" className="link logo-link">
               <h1 className="logo">
                 G<span>O</span>PH<span>I</span>SH
