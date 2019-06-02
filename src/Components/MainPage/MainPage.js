@@ -25,7 +25,7 @@ import {
 } from "../../Helpers/cleaners";
 
 class MainPage extends Component {
-  state = { randomShowFetching: false };
+  state = { randomShowFetching: false, userShows: [] };
 
   componentDidMount() {
     this.fetchSongs();
@@ -95,7 +95,6 @@ class MainPage extends Component {
   render() {
     const { isLoading } = this.props;
     const { randomShowFetching } = this.state;
-    console.log('HI')
 
     return (
       <div className="main-page">
@@ -120,7 +119,8 @@ export const mapStateToProps = state => ({
   setList: state.setList,
   isLoading: state.loadingData,
   show: state.show,
-  members: state.members
+  members: state.members,
+  userShows: state.userShows
 });
 
 export const mapDispatchToProps = dispatch => ({

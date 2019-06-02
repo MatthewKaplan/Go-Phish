@@ -8,8 +8,33 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { rootReducer } from "./Reducers/index";
+import {userShowList} from "./Actions/index";
 
-const store = createStore(rootReducer, composeWithDevTools());
+function saveToLocalStorage(state) {
+  try {
+    console.log(state)
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem("state", serializedState);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const serializedState = localStorage.getItem("state");
+    if (serializedState === null) return undefined;
+    return JSON.parse(serializedState);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+const persistedState = loadFromLocalStorage()
+
+const store = createStore(rootReducer, persistedState, composeWithDevTools());
+
+store.subscribe(() => saveToLocalStorage(store.getState()));
 
 const router = (
   <Provider store={store}>
