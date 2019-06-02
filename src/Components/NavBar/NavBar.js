@@ -55,7 +55,11 @@ class NavBar extends Component {
       <header>
         <div className="container">
           <nav className="main-nav">
-            <Link to="/" className="link logo-link">
+            <Link
+              to="/"
+              className="link logo-link"
+              onClick={() => this.toggleSubNav(false)}
+            >
               <h1 className="logo">
                 G<span>O</span>PH<span>I</span>SH
               </h1>
@@ -109,6 +113,15 @@ class NavBar extends Component {
                   onClick={() => this.fetchTours()}
                 >
                   Tours
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/UserStats"
+                  activeClassName="active"
+                  className="link"
+                >
+                  My Stats
                 </NavLink>
               </li>
             </ul>

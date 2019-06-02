@@ -8,7 +8,6 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { rootReducer } from "./Reducers/index";
-import {userShowList} from "./Actions/index";
 
 function saveToLocalStorage(state) {
   try {
@@ -34,7 +33,11 @@ const persistedState = loadFromLocalStorage()
 
 const store = createStore(rootReducer, persistedState, composeWithDevTools());
 
-store.subscribe(() => saveToLocalStorage(store.getState()));
+store.subscribe(() => {
+  saveToLocalStorage({
+  userShows: store.getState().userShows
+  });
+});
 
 const router = (
   <Provider store={store}>
