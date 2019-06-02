@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import "./Tours.scss";
 import Shows from "../Shows/Shows";
-import {Link} from "react-router-dom";
-import {connect} from "react-redux";
-import {currentShows} from "../../Actions/index";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { currentShows } from "../../Actions/index";
 
 class Tours extends Component {
-
   handleClick = tour => {
     this.props.currentShows(tour.shows);
   };
@@ -15,9 +14,9 @@ class Tours extends Component {
     const { tour } = this.props;
     return (
       <div className="tours-component" onClick={() => this.handleClick(tour)}>
-      <Link to="/Shows" >
-        <h2 className="tour-name">{tour.name}</h2>
-      </Link>
+        <Link to="/Shows">
+          <h2 className="tour-name">{tour.name}</h2>
+        </Link>
       </div>
     );
   }

@@ -43,11 +43,11 @@ class NavBar extends Component {
     );
   };
 
-  toggleSubNav = (bool) => {
+  toggleSubNav = bool => {
     this.setState({
       subNav: bool
-    })
-  }
+    });
+  };
 
   render() {
     const { years } = this.props;
@@ -114,9 +114,7 @@ class NavBar extends Component {
               </li>
             </ul>
           </nav>
-          {this.state.subNav === true &&
-            <SubNav />
-          }
+          {this.state.subNav === true && <SubNav />}
         </div>
       </header>
     );

@@ -8,12 +8,14 @@ import "./Years.scss";
 
 class Years extends Component {
   handleClick = year => {
-    this.props.loadingData(true)
-    fetchData(
-      `years/${year}`
-    )
+    this.props.loadingData(true);
+    fetchData(`years/${year}`)
       .then(response => cleanShows(response.data))
-      .then(result => (this.props.currentShows(result), this.props.loadingData(false)));
+      .then(
+        result => (
+          this.props.currentShows(result), this.props.loadingData(false)
+        )
+      );
   };
 
   render() {

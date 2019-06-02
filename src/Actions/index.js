@@ -47,3 +47,8 @@ export const randomShow = show => ({
   type: "RANDOM_SHOW",
   show
 });
+
+export const upcomingShows = upcoming => ({
+  type: "UPCOMING_SHOWS",
+  upcoming
+});
