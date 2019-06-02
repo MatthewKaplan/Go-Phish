@@ -1,0 +1,14 @@
+.upcoming-shows-component {
+  border: 2px solid red;
+  height: 100px;
+  max-width: 800px;
+
+  .show-date {
+    border: 3px solid green;
+    display: inline;
+  }
+
+  h1 {
+    border: 3px solid blue;
+  }
+}
