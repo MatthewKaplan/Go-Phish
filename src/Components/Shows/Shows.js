@@ -15,9 +15,9 @@ class Shows extends Component {
     return (
       <div className="shows-component">
         <section className="show-top" onClick={() => this.handleClick(show)}>
-        <Link to="/SetList" >
-          <h1 className="venue-name">{show.venue_name}</h1>
-        </Link>
+          <Link to="/SetList">
+            <h1 className="venue-name">{show.venue_name}</h1>
+          </Link>
         </section>
         <section className="show-bottom">
           <article className="show-info">

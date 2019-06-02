@@ -1,0 +1,77 @@
+.upcoming-shows-component {
+  max-width: 800px;
+
+  .show-card {
+    height: 100px;
+    max-width: 800px;
+    display: grid;
+    grid-template-columns: 1fr 6fr 2fr;
+    margin: 30px;
+
+    .show-date {
+      float: left;
+      background-color: #e36740;
+      height: 100px;
+      line-height: 26px;
+      width: 100px;
+      color: #fff;
+      float: left;
+      font-size: 12px;
+      letter-spacing: 2px;
+      line-height: 16px;
+      margin-right: 14px;
+      text-align: center;
+      text-transform: uppercase;
+
+      .day {
+        font-size: 42px;
+      }
+
+      .month,
+      .year {
+        font-size: 12px;
+        padding: 10px;
+      }
+    }
+
+    .venue-information {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #413648;
+      margin-top: 5px;
+    }
+
+    .show-location {
+      color: #7e668e;
+      font-size: 14px;
+      width: 50%;
+    }
+
+    .tickets {
+      background-color: #e36740;
+      color: white;
+      display: inline-block;
+      font-family: "function_promedium", Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      padding: 3px 7px;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      text-transform: uppercase;
+      margin-top: 15%;
+      height: 40px;
+      width: 150px;
+    }
+  }
+  .bottom-border {
+    margin-left: 30px;
+    width: 92.5%;
+    color: #e36740;
+  }
+}

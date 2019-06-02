@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./HomePage.scss";
 import { setData } from "../../Helpers/cleaners";
 import { connect } from "react-redux";
+import UpcomingShows from "../UpcomingShows/UpcomingShows";
 
 class HomePage extends Component {
   renderRandomInfo = () => {
@@ -13,6 +14,13 @@ class HomePage extends Component {
         <p className="date venue-info">{show[0].date}</p>
       </React.Fragment>
     );
+  };
+
+  renderUpcomingShows = () => {
+    const { upcoming } = this.props;
+    return upcoming.map(shows => (
+      <UpcomingShows key={shows.id} shows={shows} />
+    ));
   };
 
   render() {
@@ -39,13 +47,16 @@ class HomePage extends Component {
             <div>{show.length && setData(show[0].tracks, "Encore")}</div>
           </section>
         </div>
+        <h1>PHISH SUMMER TOUR 2018</h1>
+        {this.renderUpcomingShows()}
       </div>
     );
   }
 }
 
 export const mapStateToProps = state => ({
-  show: state.show
+  show: state.show,
+  upcoming: state.upcoming
 });
 
 export default connect(

@@ -12,7 +12,7 @@ class SubNav extends Component {
     this.fetchSongs();
   }
 
-  fetchVenues = path => {
+  fetchVenues = () => {
     fetchData(`venues.json?per_page=651`)
       .then(response => cleanVenues(response.data))
       .then(results => this.setState({ venues: results }));

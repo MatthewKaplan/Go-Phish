@@ -1,8 +1,8 @@
 import { bearer } from "./apiKey";
-const urll = 'https://cors-anywhere.herokuapp.com/http://phish.in/api/v1/'
+const url = "https://cors-anywhere.herokuapp.com/http://phish.in/api/v1/";
 
-const fetchData = (path) => {
-  return fetch(urll + path, {
+const fetchData = path => {
+  return fetch(url + path, {
     method: "GET",
     headers: {
       Authorization: bearer,
@@ -18,8 +18,8 @@ const fetchData = (path) => {
   });
 };
 
-const fetchMembers = url => {
-  return fetch(url).then(response => {
+const fetchMembers = path => {
+  return fetch(path).then(response => {
     if (!response.ok) {
       throw new Error("Fetch failed");
     } else {

@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./MainPage.scss";
-import { fetchData } from "../../api/apiCalls";
+import { fetchData, fetchMembers } from "../../api/apiCalls";
 import {
   allSongs,
   allVenues,
   currentSetList,
   loadingData,
-  randomShow
+  randomShow,
+  upcomingShows
 } from "../../Actions/index";
 import { connect } from "react-redux";
 import Tours from "../Tours/Tours";
@@ -30,6 +31,12 @@ class MainPage extends Component {
     this.fetchSongs();
     this.fetchVenues();
     this.fetchRandomShow();
+    this.fetchUpcomingShows();
+  }
+
+  fetchUpcomingShows = () => {
+    fetchMembers('https://cors-anywhere.herokuapp.com/https://mighty-mountain-16368.herokuapp.com/api/v1/phishTour')
+      .then(response => this.props.upcomingShows(response))
   }
 
   fetchRandomShow = () => {
@@ -120,7 +127,8 @@ export const mapDispatchToProps = dispatch => ({
   allVenues: venues => dispatch(allVenues(venues)),
   currentSetList: setList => dispatch(currentSetList(setList)),
   loadingData: bool => dispatch(loadingData(bool)),
-  randomShow: show => dispatch(randomShow(show))
+  randomShow: show => dispatch(randomShow(show)),
+  upcomingShows: upcoming => dispatch(upcomingShows(upcoming))
 });
 
 export default connect(

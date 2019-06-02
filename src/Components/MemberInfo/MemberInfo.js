@@ -7,7 +7,10 @@ class MemberInfo extends Component {
     return (
       <div className="member-info-popup">
         <div className="member-info">
-          <div className="close-popup" onClick={() => this.props.closePopup()} />
+          <div
+            className="close-popup"
+            onClick={() => this.props.closePopup()}
+          />
           <section className="info">
             <h1>{currentMember.member}</h1>
             <h4>{currentMember.instruments}</h4>
