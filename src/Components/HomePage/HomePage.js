@@ -47,6 +47,7 @@ class HomePage extends Component {
             <div>{show.length && setData(show[0].tracks, "Encore")}</div>
           </section>
         </div>
+        <h1>PHISH SUMMER TOUR 2018</h1>
         {this.renderUpcomingShows()}
       </div>
     );
