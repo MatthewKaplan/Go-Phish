@@ -6,7 +6,7 @@ import "./SubNav.scss";
 import { cleanSongs, cleanVenues } from "../../Helpers/cleaners";
 
 class SubNav extends Component {
-  state = { venues: [], songs: [] };
+  state = { venues: [], songs: [], searchChar: "" };
   componentDidMount() {
     this.fetchVenues();
     this.fetchSongs();
@@ -26,6 +26,7 @@ class SubNav extends Component {
 
   filterVenues = async path => {
     await this.props.allVenues(this.state.venues);
+    this.toggleActiveState(path);
     const { venues } = this.props;
     const filteredVenues = venues.filter(venue => {
       return venue.name[0] === path;
@@ -35,6 +36,7 @@ class SubNav extends Component {
 
   filterSongs = async path => {
     await this.props.allSongs(this.state.songs);
+    this.toggleActiveState(path);
     const { songs } = this.props;
     const filteredSongs = songs.filter(song => {
       return song.title[0] === path;
@@ -42,8 +44,15 @@ class SubNav extends Component {
     this.props.allSongs(filteredSongs);
   };
 
+  toggleActiveState = char => {
+    this.setState({
+      searchChar: char
+    });
+  };
+
   render() {
     const currentPath = window.location.href;
+    const { searchChar } = this.state;
     let whatToFetch;
     if (currentPath === "http://localhost:3000/Venues") {
       whatToFetch = this.filterVenues;
@@ -52,82 +61,160 @@ class SubNav extends Component {
     }
     return (
       <nav className="sub-nav">
-        <div className="char_link" onClick={() => whatToFetch("A")}>
+        <div
+          className={searchChar === "A" && "char_link"}
+          onClick={() => whatToFetch("A")}
+        >
           A
         </div>
-        <div className="char_link" onClick={() => whatToFetch("B")}>
+        <div
+          className={searchChar === "B" && "char_link"}
+          onClick={() => whatToFetch("B")}
+        >
           B
         </div>
-        <div className="char_link" onClick={() => whatToFetch("C")}>
+        <div
+          className={searchChar === "C" && "char_link"}
+          onClick={() => whatToFetch("C")}
+        >
           C
         </div>
-        <div className="char_link" onClick={() => whatToFetch("D")}>
+        <div
+          className={searchChar === "D" && "char_link"}
+          onClick={() => whatToFetch("D")}
+        >
           D
         </div>
-        <div className="char_link" onClick={() => whatToFetch("E")}>
+        <div
+          className={searchChar === "E" && "char_link"}
+          onClick={() => whatToFetch("E")}
+        >
           E
         </div>
-        <div className="char_link" onClick={() => whatToFetch("F")}>
+        <div
+          className={searchChar === "F" && "char_link"}
+          onClick={() => whatToFetch("F")}
+        >
           F
         </div>
-        <div className="char_link" onClick={() => whatToFetch("G")}>
+        <div
+          className={searchChar === "G" && "char_link"}
+          onClick={() => whatToFetch("G")}
+        >
           G
         </div>
-        <div className="char_link" onClick={() => whatToFetch("H")}>
+        <div
+          className={searchChar === "H" && "char_link"}
+          onClick={() => whatToFetch("H")}
+        >
           H
         </div>
-        <div className="char_link" onClick={() => whatToFetch("I")}>
+        <div
+          className={searchChar === "I" && "char_link"}
+          onClick={() => whatToFetch("I")}
+        >
           I
         </div>
-        <div className="char_link" onClick={() => whatToFetch("J")}>
+        <div
+          className={searchChar === "J" && "char_link"}
+          onClick={() => whatToFetch("J")}
+        >
           J
         </div>
-        <div className="char_link" onClick={() => whatToFetch("K")}>
+        <div
+          className={searchChar === "K" && "char_link"}
+          onClick={() => whatToFetch("K")}
+        >
           K
         </div>
-        <div className="char_link" onClick={() => whatToFetch("L")}>
+        <div
+          className={searchChar === "L" && "char_link"}
+          onClick={() => whatToFetch("L")}
+        >
           L
         </div>
-        <div className="char_link" onClick={() => whatToFetch("M")}>
+        <div
+          className={searchChar === "M" && "char_link"}
+          onClick={() => whatToFetch("M")}
+        >
           M
         </div>
-        <div className="char_link" onClick={() => whatToFetch("N")}>
+        <div
+          className={searchChar === "N" && "char_link"}
+          onClick={() => whatToFetch("N")}
+        >
           N
         </div>
-        <div className="char_link" onClick={() => whatToFetch("O")}>
+        <div
+          className={searchChar === "O" && "char_link"}
+          onClick={() => whatToFetch("O")}
+        >
           O
         </div>
-        <div className="char_link" onClick={() => whatToFetch("P")}>
+        <div
+          className={searchChar === "P" && "char_link"}
+          onClick={() => whatToFetch("P")}
+        >
           P
         </div>
-        <div className="char_link" onClick={() => whatToFetch("Q")}>
+        <div
+          className={searchChar === "Q" && "char_link"}
+          onClick={() => whatToFetch("Q")}
+        >
           Q
         </div>
-        <div className="char_link" onClick={() => whatToFetch("R")}>
+        <div
+          className={searchChar === "R" && "char_link"}
+          onClick={() => whatToFetch("R")}
+        >
           R
         </div>
-        <div className="char_link" onClick={() => whatToFetch("S")}>
+        <div
+          className={searchChar === "S" && "char_link"}
+          onClick={() => whatToFetch("S")}
+        >
           S
         </div>
-        <div className="char_link" onClick={() => whatToFetch("T")}>
+        <div
+          className={searchChar === "T" && "char_link"}
+          onClick={() => whatToFetch("T")}
+        >
           T
         </div>
-        <div className="char_link" onClick={() => whatToFetch("U")}>
+        <div
+          className={searchChar === "U" && "char_link"}
+          onClick={() => whatToFetch("U")}
+        >
           U
         </div>
-        <div className="char_link" onClick={() => whatToFetch("V")}>
+        <div
+          className={searchChar === "V" && "char_link"}
+          onClick={() => whatToFetch("V")}
+        >
           V
         </div>
-        <div className="char_link" onClick={() => whatToFetch("W")}>
+        <div
+          className={searchChar === "W" && "char_link"}
+          onClick={() => whatToFetch("W")}
+        >
           W
         </div>
-        <div className="char_link" onClick={() => whatToFetch("X")}>
+        <div
+          className={searchChar === "X" && "char_link"}
+          onClick={() => whatToFetch("X")}
+        >
           X
         </div>
-        <div className="char_link" onClick={() => whatToFetch("Y")}>
+        <div
+          className={searchChar === "Y" && "char_link"}
+          onClick={() => whatToFetch("Y")}
+        >
           Y
         </div>
-        <div className="char_link" onClick={() => whatToFetch("Z")}>
+        <div
+          className={searchChar === "Z" && "char_link"}
+          onClick={() => whatToFetch("Z")}
+        >
           Z
         </div>
       </nav>

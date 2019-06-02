@@ -1,5 +1,12 @@
 .sub-nav {
+  color: #6e6f6f;
+  text-decoration: none;
   div {
     cursor: pointer;
+  }
+
+  .char_link {
+    color: red;
+    text-decoration: none;
   }
 }
