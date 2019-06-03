@@ -62,6 +62,32 @@
   }
 }
 
+.total-unheard-songs-active {
+  transition: all 2000ms linear;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 20px;
+  height: 8000px;
+
+
+  p {
+    text-align: left;
+  }
+}
+
+.total-unheard-songs {
+  transition: all 2000ms linear;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  height: 0px;
+  overflow: hidden;
+  p {
+    text-align: left;
+  }
+}
+
 .pointer {
   cursor: pointer;
 }

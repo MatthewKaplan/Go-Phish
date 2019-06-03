@@ -8,7 +8,8 @@ class UserStats extends Component {
     songStats: true,
     showStats: false,
     tourStats: false,
-    totalSongs: false
+    totalSongs: false,
+    unheardSongs: false
   };
   getCities = () => {
     const cities = this.props.userShows.map(shows => shows.location);
@@ -45,23 +46,12 @@ class UserStats extends Component {
     return uniqVenues.length;
   };
 
-  mostVisitedVenue = () => {
-    const venues = this.props.userShows.map(shows => shows.venue.name);
-    return venues
-      .sort(
-        (a, b) =>
-          venues.filter(v => v === a).length -
-          venues.filter(v => v === b).length
-      )
-      .pop();
-  };
-
   getSongs = () => {
     const songs = this.props.userShows
       .map(shows => shows.tracks.map(track => track.title))
       .flat();
     const uniqSongs = [...new Set(songs)];
-    return uniqSongs.length;
+    return uniqSongs;
   };
 
   getTotalSongs = () => {
@@ -69,18 +59,6 @@ class UserStats extends Component {
       .map(shows => shows.tracks.map(track => track.title))
       .flat();
     return songs.length;
-  };
-
-  mostHeard = () => {
-    const songs = this.props.userShows
-      .map(shows => shows.tracks.map(track => track.title))
-      .flat();
-    return songs
-      .sort(
-        (a, b) =>
-          songs.filter(v => v === a).length - songs.filter(v => v === b).length
-      )
-      .pop();
   };
 
   songTotals = () => {
@@ -120,9 +98,28 @@ class UserStats extends Component {
     });
   };
 
+  songsNotHeard = () => {
+    const songsHeard = this.getSongs();
+    const allSongs = this.props.songs.map(song => song.title);
+
+    const notHeard = allSongs.filter(function(n) {
+      return !this.has(n);
+    }, new Set(songsHeard));
+
+    return notHeard.map(song => {
+      return <p>{song}</p>;
+    });
+  };
+
   displayTotalSongs = () => {
     this.setState({
       totalSongs: !this.state.totalSongs
+    });
+  };
+
+  displaySongsNotHeard = () => {
+    this.setState({
+      unheardSongs: !this.state.unheardSongs
     });
   };
 
@@ -135,9 +132,8 @@ class UserStats extends Component {
   };
 
   render() {
-    const { userShows } = this.props;
-    const { songStats, showStats, tourStats, totalSongs } = this.state;
-    console.log(userShows);
+    const { userShows, songs } = this.props;
+    const { songStats, showStats, tourStats, totalSongs, unheardSongs } = this.state;
     return (
       <div className="user-stats-component">
         <div className="all-stats">
@@ -149,7 +145,7 @@ class UserStats extends Component {
               </section>
               <section className="stat">
                 <h2>Precent of All Shows:</h2>
-                <p>{((userShows.length / 1587) * 100).toFixed(2)} %</p>
+                <p>{((userShows.length / songs.length) * 100).toFixed(2)} %</p>
               </section>
               <section className="stat">
                 <h2>Number of Different Years:</h2>
@@ -182,11 +178,11 @@ class UserStats extends Component {
             <div className="song-stats">
               <section className="stat">
                 <h2>Number of Different Songs:</h2>
-                {this.getSongs()}
+                {this.getSongs().length}
               </section>
               <section className="stat">
                 <h2>Precent of All Songs:</h2>
-                <p>{((this.getSongs() / 901) * 100).toFixed(2)} %</p>
+                <p>{((this.getSongs().length / 901) * 100).toFixed(2)} %</p>
               </section>
               <section className="stat">
                 <h2>Number of Songs:</h2>
@@ -196,10 +192,28 @@ class UserStats extends Component {
                 <h2>Average Songs Per Show:</h2>
                 {Math.floor(this.getTotalSongs() / userShows.length)}
               </section>
-              <section className="stat pointer" onClick={() => this.displayTotalSongs()}>
+              <section
+                className="stat pointer"
+                onClick={() => this.displayTotalSongs()}
+              >
                 <h2>Song Totals</h2>
               </section>
-              <div className={totalSongs ? "total-songs-active" : "total-songs"}>{this.songTotals()}</div>
+              <section
+                className="stat pointer"
+                onClick={() => this.displaySongsNotHeard()}
+              >
+                <h2>Songs Not Heard</h2>
+              </section>
+              <div
+                className={totalSongs ? "total-songs-active" : "total-songs"}
+              >
+                {this.songTotals()}
+              </div>
+              <div
+                className={unheardSongs ? "total-unheard-songs-active" : "total-unheard-songs"}
+              >
+                {this.songsNotHeard()}
+              </div>
             </div>
           )}
         </div>
@@ -229,7 +243,8 @@ class UserStats extends Component {
 }
 
 export const mapStateToProps = state => ({
-  userShows: state.userShows
+  userShows: state.userShows,
+  songs: state.songs
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -240,13 +255,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(UserStats);
-
-// <section className="stat">
-// <h2>Most Heard Song:</h2>
-// {this.mostHeard()}
-// </section>
-
-// <section className="stat">
-// <h2>Most Visited Venue:</h2>
-// {this.mostVisitedVenue()}
-// </section>
