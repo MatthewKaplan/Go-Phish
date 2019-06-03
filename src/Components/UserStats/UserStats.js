@@ -2,28 +2,32 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { userShowList } from "../../Actions/index";
 import "./UserStats.scss";
+const ids = require("shortid");
 
 class UserStats extends Component {
   state = {
-    songStats: true,
+    songStats: false,
     showStats: false,
-    tourStats: false,
+    tourStats: true,
     totalSongs: false,
-    unheardSongs: false
+    unheardSongs: false,
+    showLocation: false,
+    showVenues: false,
+    displayShows: false,
+    displayYears: false
   };
   getCities = () => {
     const cities = this.props.userShows.map(shows => shows.location);
     const uniqCities = [...new Set(cities)];
-    return uniqCities.length;
+    return uniqCities;
   };
 
   getStates = () => {
-    const cities = this.props.userShows.map(shows => shows.location);
-    const uniqCities = [...new Set(cities)];
+    const uniqCities = this.getCities();
     const splitCities = uniqCities.map(city => city.split(", "));
     const states = splitCities.map(cities => cities[1]);
     const uniqStates = [...new Set(states)];
-    return uniqStates.length;
+    return uniqStates;
   };
 
   getYears = () => {
@@ -31,19 +35,19 @@ class UserStats extends Component {
     const splitDates = dates.map(date => date.split("-"));
     const years = splitDates.map(date => date[0]);
     const uniqYears = [...new Set(years)];
-    return uniqYears.length;
+    return uniqYears;
   };
 
   getTours = () => {
     const tours = this.props.userShows.map(shows => shows.tour_id);
     const uniqTours = [...new Set(tours)];
-    return uniqTours.length;
+    return uniqTours;
   };
 
   getVenues = () => {
     const venues = this.props.userShows.map(shows => shows.venue.name);
     const uniqVenues = [...new Set(venues)];
-    return uniqVenues.length;
+    return uniqVenues;
   };
 
   getSongs = () => {
@@ -58,41 +62,38 @@ class UserStats extends Component {
     const songs = this.props.userShows
       .map(shows => shows.tracks.map(track => track.title))
       .flat();
-    return songs.length;
+    return songs;
   };
 
-  songTotals = () => {
-    const songs = this.props.userShows
-      .map(shows => shows.tracks.map(track => track.title))
-      .flat();
-
-    songs.sort();
-
-    const totalSongs = [];
+  songTotals = arr => {
+    arr.sort();
+    const total = [];
 
     var current = null;
     var cnt = 0;
-    for (var i = 0; i < songs.length; i++) {
-      if (songs[i] != current) {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] !== current) {
         if (cnt > 0) {
-          totalSongs.push(current + ": " + cnt);
+          total.push(current + ": " + cnt);
         }
-        current = songs[i];
+        current = arr[i];
         cnt = 1;
       } else {
         cnt++;
       }
     }
     if (cnt > 0) {
-      totalSongs.push(current + ": " + cnt);
+      total.push(current + ": " + cnt);
     }
-    const totalSplit = totalSongs.map(songs => songs.split(": "));
+    const totalSplit = total.map(songs => songs.split(": "));
 
     return totalSplit.map(total => {
       return (
-        <React.Fragment>
-          <p className="song-title">{total[0]}</p>
-          <p>{total[1]}</p>
+        <React.Fragment key={ids.generate()}>
+          <p className="song-title" key={ids.generate()}>
+            {total[0]}
+          </p>
+          <p key={ids.generate()}>{total[1]}</p>
         </React.Fragment>
       );
     });
@@ -107,19 +108,7 @@ class UserStats extends Component {
     }, new Set(songsHeard));
 
     return notHeard.map(song => {
-      return <p>{song}</p>;
-    });
-  };
-
-  displayTotalSongs = () => {
-    this.setState({
-      totalSongs: !this.state.totalSongs
-    });
-  };
-
-  displaySongsNotHeard = () => {
-    this.setState({
-      unheardSongs: !this.state.unheardSongs
+      return <p key={ids.generate()}>{song}</p>;
     });
   };
 
@@ -133,13 +122,23 @@ class UserStats extends Component {
 
   render() {
     const { userShows, songs } = this.props;
-    const { songStats, showStats, tourStats, totalSongs, unheardSongs } = this.state;
+    const {
+      songStats,
+      showStats,
+      tourStats,
+      totalSongs,
+      unheardSongs,
+      showLocation,
+      showVenues,
+      displayShows,
+      displayYears
+    } = this.state;
     return (
       <div className="user-stats-component">
         <div className="all-stats">
           {showStats && (
             <div className="showStats">
-              <section className="stat">
+              <section className="stat pointer" onClick={() => this.setState({displayShows: !displayShows})}>
                 <h2>Number of Shows seen:</h2>
                 <p>{userShows.length}</p>
               </section>
@@ -147,30 +146,66 @@ class UserStats extends Component {
                 <h2>Precent of All Shows:</h2>
                 <p>{((userShows.length / songs.length) * 100).toFixed(2)} %</p>
               </section>
-              <section className="stat">
+              <section className="stat pointer" onClick={() => this.setState({displayYears: !displayYears})}>
                 <h2>Number of Different Years:</h2>
-                {this.getYears()}
+                {this.getYears().length}
               </section>
+              <div className={
+                displayYears ? "display-years-active" : "display-years"
+              }>
+                {this.getYears().map(year => (
+                  <p key={ids.generate()}>{year}</p>
+                ))}
+              </div>
+              <div className={
+                displayShows ? "display-shows-active" : "display-shows"
+              }>
+                {userShows.map(shows => {
+                  return (
+                    <React.Fragment key={ids.generate()}>
+                      <p key={ids.generate()}>{shows.venue_name}</p>
+                      <p key={ids.generate()}>{shows.location}</p>
+                      <p key={ids.generate()}>{shows.date}</p>
+                    </React.Fragment>
+                  );
+                })}
+              </div>
             </div>
           )}
           {tourStats && (
             <div className="tour-stats">
-              <section className="stat">
+              <section className="stat pointer" onClick={() => this.setState({showLocation: !showLocation})}>
                 <h2>Number of Different Cities:</h2>
-                {this.getCities()}
+                {this.getCities().length}
               </section>
               <section className="stat">
                 <h2>Number of Different US States:</h2>
-                {this.getStates()}
+                {this.getStates().length}
               </section>
               <section className="stat">
                 <h2>Number of Different Tours:</h2>
-                {this.getTours()}
+                {this.getTours().length}
               </section>
-              <section className="stat">
+              <section className="stat pointer" onClick={() => this.setState({showVenues: !showVenues})}>
                 <h2>Number of Different Venues:</h2>
-                {this.getVenues()}
+                {this.getVenues().length}
               </section>
+              <div
+                className={
+                  showLocation ? "show-location-active" : "show-location"
+                }
+              >
+                {this.songTotals(
+                  this.props.userShows.map(shows => shows.location)
+                )}
+              </div>
+              <div className={
+                showVenues ? "show-location-active" : "show-location"
+              }>
+                {this.songTotals(
+                  this.props.userShows.map(shows => shows.venue.name)
+                )}
+              </div>
             </div>
           )}
 
@@ -186,31 +221,35 @@ class UserStats extends Component {
               </section>
               <section className="stat">
                 <h2>Number of Songs:</h2>
-                {this.getTotalSongs()}
+                {this.getTotalSongs().length}
               </section>
               <section className="stat">
                 <h2>Average Songs Per Show:</h2>
-                {Math.floor(this.getTotalSongs() / userShows.length)}
+                {Math.floor(this.getTotalSongs().length / userShows.length)}
               </section>
               <section
                 className="stat pointer"
-                onClick={() => this.displayTotalSongs()}
+                onClick={() => this.setState({totalSongs: !totalSongs})}
               >
                 <h2>Song Totals</h2>
               </section>
               <section
                 className="stat pointer"
-                onClick={() => this.displaySongsNotHeard()}
+                onClick={() => this.setState({unheardSongs: !unheardSongs})}
               >
                 <h2>Songs Not Heard</h2>
               </section>
               <div
                 className={totalSongs ? "total-songs-active" : "total-songs"}
               >
-                {this.songTotals()}
+                {this.songTotals(this.getTotalSongs())}
               </div>
               <div
-                className={unheardSongs ? "total-unheard-songs-active" : "total-unheard-songs"}
+                className={
+                  unheardSongs
+                    ? "total-unheard-songs-active"
+                    : "total-unheard-songs"
+                }
               >
                 {this.songsNotHeard()}
               </div>
@@ -219,19 +258,19 @@ class UserStats extends Component {
         </div>
         <section className="btn-container">
           <button
-            className={songStats && "song-stats-btn"}
+            className={songStats ? "song-stats-btn" : null}
             onClick={() => this.displayStats(true, false, false)}
           >
             Song Stats
           </button>
           <button
-            className={tourStats && "tour-stats-btn"}
+            className={tourStats ? "tour-stats-btn" : null}
             onClick={() => this.displayStats(false, false, true)}
           >
             Location + Tour
           </button>
           <button
-            className={showStats && "show-stats-btn"}
+            className={showStats ? "show-stats-btn" : null}
             onClick={() => this.displayStats(false, true, false)}
           >
             Show Stats

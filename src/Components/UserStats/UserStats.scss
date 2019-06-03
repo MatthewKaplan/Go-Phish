@@ -88,6 +88,82 @@
   }
 }
 
+.show-location-active {
+  transition: all 2000ms linear;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 20px;
+  height: 200px;
+
+
+  p {
+    text-align: left;
+  }
+}
+
+.show-location {
+  transition: all 2000ms linear;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  height: 0px;
+  overflow: hidden;
+  p {
+    text-align: left;
+  }
+}
+
+.display-shows-active {
+  transition: all 2000ms linear;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  margin-top: 20px;
+  grid-gap: 10px;
+  height: 600px;
+
+
+  p {
+    text-align: left;
+  }
+}
+
+.display-shows {
+  transition: all 2000ms linear;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  grid-gap: 10px;
+
+  height: 0px;
+  overflow: hidden;
+  p {
+    text-align: left;
+  }
+}
+
+.display-years-active {
+  transition: all 2000ms linear;
+  margin-top: 20px;
+  height: auto;
+
+
+  p {
+    text-align: center;
+  }
+}
+
+.display-years {
+  transition: all 2000ms linear;
+  margin-top: 20px;
+
+  display: none;
+  overflow: hidden;
+  p {
+    text-align: center;
+  }
+}
+
 .pointer {
   cursor: pointer;
 }
