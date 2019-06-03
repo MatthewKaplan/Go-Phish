@@ -1,0 +1,67 @@
+.user-stats-component {
+  transition: all 2000ms linear;
+
+  
+  width: 100vw;
+  .all-stats {
+    width: 50vw;
+    margin: 0 auto;
+    .stat {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    h2 {
+      text-align: left;
+    }
+  }
+
+  .btn-container {
+    width: 75vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 25px auto;
+    button {
+      width: 300px;
+      height: 50px;
+      border: 3px solid #772953;
+      font-size: 30px;
+      color: #772953;
+    }
+    .tour-stats-btn,
+    .show-stats-btn,
+    .song-stats-btn {
+      background-color: #772953;
+      color: white;
+    }
+  }
+}
+
+.total-songs-active {
+  transition: all 2000ms linear;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 20px;
+  height: 4000px;
+
+
+  .song-title {
+    text-align: left;
+  }
+}
+
+.total-songs {
+  transition: all 2000ms linear;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  height: 0px;
+  overflow: hidden;
+  .song-title {
+    text-align: left;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}

@@ -4,6 +4,12 @@ import { userShowList } from "../../Actions/index";
 import "./UserStats.scss";
 
 class UserStats extends Component {
+  state = {
+    songStats: true,
+    showStats: false,
+    tourStats: false,
+    totalSongs: false
+  };
   getCities = () => {
     const cities = this.props.userShows.map(shows => shows.location);
     const uniqCities = [...new Set(cities)];
@@ -58,6 +64,13 @@ class UserStats extends Component {
     return uniqSongs.length;
   };
 
+  getTotalSongs = () => {
+    const songs = this.props.userShows
+      .map(shows => shows.tracks.map(track => track.title))
+      .flat();
+    return songs.length;
+  };
+
   mostHeard = () => {
     const songs = this.props.userShows
       .map(shows => shows.tracks.map(track => track.title))
@@ -70,34 +83,146 @@ class UserStats extends Component {
       .pop();
   };
 
+  songTotals = () => {
+    const songs = this.props.userShows
+      .map(shows => shows.tracks.map(track => track.title))
+      .flat();
+
+    songs.sort();
+
+    const totalSongs = [];
+
+    var current = null;
+    var cnt = 0;
+    for (var i = 0; i < songs.length; i++) {
+      if (songs[i] != current) {
+        if (cnt > 0) {
+          totalSongs.push(current + ": " + cnt);
+        }
+        current = songs[i];
+        cnt = 1;
+      } else {
+        cnt++;
+      }
+    }
+    if (cnt > 0) {
+      totalSongs.push(current + ": " + cnt);
+    }
+    const totalSplit = totalSongs.map(songs => songs.split(": "));
+
+    return totalSplit.map(total => {
+      return (
+        <React.Fragment>
+          <p className="song-title">{total[0]}</p>
+          <p>{total[1]}</p>
+        </React.Fragment>
+      );
+    });
+  };
+
+  displayTotalSongs = () => {
+    this.setState({
+      totalSongs: !this.state.totalSongs
+    });
+  };
+
+  displayStats = (songBool, showBool, tourBool) => {
+    this.setState({
+      songStats: songBool,
+      showStats: showBool,
+      tourStats: tourBool
+    });
+  };
+
   render() {
     const { userShows } = this.props;
+    const { songStats, showStats, tourStats, totalSongs } = this.state;
     console.log(userShows);
     return (
       <div className="user-stats-component">
-        <h1>Welcome to your Phish Stat Page:</h1>
-        <h2>Number of Shows seen:</h2>
-        <p>{userShows.length}</p>
-        <h2>Precent of All Shows:</h2>
-        <p>{((userShows.length / 1587) * 100).toFixed(2)} %</p>
-        <h2>Number of Different Cities:</h2>
-        {this.getCities()}
-        <h2>Number of Different US States:</h2>
-        {this.getStates()}
-        <h2>Number of Different Years:</h2>
-        {this.getYears()}
-        <h2>Number of Different Tours:</h2>
-        {this.getTours()}
-        <h2>Number of Different Venues:</h2>
-        {this.getVenues()}
-        <h2>Number of Different Songs:</h2>
-        {this.getSongs()}
-        <h2>Precent of All Songs:</h2>
-        <p>{((parseInt(this.getSongs()) / 901) * 100).toFixed(2)} %</p>
-        <h2>Most Heard Song:</h2>
-        {this.mostHeard()}
-        <h2>Most Visited Venue:</h2>
-        {this.mostVisitedVenue()}
+        <div className="all-stats">
+          {showStats && (
+            <div className="showStats">
+              <section className="stat">
+                <h2>Number of Shows seen:</h2>
+                <p>{userShows.length}</p>
+              </section>
+              <section className="stat">
+                <h2>Precent of All Shows:</h2>
+                <p>{((userShows.length / 1587) * 100).toFixed(2)} %</p>
+              </section>
+              <section className="stat">
+                <h2>Number of Different Years:</h2>
+                {this.getYears()}
+              </section>
+            </div>
+          )}
+          {tourStats && (
+            <div className="tour-stats">
+              <section className="stat">
+                <h2>Number of Different Cities:</h2>
+                {this.getCities()}
+              </section>
+              <section className="stat">
+                <h2>Number of Different US States:</h2>
+                {this.getStates()}
+              </section>
+              <section className="stat">
+                <h2>Number of Different Tours:</h2>
+                {this.getTours()}
+              </section>
+              <section className="stat">
+                <h2>Number of Different Venues:</h2>
+                {this.getVenues()}
+              </section>
+            </div>
+          )}
+
+          {songStats && (
+            <div className="song-stats">
+              <section className="stat">
+                <h2>Number of Different Songs:</h2>
+                {this.getSongs()}
+              </section>
+              <section className="stat">
+                <h2>Precent of All Songs:</h2>
+                <p>{((this.getSongs() / 901) * 100).toFixed(2)} %</p>
+              </section>
+              <section className="stat">
+                <h2>Number of Songs:</h2>
+                {this.getTotalSongs()}
+              </section>
+              <section className="stat">
+                <h2>Average Songs Per Show:</h2>
+                {Math.floor(this.getTotalSongs() / userShows.length)}
+              </section>
+              <section className="stat pointer" onClick={() => this.displayTotalSongs()}>
+                <h2>Song Totals</h2>
+              </section>
+              <div className={totalSongs ? "total-songs-active" : "total-songs"}>{this.songTotals()}</div>
+            </div>
+          )}
+        </div>
+        <section className="btn-container">
+          <button
+            className={songStats && "song-stats-btn"}
+            onClick={() => this.displayStats(true, false, false)}
+          >
+            Song Stats
+          </button>
+          <button
+            className={tourStats && "tour-stats-btn"}
+            onClick={() => this.displayStats(false, false, true)}
+          >
+            Location + Tour
+          </button>
+          <button
+            className={showStats && "show-stats-btn"}
+            onClick={() => this.displayStats(false, true, false)}
+          >
+            Show Stats
+          </button>
+        </section>
       </div>
     );
   }
@@ -115,3 +240,13 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(UserStats);
+
+// <section className="stat">
+// <h2>Most Heard Song:</h2>
+// {this.mostHeard()}
+// </section>
+
+// <section className="stat">
+// <h2>Most Visited Venue:</h2>
+// {this.mostVisitedVenue()}
+// </section>
