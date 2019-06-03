@@ -25,7 +25,7 @@ import {
   cleanRandomShow
 } from "../../Helpers/cleaners";
 
-class MainPage extends Component {
+export class MainPage extends Component {
   state = { randomShowFetching: false, userShows: [] };
 
   componentDidMount() {

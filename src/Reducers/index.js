@@ -3,7 +3,7 @@ import { memberReducer } from "./memberReducer";
 import { currentMemberReducer } from "./currentMemberReducer";
 import { yearsReducer } from "./yearsReducer";
 import { toursReducer } from "./toursReducer";
-import { songsReducer } from "./songsReducer";
+import songsReducer from "./songsReducer";
 import { venuesReducer } from "./venuesReducer";
 import { showsReducer } from "./showsReducer";
 import { setListReducer } from "./setListReducer";
