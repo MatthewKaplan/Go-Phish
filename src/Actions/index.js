@@ -52,3 +52,8 @@ export const upcomingShows = upcoming => ({
   type: "UPCOMING_SHOWS",
   upcoming
 });
+
+export const userShowList = userShows => ({
+  type: "USERS_SHOWS",
+  userShows
+});

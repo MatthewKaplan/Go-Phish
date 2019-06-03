@@ -5,6 +5,7 @@
     color: #eee;
     padding-top: 25px;
     cursor: pointer;
+    margin-left: 10px;
   
     &:hover {
       color: #e36740;
@@ -15,6 +16,26 @@
     height: 80px;
     background-color: #772953;
     border-radius: 14px 14px 0 0;
+  }
+
+  .addToList {
+    background-image: url('../../Assets/add.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 30px;
+    width: 30px;
+    float: right;
+    margin: 5px 5px 0 0;
+  }
+
+  .removeFromList {
+    background-image: url('../../Assets/checked.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 30px;
+    width: 30px;
+    float: right;
+    margin: 5px 5px 0 0;
   }
 
   .show-bottom {

@@ -10,6 +10,7 @@ import { setListReducer } from "./setListReducer";
 import { loadingReducer } from "./loadingReducer";
 import { randomShowReducer } from "./randomShowReducer";
 import { upcomingShowsReducer } from "./upcomingShowsReducer";
+import { userShowListReducer } from "./userShowListReducer";
 
 export const rootReducer = combineReducers({
   members: memberReducer,
@@ -22,7 +23,9 @@ export const rootReducer = combineReducers({
   setList: setListReducer,
   loadingData: loadingReducer,
   show: randomShowReducer,
-  upcoming: upcomingShowsReducer
+  upcoming: upcomingShowsReducer,
+  userShows: userShowListReducer
 });
+
 
 export default rootReducer;

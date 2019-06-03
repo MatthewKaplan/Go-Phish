@@ -18,6 +18,7 @@ import Shows from "../Shows/Shows";
 import HomePage from "../HomePage/HomePage";
 import SetLists from "../SetLists/SetLists";
 import Loading from "../Loading/Loading";
+import UserStats from "../UserStats/UserStats";
 import {
   cleanSongs,
   cleanVenues,
@@ -25,7 +26,7 @@ import {
 } from "../../Helpers/cleaners";
 
 class MainPage extends Component {
-  state = { randomShowFetching: false };
+  state = { randomShowFetching: false, userShows: [] };
 
   componentDidMount() {
     this.fetchSongs();
@@ -35,9 +36,10 @@ class MainPage extends Component {
   }
 
   fetchUpcomingShows = () => {
-    fetchMembers('https://cors-anywhere.herokuapp.com/https://mighty-mountain-16368.herokuapp.com/api/v1/phishTour')
-      .then(response => this.props.upcomingShows(response))
-  }
+    fetchMembers(
+      "https://cors-anywhere.herokuapp.com/https://mighty-mountain-16368.herokuapp.com/api/v1/phishTour"
+    ).then(response => this.props.upcomingShows(response));
+  };
 
   fetchRandomShow = () => {
     this.props.loadingData(true);
@@ -87,6 +89,8 @@ class MainPage extends Component {
         return shows.map(show => <Shows key={show.id} show={show} />);
       case "/SetList":
         return <SetLists />;
+      case "/UserStats":
+        return <UserStats />;
       default:
         return <HomePage />;
     }
@@ -119,7 +123,8 @@ export const mapStateToProps = state => ({
   setList: state.setList,
   isLoading: state.loadingData,
   show: state.show,
-  members: state.members
+  members: state.members,
+  userShows: state.userShows
 });
 
 export const mapDispatchToProps = dispatch => ({
