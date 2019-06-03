@@ -28,7 +28,7 @@ class Shows extends Component {
   render() {
     const { show, userShows } = this.props;
     const { inList } = this.state;
-    console.log("userShows", userShows)
+    // console.log("userShows", userShows)
 
     return (
       <div className="shows-component">

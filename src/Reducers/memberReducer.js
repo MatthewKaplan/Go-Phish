@@ -1,4 +1,4 @@
-export const memberReducer = (state = [], action) => {
+export default (state = [], action) => {
   switch (action.type) {
     case 'ALL_MEMBERS':
       return action.members;

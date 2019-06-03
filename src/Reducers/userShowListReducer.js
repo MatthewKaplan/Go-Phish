@@ -1,4 +1,4 @@
-export const userShowListReducer = (state = [], action) => {
+export default (state = [], action) => {
   switch (action.type) {
     case "USERS_SHOWS":
       return [...state,  action.userShows]

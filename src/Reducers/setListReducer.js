@@ -1,4 +1,4 @@
-export const setListReducer = (state = [], action) => {
+export default (state = [], action) => {
   switch (action.type) {
     case "CURRENT_SETLIST":
       return action.setlist;

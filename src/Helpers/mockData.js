@@ -456,6 +456,183 @@ const mockSetList = [
   }
 ];
 
+const mockShow = [
+  {
+    "date": "1998-12-28",
+    "id": 1724,
+    "tour_id": 38,
+    "venue_name": "Madison Square Garden",
+    "location": "New York, NY",
+    "tracks": [
+      {
+        "id": 28318,
+        "mp3": "https://phish.in/audio/000/028/318/28318.mp3",
+        "position": 1,
+        "set_name": "Set 1",
+        "show_id": 1724,
+        "title": "Axilla",
+        "song_ids": 53
+      },
+      {
+        "id": 28319,
+        "mp3": "https://phish.in/audio/000/028/319/28319.mp3",
+        "position": 2,
+        "set_name": "Set 1",
+        "show_id": 1724,
+        "title": "Stash",
+        "song_ids": 728
+      },
+      {
+        "id": 28320,
+        "mp3": "https://phish.in/audio/000/028/320/28320.mp3",
+        "position": 3,
+        "set_name": "Set 1",
+        "show_id": 1724,
+        "title": "Farmhouse",
+        "song_ids": 244
+      },
+      {
+        "id": 28321,
+        "mp3": "https://phish.in/audio/000/028/321/28321.mp3",
+        "position": 4,
+        "set_name": "Set 1",
+        "show_id": 1724,
+        "title": "Taste",
+        "song_ids": 757
+      },
+      {
+        "id": 28322,
+        "mp3": "https://phish.in/audio/000/028/322/28322.mp3",
+        "position": 5,
+        "set_name": "Set 1",
+        "show_id": 1724,
+        "title": "Sleep",
+        "song_ids": 694
+      },
+      {
+        "id": 28323,
+        "mp3": "https://phish.in/audio/000/028/323/28323.mp3",
+        "position": 6,
+        "set_name": "Set 1",
+        "show_id": 1724,
+        "title": "Albuquerque",
+        "song_ids": 20
+      },
+      {
+        "id": 28324,
+        "mp3": "https://phish.in/audio/000/028/324/28324.mp3",
+        "position": 7,
+        "set_name": "Set 1",
+        "show_id": 1724,
+        "title": "Driver",
+        "song_ids": 228
+      },
+      {
+        "id": 28325,
+        "mp3": "https://phish.in/audio/000/028/325/28325.mp3",
+        "position": 8,
+        "set_name": "Set 1",
+        "show_id": 1724,
+        "title": "Tube",
+        "song_ids": 797
+      },
+      {
+        "id": 28326,
+        "mp3": "https://phish.in/audio/000/028/326/28326.mp3",
+        "position": 9,
+        "set_name": "Set 1",
+        "show_id": 1724,
+        "title": "Golgi Apparatus",
+        "song_ids": 304
+      },
+      {
+        "id": 28327,
+        "mp3": "https://phish.in/audio/000/028/327/28327.mp3",
+        "position": 10,
+        "set_name": "Set 1",
+        "show_id": 1724,
+        "title": "Good Times Bad Times",
+        "song_ids": 306
+      },
+      {
+        "id": 28328,
+        "mp3": "https://phish.in/audio/000/028/328/28328.mp3",
+        "position": 11,
+        "set_name": "Set 2",
+        "show_id": 1724,
+        "title": "Carini",
+        "song_ids": 135
+      },
+      {
+        "id": 28329,
+        "mp3": "https://phish.in/audio/000/028/329/28329.mp3",
+        "position": 12,
+        "set_name": "Set 2",
+        "show_id": 1724,
+        "title": "Wolfman's Brother",
+        "song_ids": 870
+      },
+      {
+        "id": 28330,
+        "mp3": "https://phish.in/audio/000/028/330/28330.mp3",
+        "position": 13,
+        "set_name": "Set 2",
+        "show_id": 1724,
+        "title": "Birds of a Feather",
+        "song_ids": 85
+      },
+      {
+        "id": 28331,
+        "mp3": "https://phish.in/audio/000/028/331/28331.mp3",
+        "position": 14,
+        "set_name": "Set 2",
+        "show_id": 1724,
+        "title": "When the Circus Comes",
+        "song_ids": 845
+      },
+      {
+        "id": 28332,
+        "mp3": "https://phish.in/audio/000/028/332/28332.mp3",
+        "position": 15,
+        "set_name": "Set 2",
+        "show_id": 1724,
+        "title": "Quinn the Eskimo",
+        "song_ids": 612
+      },
+      {
+        "id": 28333,
+        "mp3": "https://phish.in/audio/000/028/333/28333.mp3",
+        "position": 16,
+        "set_name": "Set 2",
+        "show_id": 1724,
+        "title": "David Bowie",
+        "song_ids": 979
+      },
+      {
+        "id": 28334,
+        "mp3": "https://phish.in/audio/000/028/334/28334.mp3",
+        "position": 17,
+        "set_name": "Encore",
+        "show_id": 1724,
+        "title": "Been Caught Stealing",
+        "song_ids": 72
+      }
+    ],
+    "venue": {
+      "id": 408,
+      "slug": "madison-square-garden",
+      "name": "Madison Square Garden",
+      "other_names": [],
+      "latitude": 40.750505,
+      "longitude": -73.993439,
+      "shows_count": 60,
+      "location": "New York, NY",
+      "updated_at": "2014-01-26T07:25:53Z"
+    },
+    "showSaved": false
+  }
+]
+
 module.exports = {
   mockSong,
   mockVenue,
@@ -463,5 +640,6 @@ module.exports = {
   mockYears,
   mockTours,
   mockUserShows,
-  mockSetList
+  mockSetList,
+  mockShow
 };
