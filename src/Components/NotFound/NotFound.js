@@ -1,6 +1,4 @@
 import React from "react";
 import "./NotFound.scss";
 
-const NotFound = () => <div className="not-found" />;
-
-export default NotFound;
+export const NotFound = () => <div className="not-found" />;

@@ -11,12 +11,12 @@ import {
 import { connect } from "react-redux";
 import Tours from "../Tours/Tours";
 import Years from "../Years/Years";
-import Songs from "../Songs/Songs";
-import Venues from "../Venues/Venues";
+import { Songs } from "../Songs/Songs";
+import { Venues } from "../Venues/Venues";
 import Shows from "../Shows/Shows";
 import HomePage from "../HomePage/HomePage";
 import SetLists from "../SetLists/SetLists";
-import Loading from "../Loading/Loading";
+import { Loading } from "../Loading/Loading";
 import UserStats from "../UserStats/UserStats";
 import {
   cleanSongs,
@@ -119,7 +119,7 @@ export const mapStateToProps = state => ({
   songs: state.songs,
   venues: state.venues,
   shows: state.shows,
-  isLoading: state.loadingData,
+  isLoading: state.loadingData
 });
 
 export const mapDispatchToProps = dispatch => ({

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { currentMember } from "../../Actions/index";
 import BandMembers from "../BandMembers/BandMembers";
 import "./BandBio.scss";
-import MemberInfo from "../MemberInfo/MemberInfo";
+import {MemberInfo} from "../MemberInfo/MemberInfo";
 import { bandBio } from "../../Helpers/text";
 
 class BandBio extends Component {
