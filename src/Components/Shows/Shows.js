@@ -63,7 +63,6 @@ class Shows extends Component {
 }
 
 export const mapStateToProps = state => ({
-  setList: state.setList,
   userShows: state.userShows
 });
 

@@ -21,15 +21,11 @@ class Tours extends Component {
   }
 }
 
-export const mapStateToProps = state => ({
-  shows: state.shows
-});
-
 export const mapDispatchToProps = dispatch => ({
   currentShows: shows => dispatch(currentShows(shows))
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Tours);
