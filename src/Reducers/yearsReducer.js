@@ -1,4 +1,4 @@
-export const yearsReducer = (state = [], action) => {
+export default (state = [], action) => {
   switch (action.type) {
     case 'ALL_YEARS':
       return action.years;

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { userShowList } from "../../Actions/index";
 import "./UserStats.scss";
 const ids = require("shortid");
 
@@ -286,11 +285,7 @@ export const mapStateToProps = state => ({
   songs: state.songs
 });
 
-export const mapDispatchToProps = dispatch => ({
-  userShowList: userList => dispatch(userShowList(userList))
-});
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(UserStats);

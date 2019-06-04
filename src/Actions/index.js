@@ -30,6 +30,7 @@ export const allVenues = venues => ({
 
 export const currentShows = shows => ({
   type: "CURRENT_SHOWS",
+  showSaved: false,
   shows
 });
 
@@ -55,5 +56,6 @@ export const upcomingShows = upcoming => ({
 
 export const userShowList = userShows => ({
   type: "USERS_SHOWS",
+  showSaved: false,
   userShows
 });

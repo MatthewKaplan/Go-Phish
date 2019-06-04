@@ -132,19 +132,6 @@ class NavBar extends Component {
   }
 }
 
-export const mapStateToProps = state => ({
-  years: state.years,
-  tours: state.tours,
-  songs: state.songs,
-  venues: state.venues,
-  shows: state.shows,
-  setList: state.setList,
-  isLoading: state.loadingData,
-  show: state.show,
-  members: state.members,
-  member: state.member
-});
-
 export const mapDispatchToProps = dispatch => ({
   allYears: years => dispatch(allYears(years)),
   allTours: tours => dispatch(allTours(tours)),

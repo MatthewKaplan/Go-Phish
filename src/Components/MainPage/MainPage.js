@@ -4,7 +4,6 @@ import { fetchData, fetchMembers } from "../../api/apiCalls";
 import {
   allSongs,
   allVenues,
-  currentSetList,
   loadingData,
   randomShow,
   upcomingShows
@@ -25,7 +24,7 @@ import {
   cleanRandomShow
 } from "../../Helpers/cleaners";
 
-class MainPage extends Component {
+export class MainPage extends Component {
   state = { randomShowFetching: false, userShows: [] };
 
   componentDidMount() {
@@ -120,17 +119,12 @@ export const mapStateToProps = state => ({
   songs: state.songs,
   venues: state.venues,
   shows: state.shows,
-  setList: state.setList,
   isLoading: state.loadingData,
-  show: state.show,
-  members: state.members,
-  userShows: state.userShows
 });
 
 export const mapDispatchToProps = dispatch => ({
   allSongs: songs => dispatch(allSongs(songs)),
   allVenues: venues => dispatch(allVenues(venues)),
-  currentSetList: setList => dispatch(currentSetList(setList)),
   loadingData: bool => dispatch(loadingData(bool)),
   randomShow: show => dispatch(randomShow(show)),
   upcomingShows: upcoming => dispatch(upcomingShows(upcoming))

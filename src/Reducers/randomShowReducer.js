@@ -1,4 +1,4 @@
-export const randomShowReducer = (state = [], action) => {
+export default (state = [], action) => {
   switch (action.type) {
     case 'RANDOM_SHOW':
       return [action.show];

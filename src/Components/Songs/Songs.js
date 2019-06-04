@@ -4,6 +4,7 @@ import "./Songs.scss";
 class Songs extends Component {
   render() {
     const { song } = this.props;
+    console.log(song)
     return (
       <div className="songs-container">
         <section className="song-info">

@@ -1,4 +1,4 @@
-export const toursReducer = (state = [], action) => {
+export default (state = [], action) => {
   switch (action.type) {
     case 'ALL_TOURS':
       return action.tours;

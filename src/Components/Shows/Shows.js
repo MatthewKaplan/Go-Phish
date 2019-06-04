@@ -15,18 +15,20 @@ class Shows extends Component {
     this.setState({
       inList: !this.state.inList
     });
-    this.props.userShowList(show)
-    console.log("add to list", show);
+    this.props.userShowList({...show, showSaved: true})
   };
 
-  removeFromList = show => {
+  removeFromList = showId => {
     this.setState({ inList: !this.state.inList });
-    console.log("remove from list", show);
+    const shows = this.props.userShows.filter(show => show.id !== showId)
+    this.props.userShowList(shows)
+    console.log("remove from list", showId);
   };
 
   render() {
-    const { show } = this.props;
+    const { show, userShows } = this.props;
     const { inList } = this.state;
+    // console.log("userShows", userShows)
 
     return (
       <div className="shows-component">
@@ -34,7 +36,7 @@ class Shows extends Component {
           {inList === true ? (
             <div
               className="removeFromList"
-              onClick={() => this.removeFromList(show)}
+              onClick={() => this.removeFromList(show.id)}
             />
           ) : (
             <div className="addToList" onClick={() => this.addToList(show)} />
@@ -61,7 +63,7 @@ class Shows extends Component {
 }
 
 export const mapStateToProps = state => ({
-  setList: state.setList
+  userShows: state.userShows
 });
 
 export const mapDispatchToProps = dispatch => ({
