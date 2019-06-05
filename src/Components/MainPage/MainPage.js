@@ -24,6 +24,7 @@ import {
   cleanVenues,
   cleanRandomShow
 } from "../../Helpers/cleaners";
+import PropTypes from "prop-types";
 
 export class MainPage extends Component {
   state = { randomShowFetching: false };
@@ -117,6 +118,20 @@ export class MainPage extends Component {
     );
   }
 }
+
+MainPage.propTypes = {
+  years: PropTypes.array,
+  songs: PropTypes.array,
+  venues: PropTypes.array,
+  shows: PropTypes.array,
+  isLoading: PropTypes.bool,
+  allSongs: PropTypes.func,
+  allVenues: PropTypes.func,
+  loadingData: PropTypes.func,
+  randomShow: PropTypes.func,
+  upcomingShows: PropTypes.func,
+  handleError: PropTypes.func
+};
 
 export const mapStateToProps = state => ({
   years: state.years,

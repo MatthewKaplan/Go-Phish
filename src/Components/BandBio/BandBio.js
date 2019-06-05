@@ -5,6 +5,7 @@ import BandMembers from "../BandMembers/BandMembers";
 import "./BandBio.scss";
 import { MemberInfo } from "../MemberInfo/MemberInfo";
 import { bandBio } from "../../Helpers/text";
+import PropTypes from "prop-types";
 
 export class BandBio extends Component {
   renderBandMembers = () => {
@@ -38,6 +39,11 @@ export class BandBio extends Component {
     );
   }
 }
+
+BandBio.propTypes = {
+  members: PropTypes.array,
+  member: PropTypes.object
+};
 
 export const mapStateToProps = state => ({
   members: state.members,

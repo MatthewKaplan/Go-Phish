@@ -12,6 +12,8 @@ import {
 } from "../../Actions/index";
 import { cleanTours } from "../../Helpers/cleaners";
 import "./NavBar.scss";
+import PropTypes from "prop-types";
+
 
 export class NavBar extends Component {
   state = { subNav: false };
@@ -145,6 +147,14 @@ export class NavBar extends Component {
     );
   }
 }
+
+NavBar.propTypes = {
+  allYears: PropTypes.func,
+  allTours: PropTypes.func,
+  allMembers: PropTypes.func,
+  loadingData: PropTypes.func,
+  handleError: PropTypes.func,
+};
 
 export const mapDispatchToProps = dispatch => ({
   allYears: years => dispatch(allYears(years)),

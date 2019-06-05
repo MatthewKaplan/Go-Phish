@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./UserStats.scss";
+import PropTypes from "prop-types";
 const ids = require("shortid");
 
 export class UserStats extends Component {
@@ -140,25 +141,19 @@ export class UserStats extends Component {
               <section
                 className="stat pointer"
                 data-test="number-of-shows"
-                onClick={() =>
-                  this.setState({ displayShows: !displayShows })
-                }
+                onClick={() => this.setState({ displayShows: !displayShows })}
               >
                 <h2>Number of Shows seen:</h2>
                 <p>{userShows.length}</p>
               </section>
               <section className="stat">
                 <h2>Precent of All Shows:</h2>
-                <p>
-                  {((userShows.length / songs.length) * 100).toFixed(2)} %
-                </p>
+                <p>{((userShows.length / songs.length) * 100).toFixed(2)} %</p>
               </section>
               <section
                 className="stat pointer"
                 data-test="display-years"
-                onClick={() =>
-                  this.setState({ displayYears: !displayYears })
-                }
+                onClick={() => this.setState({ displayYears: !displayYears })}
               >
                 <h2>Number of Different Years:</h2>
                 {this.getYears().length}
@@ -194,9 +189,7 @@ export class UserStats extends Component {
               <section
                 className="stat pointer"
                 data-test="display-location"
-                onClick={() =>
-                  this.setState({ showLocation: !showLocation })
-                }
+                onClick={() => this.setState({ showLocation: !showLocation })}
               >
                 <h2>Number of Different Cities:</h2>
                 {this.getCities().length}
@@ -266,16 +259,12 @@ export class UserStats extends Component {
               <section
                 className="stat pointer"
                 data-test="display-unheardSongs"
-                onClick={() =>
-                  this.setState({ unheardSongs: !unheardSongs })
-                }
+                onClick={() => this.setState({ unheardSongs: !unheardSongs })}
               >
                 <h2>Songs Not Heard</h2>
               </section>
               <div
-                className={
-                  totalSongs ? "total-songs-active" : "total-songs"
-                }
+                className={totalSongs ? "total-songs-active" : "total-songs"}
               >
                 {this.songTotals(this.getTotalSongs())}
               </div>
@@ -318,6 +307,11 @@ export class UserStats extends Component {
     );
   }
 }
+
+UserStats.propTypes = {
+  userShows: PropTypes.array,
+  songs: PropTypes.array
+};
 
 export const mapStateToProps = state => ({
   userShows: state.userShows,

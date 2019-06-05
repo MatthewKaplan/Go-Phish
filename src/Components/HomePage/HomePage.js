@@ -4,6 +4,7 @@ import { setData } from "../../Helpers/cleaners";
 import { connect } from "react-redux";
 import { ReactComponent as Arrow } from "../../Assets/arrow.svg";
 import UpcomingShows from "../UpcomingShows/UpcomingShows";
+import PropTypes from "prop-types";
 
 export class HomePage extends Component {
   state = { showTour: false };
@@ -73,6 +74,11 @@ export class HomePage extends Component {
     );
   }
 }
+
+HomePage.propTypes = {
+  show: PropTypes.array,
+  upcoming: PropTypes.array
+};
 
 export const mapStateToProps = state => ({
   show: state.show,
