@@ -155,4 +155,13 @@ describe("mapDispatchToProps", () => {
     mappedProps.allVenues(mockVenues);
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
   });
+
+  it("should call dispatch for handleError", () => {
+    const error = "Mock Error";
+    const mockDispatch = jest.fn();
+    const actionToDispatch = actions.handleError(error);
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.handleError(error);
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+  });
 });

@@ -57,3 +57,8 @@ export const userShowList = userShows => ({
   type: "USERS_SHOWS",
   userShows
 });
+
+export const handleError = errorMessage => ({
+  type: "HANDLE_ERROR",
+  errorMessage
+});

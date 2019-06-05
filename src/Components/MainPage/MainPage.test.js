@@ -3,11 +3,7 @@ import { shallow } from "enzyme";
 import * as actions from "../../Actions/index";
 import MockData from "../../Helpers/mockData";
 import { fetchData, fetchMembers } from "../../api/apiCalls";
-import {
-  MainPage,
-  mapStateToProps,
-  mapDispatchToProps
-} from "./MainPage";
+import { MainPage, mapStateToProps, mapDispatchToProps } from "./MainPage";
 
 jest.mock("../../api/apiCalls.js");
 
@@ -151,6 +147,15 @@ describe("mapDispatchToProps", () => {
     const actionToDispatch = actions.upcomingShows(mockShows);
     const mappedProps = mapDispatchToProps(mockDispatch);
     mappedProps.upcomingShows(mockShows);
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+  });
+
+  it("should call dispatch for handleError", () => {
+    const error = "Mock Error";
+    const mockDispatch = jest.fn();
+    const actionToDispatch = actions.handleError(error);
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.handleError(error);
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
   });
 });

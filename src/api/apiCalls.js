@@ -11,7 +11,7 @@ const fetchData = path => {
     }
   }).then(response => {
     if (!response.ok) {
-      throw new Error("Fetch failed");
+      throw new Error("Failed to fetch data");
     } else {
       return response.json();
     }
@@ -21,7 +21,7 @@ const fetchData = path => {
 const fetchMembers = path => {
   return fetch(path).then(response => {
     if (!response.ok) {
-      throw new Error("Fetch failed");
+      throw new Error("Failed to fetch Band Data");
     } else {
       return response.json();
     }

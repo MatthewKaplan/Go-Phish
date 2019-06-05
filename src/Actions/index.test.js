@@ -133,4 +133,15 @@ describe("actions", () => {
     const result = actions.userShowList(userShows);
     expect(result).toEqual(expected);
   });
+
+  it("should return a type of HANDLE_ERROR", () => {
+    const errorMessage = "This is a mock error message";
+    const expected = {
+      type: "HANDLE_ERROR",
+      errorMessage
+    };
+
+    const result = actions.handleError(errorMessage);
+    expect(result).toEqual(expected);
+  });
 });

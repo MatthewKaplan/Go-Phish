@@ -48,7 +48,7 @@ describe("fetchData", () => {
     try {
       await fetchData(mockUrl);
     } catch (error) {
-      expect(error.message).toBe("Fetch failed");
+      expect(error.message).toBe("Failed to fetch data");
     }
   });
 });
@@ -91,7 +91,7 @@ describe("fetchMembers", () => {
     try {
       await fetchMembers(mockUrl);
     } catch (error) {
-      expect(error.message).toBe("Fetch failed");
+      expect(error.message).toBe("Failed to fetch Band Data");
     }
   });
 });
