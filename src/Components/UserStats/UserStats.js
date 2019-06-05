@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import "./UserStats.scss";
 const ids = require("shortid");
 
-class UserStats extends Component {
+export class UserStats extends Component {
   state = {
     songStats: false,
-    showStats: false,
-    tourStats: true,
+    showStats: true,
+    tourStats: false,
     totalSongs: false,
     unheardSongs: false,
     showLocation: false,
@@ -137,28 +137,46 @@ class UserStats extends Component {
         <div className="all-stats">
           {showStats && (
             <div className="showStats">
-              <section className="stat pointer" onClick={() => this.setState({displayShows: !displayShows})}>
+              <section
+                className="stat pointer"
+                data-test="number-of-shows"
+                onClick={() =>
+                  this.setState({ displayShows: !displayShows })
+                }
+              >
                 <h2>Number of Shows seen:</h2>
                 <p>{userShows.length}</p>
               </section>
               <section className="stat">
                 <h2>Precent of All Shows:</h2>
-                <p>{((userShows.length / songs.length) * 100).toFixed(2)} %</p>
+                <p>
+                  {((userShows.length / songs.length) * 100).toFixed(2)} %
+                </p>
               </section>
-              <section className="stat pointer" onClick={() => this.setState({displayYears: !displayYears})}>
+              <section
+                className="stat pointer"
+                data-test="display-years"
+                onClick={() =>
+                  this.setState({ displayYears: !displayYears })
+                }
+              >
                 <h2>Number of Different Years:</h2>
                 {this.getYears().length}
               </section>
-              <div className={
-                displayYears ? "display-years-active" : "display-years"
-              }>
+              <div
+                className={
+                  displayYears ? "display-years-active" : "display-years"
+                }
+              >
                 {this.getYears().map(year => (
                   <p key={ids.generate()}>{year}</p>
                 ))}
               </div>
-              <div className={
-                displayShows ? "display-shows-active" : "display-shows"
-              }>
+              <div
+                className={
+                  displayShows ? "display-shows-active" : "display-shows"
+                }
+              >
                 {userShows.map(shows => {
                   return (
                     <React.Fragment key={ids.generate()}>
@@ -173,7 +191,13 @@ class UserStats extends Component {
           )}
           {tourStats && (
             <div className="tour-stats">
-              <section className="stat pointer" onClick={() => this.setState({showLocation: !showLocation})}>
+              <section
+                className="stat pointer"
+                data-test="display-location"
+                onClick={() =>
+                  this.setState({ showLocation: !showLocation })
+                }
+              >
                 <h2>Number of Different Cities:</h2>
                 {this.getCities().length}
               </section>
@@ -185,7 +209,11 @@ class UserStats extends Component {
                 <h2>Number of Different Tours:</h2>
                 {this.getTours().length}
               </section>
-              <section className="stat pointer" onClick={() => this.setState({showVenues: !showVenues})}>
+              <section
+                className="stat pointer"
+                data-test="display-venues"
+                onClick={() => this.setState({ showVenues: !showVenues })}
+              >
                 <h2>Number of Different Venues:</h2>
                 {this.getVenues().length}
               </section>
@@ -198,9 +226,11 @@ class UserStats extends Component {
                   this.props.userShows.map(shows => shows.location)
                 )}
               </div>
-              <div className={
-                showVenues ? "show-location-active" : "show-location"
-              }>
+              <div
+                className={
+                  showVenues ? "show-location-active" : "show-location"
+                }
+              >
                 {this.songTotals(
                   this.props.userShows.map(shows => shows.venue.name)
                 )}
@@ -228,18 +258,24 @@ class UserStats extends Component {
               </section>
               <section
                 className="stat pointer"
-                onClick={() => this.setState({totalSongs: !totalSongs})}
+                data-test="display-totalSongs"
+                onClick={() => this.setState({ totalSongs: !totalSongs })}
               >
                 <h2>Song Totals</h2>
               </section>
               <section
                 className="stat pointer"
-                onClick={() => this.setState({unheardSongs: !unheardSongs})}
+                data-test="display-unheardSongs"
+                onClick={() =>
+                  this.setState({ unheardSongs: !unheardSongs })
+                }
               >
                 <h2>Songs Not Heard</h2>
               </section>
               <div
-                className={totalSongs ? "total-songs-active" : "total-songs"}
+                className={
+                  totalSongs ? "total-songs-active" : "total-songs"
+                }
               >
                 {this.songTotals(this.getTotalSongs())}
               </div>
@@ -257,18 +293,21 @@ class UserStats extends Component {
         </div>
         <section className="btn-container">
           <button
+            data-test="song-stats"
             className={songStats ? "song-stats-btn" : null}
             onClick={() => this.displayStats(true, false, false)}
           >
             Song Stats
           </button>
           <button
+            data-test="tour-stats"
             className={tourStats ? "tour-stats-btn" : null}
             onClick={() => this.displayStats(false, false, true)}
           >
             Location + Tour
           </button>
           <button
+            data-test="show-stats"
             className={showStats ? "show-stats-btn" : null}
             onClick={() => this.displayStats(false, true, false)}
           >

@@ -72,7 +72,6 @@ describe("actions", () => {
     const shows = MockData.mockShows;
     const expected = {
       type: "CURRENT_SHOWS",
-      showSaved: false,
       shows
     };
 
@@ -128,7 +127,6 @@ describe("actions", () => {
     const userShows = MockData.mockShow;
     const expected = {
       type: "USERS_SHOWS",
-      showSaved: false,
       userShows
     };
 

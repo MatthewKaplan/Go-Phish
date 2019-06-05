@@ -4,8 +4,11 @@ import { currentSetList, userShowList } from "../../Actions/index";
 import { Link } from "react-router-dom";
 import "./Shows.scss";
 
-class Shows extends Component {
-  state = { inList: false, showList: [] };
+export class Shows extends Component {
+  state = { inList: false };
+  componentDidMount(){
+    this.checkIfSaved(this.props.userShows);
+  }
 
   handleClick = show => {
     this.props.currentSetList(show.tracks);
@@ -15,31 +18,50 @@ class Shows extends Component {
     this.setState({
       inList: !this.state.inList
     });
-    this.props.userShowList({...show, showSaved: true})
+    let shows = this.props.userShows;
+    shows.push(show)
+    this.props.userShowList(shows)
   };
 
   removeFromList = showId => {
-    this.setState({ inList: !this.state.inList });
-    const shows = this.props.userShows.filter(show => show.id !== showId)
-    this.props.userShowList(shows)
-    console.log("remove from list", showId);
+    this.setState({ inList: false });
+    let shows = this.props.userShows;
+
+    const filteredShows = shows.filter(show => show.id !== showId);
+    this.props.userShowList(filteredShows);
   };
+
+  checkIfSaved = (shows) => {
+    const showId =  this.props.show.id
+    let saved = shows.some(show => show.id === showId)
+    this.setState({
+      inList: saved
+    })
+  }
 
   render() {
     const { show, userShows } = this.props;
     const { inList } = this.state;
-    // console.log("userShows", userShows)
 
     return (
       <div className="shows-component">
-        <section className="show-top" onClick={() => this.handleClick(show)}>
+        <section
+          className="show-top"
+          data-test="show-btn"
+          onClick={() => this.handleClick(show)}
+        >
           {inList === true ? (
             <div
               className="removeFromList"
+              data-test="remove-btn"
               onClick={() => this.removeFromList(show.id)}
             />
           ) : (
-            <div className="addToList" onClick={() => this.addToList(show)} />
+            <div
+              className="addToList"
+              data-test="add-btn"
+              onClick={() => this.addToList(show)}
+            />
           )}
           <Link to="/SetList">
             <h1 className="venue-name">{show.venue_name}</h1>

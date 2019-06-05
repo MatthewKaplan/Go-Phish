@@ -5,7 +5,7 @@ import { allSongs, allVenues } from "../../Actions/index";
 import "./SubNav.scss";
 import { cleanSongs, cleanVenues } from "../../Helpers/cleaners";
 
-class SubNav extends Component {
+export class SubNav extends Component {
   state = { venues: [], songs: [], searchChar: "A" };
   componentDidMount() {
     this.fetchVenues();

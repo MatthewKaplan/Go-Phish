@@ -5,7 +5,11 @@ export const MemberInfo = ({ currentMember, closePopup }) => {
   return (
     <div className="member-info-popup">
       <div className="member-info">
-        <div className="close-popup" onClick={() => closePopup()} />
+        <div
+          className="close-popup"
+          data-test="close-popup"
+          onClick={() => closePopup()}
+        />
         <section className="info">
           <h1>{currentMember.member}</h1>
           <h4>{currentMember.instruments}</h4>

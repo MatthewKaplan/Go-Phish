@@ -12,8 +12,9 @@ import {
 import { cleanTours } from "../../Helpers/cleaners";
 import "./NavBar.scss";
 
-class NavBar extends Component {
+export class NavBar extends Component {
   state = { subNav: false };
+
   fetchYears = () => {
     this.toggleSubNav(false);
     this.props.loadingData(true);
@@ -57,6 +58,7 @@ class NavBar extends Component {
             <Link
               to="/"
               className="link logo-link"
+              data-test="logo-btn"
               onClick={() => this.toggleSubNav(false)}
             >
               <h1 className="logo">
@@ -69,6 +71,7 @@ class NavBar extends Component {
                   to="/BandBio"
                   activeClassName="active"
                   className="link"
+                  data-test="band-btn"
                   onClick={() => this.fetchPhishData()}
                 >
                   Band
@@ -79,6 +82,7 @@ class NavBar extends Component {
                   to="/Years"
                   activeClassName="active"
                   className="link"
+                  data-test="years-btn"
                   onClick={() => this.fetchYears()}
                 >
                   Years
@@ -89,6 +93,7 @@ class NavBar extends Component {
                   to="/Venues"
                   activeClassName="active"
                   className="link"
+                  data-test="venue-btn"
                   onClick={() => this.toggleSubNav(true)}
                 >
                   Venues
@@ -99,6 +104,7 @@ class NavBar extends Component {
                   to="/Songs"
                   activeClassName="active"
                   className="link"
+                  data-test="songs-btn"
                   onClick={() => this.toggleSubNav(true)}
                 >
                   Songs
@@ -109,6 +115,7 @@ class NavBar extends Component {
                   to="/Tours"
                   activeClassName="active"
                   className="link"
+                  data-test="tours-btn"
                   onClick={() => this.fetchTours()}
                 >
                   Tours

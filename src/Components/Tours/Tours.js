@@ -3,8 +3,9 @@ import "./Tours.scss";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { currentShows } from "../../Actions/index";
+import MockData from "../../Helpers/mockData";
 
-class Tours extends Component {
+export class Tours extends Component {
   handleClick = tour => {
     this.props.currentShows(tour.shows);
   };
@@ -12,7 +13,7 @@ class Tours extends Component {
   render() {
     const { tour } = this.props;
     return (
-      <div className="tours-component" onClick={() => this.handleClick(tour)}>
+      <div className="tours-component" data-test='tour-btn' onClick={() => this.handleClick(tour)}>
         <Link to="/Shows">
           <h2 className="tour-name">{tour.name}</h2>
         </Link>

@@ -25,7 +25,7 @@ import {
 } from "../../Helpers/cleaners";
 
 export class MainPage extends Component {
-  state = { randomShowFetching: false, userShows: [] };
+  state = { randomShowFetching: false };
 
   componentDidMount() {
     this.fetchSongs();
@@ -71,8 +71,7 @@ export class MainPage extends Component {
       );
   };
 
-  pathToRender = () => {
-    const currentPath = this.props.location.pathname;
+  componentToRender = (currentPath) => {
     const { years, tours, songs, shows, venues } = this.props;
 
     switch (currentPath) {
@@ -105,7 +104,7 @@ export class MainPage extends Component {
           {isLoading === true || randomShowFetching === true ? (
             <Loading />
           ) : (
-            this.pathToRender()
+            this.componentToRender(this.props.location.pathname)
           )}
         </section>
       </div>

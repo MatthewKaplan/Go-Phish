@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { ReactComponent as Arrow } from "../../Assets/arrow.svg";
 import UpcomingShows from "../UpcomingShows/UpcomingShows";
 
-class HomePage extends Component {
+export class HomePage extends Component {
   state = { showTour: false };
   renderRandomInfo = () => {
     const { show } = this.props;
@@ -39,12 +39,15 @@ class HomePage extends Component {
         <div className="slideshow-section">
           <div className="summer-tour-artwork">
             <Arrow
+              data-test="arrow-btn"
               className={showTour ? "arrow-up arrow" : "arrow-down arrow"}
               onClick={() => this.toggleTour()}
             />
           </div>
         </div>
-        <section className={showTour ? "summer-tour-active" : "summer-tour"}>
+        <section
+          className={showTour ? "summer-tour-active" : "summer-tour"}
+        >
           {this.renderUpcomingShows()}
         </section>
         <div className={showTour ? "random-show" : "random-show-active"}>

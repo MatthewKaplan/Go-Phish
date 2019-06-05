@@ -3,7 +3,7 @@ import "./SetLists.scss";
 import { connect } from "react-redux";
 import { setData } from "../../Helpers/cleaners";
 
-class SetLists extends Component {
+export class SetLists extends Component {
   render() {
     const { setList } = this.props;
     return (

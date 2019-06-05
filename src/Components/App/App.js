@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.scss";
 import NavBar from "../NavBar/NavBar";
 import MainPage from "../MainPage/MainPage";
-import { NotFound } from "../NotFound/NotFound";
+import NotFound from "../NotFound/NotFound";
 import BandBio from "../BandBio/BandBio";
 import { Route, Switch } from "react-router-dom";
 
