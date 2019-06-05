@@ -6,7 +6,7 @@ import NotFound from "../NotFound/NotFound";
 import BandBio from "../BandBio/BandBio";
 import { Route, Switch } from "react-router-dom";
 
-export class App extends Component {
+class App extends Component {
   render() {
     return (
       <div className="App">

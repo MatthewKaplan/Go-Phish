@@ -15,6 +15,6 @@ describe("userShowListReducer", () => {
     const expected = shows;
     const result = userShowListReducer(undefined, actions.userShowList(shows));
 
-    expect(result).toEqual([expected]);
+    expect(result).toEqual(expected);
   });
 });

@@ -1,9 +1,29 @@
+import React from "react";
+import { shallow } from "enzyme";
 import MockData from "../../Helpers/mockData";
 import * as actions from "../../Actions/index";
-import { mapDispatchToProps, mapStateToProps } from "./BandBio";
+import { BandBio, mapDispatchToProps, mapStateToProps } from "./BandBio";
 
 const member = MockData.mockMember;
 
+describe("BandBio", () => {
+  let wrapper, instance, mockCurrentMember;
+
+  beforeEach(() => {
+    mockCurrentMember = jest.fn()
+    wrapper = shallow(<BandBio members={member} member={member} currentMember={mockCurrentMember}/>);
+    instance = wrapper.instance();
+  });
+
+  it("should match the snapshot", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it("should call 'currentMember' when 'closePopup' is invoked", () => {
+    instance.closePopup();
+    expect(mockCurrentMember).toHaveBeenCalledWith({});
+  });
+});
 
 describe("mapDispatchToProps", () => {
   it("should call dispatch for currentMember", () => {

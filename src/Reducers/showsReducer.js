@@ -2,8 +2,7 @@ export default (state = [], action) => {
   switch (action.type) {
     case "CURRENT_SHOWS":
       return action.shows.map(show => ({
-        ...show,
-        showSaved: action.showSaved
+        ...show
       }));
     default:
       return state;

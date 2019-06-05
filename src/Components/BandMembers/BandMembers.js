@@ -3,7 +3,7 @@ import "./BandMembers.scss";
 import { connect } from "react-redux";
 import { currentMember } from "../../Actions/index";
 
-class BandMembers extends Component {
+export class BandMembers extends Component {
   getCurrentMember = member => {
     this.props.currentMember(member);
   };
@@ -18,6 +18,7 @@ class BandMembers extends Component {
       <div className="band-member-component">
         <div
           className="band-member-cards"
+          data-test="band-member-cards"
           onClick={() => this.getCurrentMember(member)}
         >
           <section className="member" style={memberImg} />

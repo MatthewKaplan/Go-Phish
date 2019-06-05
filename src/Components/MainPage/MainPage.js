@@ -11,12 +11,12 @@ import {
 import { connect } from "react-redux";
 import Tours from "../Tours/Tours";
 import Years from "../Years/Years";
-import Songs from "../Songs/Songs";
-import Venues from "../Venues/Venues";
+import { Songs } from "../Songs/Songs";
+import { Venues } from "../Venues/Venues";
 import Shows from "../Shows/Shows";
 import HomePage from "../HomePage/HomePage";
 import SetLists from "../SetLists/SetLists";
-import Loading from "../Loading/Loading";
+import { Loading } from "../Loading/Loading";
 import UserStats from "../UserStats/UserStats";
 import {
   cleanSongs,
@@ -25,7 +25,7 @@ import {
 } from "../../Helpers/cleaners";
 
 export class MainPage extends Component {
-  state = { randomShowFetching: false, userShows: [] };
+  state = { randomShowFetching: false };
 
   componentDidMount() {
     this.fetchSongs();
@@ -71,8 +71,7 @@ export class MainPage extends Component {
       );
   };
 
-  pathToRender = () => {
-    const currentPath = this.props.location.pathname;
+  componentToRender = (currentPath) => {
     const { years, tours, songs, shows, venues } = this.props;
 
     switch (currentPath) {
@@ -105,7 +104,7 @@ export class MainPage extends Component {
           {isLoading === true || randomShowFetching === true ? (
             <Loading />
           ) : (
-            this.pathToRender()
+            this.componentToRender(this.props.location.pathname)
           )}
         </section>
       </div>
@@ -119,7 +118,7 @@ export const mapStateToProps = state => ({
   songs: state.songs,
   venues: state.venues,
   shows: state.shows,
-  isLoading: state.loadingData,
+  isLoading: state.loadingData
 });
 
 export const mapDispatchToProps = dispatch => ({

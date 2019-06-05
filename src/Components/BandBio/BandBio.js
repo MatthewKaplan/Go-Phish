@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { currentMember } from "../../Actions/index";
 import BandMembers from "../BandMembers/BandMembers";
 import "./BandBio.scss";
-import MemberInfo from "../MemberInfo/MemberInfo";
+import { MemberInfo } from "../MemberInfo/MemberInfo";
 import { bandBio } from "../../Helpers/text";
 
-class BandBio extends Component {
+export class BandBio extends Component {
   renderBandMembers = () => {
     const { members } = this.props;
     return members.map(member => (

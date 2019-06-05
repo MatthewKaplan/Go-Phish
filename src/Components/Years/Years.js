@@ -6,15 +6,14 @@ import { currentShows, loadingData } from "../../Actions/index";
 import { Link } from "react-router-dom";
 import "./Years.scss";
 
-class Years extends Component {
+export class Years extends Component {
   handleClick = year => {
     this.props.loadingData(true);
     fetchData(`years/${year}`)
       .then(response => cleanShows(response.data))
       .then(
-        result => (
+        result =>
           this.props.currentShows(result) && this.props.loadingData(false)
-        )
       );
   };
 
@@ -23,6 +22,7 @@ class Years extends Component {
     return (
       <div
         className="years-component"
+        data-test="years-btn"
         onClick={() => this.handleClick(year.date)}
       >
         <Link to="/Shows">
