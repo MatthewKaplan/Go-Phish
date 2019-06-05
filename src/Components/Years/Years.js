@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { currentShows, loadingData, handleError } from "../../Actions/index";
 import { Link } from "react-router-dom";
 import "./Years.scss";
+import PropTypes from "prop-types";
 
 export class Years extends Component {
   handleClick = year => {
@@ -33,6 +34,12 @@ export class Years extends Component {
     );
   }
 }
+
+Years.propTypes = {
+  currentShows: PropTypes.func,
+  loadingData: PropTypes.func,
+  handleError: PropTypes.func
+};
 
 export const mapDispatchToProps = dispatch => ({
   currentShows: shows => dispatch(currentShows(shows)),

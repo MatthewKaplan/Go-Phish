@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./BandMembers.scss";
 import { connect } from "react-redux";
 import { currentMember } from "../../Actions/index";
+import PropTypes from "prop-types";
 
 export class BandMembers extends Component {
   getCurrentMember = member => {
@@ -28,6 +29,10 @@ export class BandMembers extends Component {
     );
   }
 }
+
+BandMembers.propTypes = {
+  member: PropTypes.object
+};
 
 export const mapDispatchToProps = dispatch => ({
   currentMember: member => dispatch(currentMember(member))

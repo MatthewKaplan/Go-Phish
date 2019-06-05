@@ -3,10 +3,11 @@ import { connect } from "react-redux";
 import { currentSetList, userShowList } from "../../Actions/index";
 import { Link } from "react-router-dom";
 import "./Shows.scss";
+import PropTypes from "prop-types";
 
 export class Shows extends Component {
   state = { inList: false };
-  componentDidMount(){
+  componentDidMount() {
     this.checkIfSaved(this.props.userShows);
   }
 
@@ -19,8 +20,8 @@ export class Shows extends Component {
       inList: !this.state.inList
     });
     let shows = this.props.userShows;
-    shows.push(show)
-    this.props.userShowList(shows)
+    shows.push(show);
+    this.props.userShowList(shows);
   };
 
   removeFromList = showId => {
@@ -31,16 +32,16 @@ export class Shows extends Component {
     this.props.userShowList(filteredShows);
   };
 
-  checkIfSaved = (shows) => {
-    const showId =  this.props.show.id
-    let saved = shows.some(show => show.id === showId)
+  checkIfSaved = shows => {
+    const showId = this.props.show.id;
+    let saved = shows.some(show => show.id === showId);
     this.setState({
       inList: saved
-    })
-  }
+    });
+  };
 
   render() {
-    const { show, userShows } = this.props;
+    const { show } = this.props;
     const { inList } = this.state;
 
     return (
@@ -83,6 +84,12 @@ export class Shows extends Component {
     );
   }
 }
+
+Shows.propTypes = {
+  userShows: PropTypes.array,
+  currentSetList: PropTypes.func,
+  userShowList: PropTypes.func
+};
 
 export const mapStateToProps = state => ({
   userShows: state.userShows

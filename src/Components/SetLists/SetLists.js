@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./SetLists.scss";
 import { connect } from "react-redux";
 import { setData } from "../../Helpers/cleaners";
+import PropTypes from "prop-types";
 
 export class SetLists extends Component {
   render() {
@@ -28,6 +29,10 @@ export class SetLists extends Component {
     );
   }
 }
+
+SetLists.propTypes = {
+  setList: PropTypes.func
+};
 
 export const mapStateToProps = state => ({
   setList: state.setList
