@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { fetchData } from "../../api/apiCalls";
 import { connect } from "react-redux";
-import { allSongs, allVenues } from "../../Actions/index";
+import { allSongs, allVenues, handleError } from "../../Actions/index";
 import "./SubNav.scss";
 import { cleanSongs, cleanVenues } from "../../Helpers/cleaners";
 
@@ -15,13 +15,15 @@ export class SubNav extends Component {
   fetchVenues = () => {
     fetchData(`venues.json?per_page=651`)
       .then(response => cleanVenues(response.data))
-      .then(results => this.setState({ venues: results }));
+      .then(results => this.setState({ venues: results }))
+      .catch(err => this.props.handleError(err.message));
   };
 
   fetchSongs = () => {
     fetchData(`songs.json?per_page=901`)
       .then(response => cleanSongs(response.data))
-      .then(results => this.setState({ songs: results }));
+      .then(results => this.setState({ songs: results }))
+      .catch(err => this.props.handleError(err.message));
   };
 
   filterVenues = async path => {
@@ -229,7 +231,8 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch => ({
   allSongs: songs => dispatch(allSongs(songs)),
-  allVenues: venues => dispatch(allVenues(venues))
+  allVenues: venues => dispatch(allVenues(venues)),
+  handleError: errorMessage => dispatch(handleError(errorMessage))
 });
 
 export default connect(

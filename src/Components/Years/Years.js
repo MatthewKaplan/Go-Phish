@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { fetchData } from "../../api/apiCalls";
 import { cleanShows } from "../../Helpers/cleaners";
 import { connect } from "react-redux";
-import { currentShows, loadingData } from "../../Actions/index";
+import { currentShows, loadingData, handleError } from "../../Actions/index";
 import { Link } from "react-router-dom";
 import "./Years.scss";
 
@@ -14,7 +14,8 @@ export class Years extends Component {
       .then(
         result =>
           this.props.currentShows(result) && this.props.loadingData(false)
-      );
+      )
+      .catch(err => this.props.handleError(err));
   };
 
   render() {
@@ -35,7 +36,8 @@ export class Years extends Component {
 
 export const mapDispatchToProps = dispatch => ({
   currentShows: shows => dispatch(currentShows(shows)),
-  loadingData: bool => dispatch(loadingData(bool))
+  loadingData: bool => dispatch(loadingData(bool)),
+  handleError: errorMessage => dispatch(handleError(errorMessage))
 });
 
 export default connect(

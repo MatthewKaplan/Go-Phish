@@ -6,7 +6,8 @@ import {
   allVenues,
   loadingData,
   randomShow,
-  upcomingShows
+  upcomingShows,
+  handleError
 } from "../../Actions/index";
 import { connect } from "react-redux";
 import Tours from "../Tours/Tours";
@@ -37,7 +38,8 @@ export class MainPage extends Component {
   fetchUpcomingShows = () => {
     fetchMembers(
       "https://cors-anywhere.herokuapp.com/https://mighty-mountain-16368.herokuapp.com/api/v1/phishTour"
-    ).then(response => this.props.upcomingShows(response));
+    ).then(response => this.props.upcomingShows(response))
+    .catch(err => this.props.handleError(err.message));
   };
 
   fetchRandomShow = () => {
@@ -49,7 +51,8 @@ export class MainPage extends Component {
         results =>
           this.props.randomShow(results) &&
           this.setState({ randomShowFetching: false })
-      );
+      )
+      .catch(err => this.props.handleError(err.message));
   };
 
   fetchSongs = () => {
@@ -57,8 +60,10 @@ export class MainPage extends Component {
     fetchData(`songs.json?per_page=901`)
       .then(response => cleanSongs(response.data))
       .then(
-        results => this.props.allSongs(results) && this.props.loadingData(false)
-      );
+        results =>
+          this.props.allSongs(results) && this.props.loadingData(false)
+      )
+      .catch(err => this.props.handleError(err.message));
   };
 
   fetchVenues = () => {
@@ -68,10 +73,11 @@ export class MainPage extends Component {
       .then(
         results =>
           this.props.allVenues(results) && this.props.loadingData(false)
-      );
+      )
+      .catch(err => this.props.handleError(err.message));
   };
 
-  componentToRender = (currentPath) => {
+  componentToRender = currentPath => {
     const { years, tours, songs, shows, venues } = this.props;
 
     switch (currentPath) {
@@ -126,7 +132,8 @@ export const mapDispatchToProps = dispatch => ({
   allVenues: venues => dispatch(allVenues(venues)),
   loadingData: bool => dispatch(loadingData(bool)),
   randomShow: show => dispatch(randomShow(show)),
-  upcomingShows: upcoming => dispatch(upcomingShows(upcoming))
+  upcomingShows: upcoming => dispatch(upcomingShows(upcoming)),
+  handleError: errorMessage => dispatch(handleError(errorMessage))
 });
 
 export default connect(

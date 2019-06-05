@@ -7,7 +7,8 @@ import {
   allYears,
   allTours,
   allMembers,
-  loadingData
+  loadingData,
+  handleError
 } from "../../Actions/index";
 import { cleanTours } from "../../Helpers/cleaners";
 import "./NavBar.scss";
@@ -18,10 +19,12 @@ export class NavBar extends Component {
   fetchYears = () => {
     this.toggleSubNav(false);
     this.props.loadingData(true);
-    fetchData(`years?include_show_counts=true`).then(
-      results =>
-        this.props.allYears(results.data) && this.props.loadingData(false)
-    );
+    fetchData(`years?include_show_counts=true`)
+      .then(
+        results =>
+          this.props.allYears(results.data) && this.props.loadingData(false)
+      )
+      .catch(err => this.props.handleError(err.message));
   };
 
   fetchTours = () => {
@@ -31,7 +34,8 @@ export class NavBar extends Component {
       .then(response => cleanTours(response.data))
       .then(
         results => this.props.allTours(results) && this.props.loadingData(false)
-      );
+      )
+      .catch(err => this.props.handleError(err.message));
   };
 
   fetchPhishData = () => {
@@ -39,9 +43,12 @@ export class NavBar extends Component {
     this.props.loadingData(true);
     fetchMembers(
       `https://cors-anywhere.herokuapp.com/https://peaceful-castle-66511.herokuapp.com/api/v1/phish/members`
-    ).then(
-      results => this.props.allMembers(results) && this.props.loadingData(false)
-    );
+    )
+      .then(
+        results =>
+          this.props.allMembers(results) && this.props.loadingData(false)
+      )
+      .catch(err => this.props.handleError(err.message));
   };
 
   toggleSubNav = bool => {
@@ -143,7 +150,8 @@ export const mapDispatchToProps = dispatch => ({
   allYears: years => dispatch(allYears(years)),
   allTours: tours => dispatch(allTours(tours)),
   allMembers: members => dispatch(allMembers(members)),
-  loadingData: bool => dispatch(loadingData(bool))
+  loadingData: bool => dispatch(loadingData(bool)),
+  handleError: errorMessage => dispatch(handleError(errorMessage))
 });
 
 export default connect(

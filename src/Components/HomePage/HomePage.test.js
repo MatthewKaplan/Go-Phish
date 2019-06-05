@@ -1,7 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
 import MockData from "../../Helpers/mockData";
-import * as actions from "../../Actions/index";
 import { HomePage, mapStateToProps } from "./HomePage";
 
 const mockShow = MockData.mockShow;
