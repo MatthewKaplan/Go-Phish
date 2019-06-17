@@ -21,7 +21,7 @@ describe("NavBar", () => {
 
   beforeEach(() => {
     wrapper = shallow(
-      <NavBar loadingData={mockLoadingData} toggleSubNav={mockToggleSubNav} />
+      <NavBar loadingData={mockLoadingData} toggleSubNav={mockToggleSubNav} years={[]} tours={[]} members={[]}/>
     );
     instance = wrapper.instance();
   });

@@ -3,7 +3,7 @@
     height: 640px;
     max-width: 881px;
     float: right;
-    padding: 0 0 30px 30px;
+    padding: 0 0 30px 40px;
   }
 
   .band-bio {
@@ -22,5 +22,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 25px;
+  }
+
+  .text-indent {
+    text-indent: 10px;
+    line-height: 1.5rem;
   }
 }

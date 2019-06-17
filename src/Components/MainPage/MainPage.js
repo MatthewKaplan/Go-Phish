@@ -37,45 +37,54 @@ export class MainPage extends Component {
   }
 
   fetchUpcomingShows = () => {
-    fetchMembers(
-      "https://cors-anywhere.herokuapp.com/https://mighty-mountain-16368.herokuapp.com/api/v1/phishTour"
-    )
-      .then(response => this.props.upcomingShows(response))
-      .catch(err => this.props.handleError(err.message));
+    if (this.props.upcoming.length === 0) {
+      fetchMembers(
+        "https://cors-anywhere.herokuapp.com/https://mighty-mountain-16368.herokuapp.com/api/v1/phishTour"
+      )
+        .then(response => this.props.upcomingShows(response))
+        .catch(err => this.props.handleError(err.message));
+    }
   };
 
   fetchRandomShow = () => {
-    this.props.loadingData(true);
-    this.setState({ randomShowFetching: true });
-    fetchData(`random-show`)
-      .then(response => cleanRandomShow(response.data))
-      .then(
-        results =>
-          this.props.randomShow(results) &&
-          this.setState({ randomShowFetching: false })
-      )
-      .catch(err => this.props.handleError(err.message));
+    if (this.props.show.length === 0) {
+      this.props.loadingData(true);
+      this.setState({ randomShowFetching: true });
+      fetchData(`random-show`)
+        .then(response => cleanRandomShow(response.data))
+        .then(
+          results =>
+            this.props.randomShow(results) &&
+            this.setState({ randomShowFetching: false })
+        )
+        .catch(err => this.props.handleError(err.message));
+    }
   };
 
   fetchSongs = () => {
-    this.props.loadingData(true);
-    fetchData(`songs.json?per_page=901`)
-      .then(response => cleanSongs(response.data))
-      .then(
-        results => this.props.allSongs(results) && this.props.loadingData(false)
-      )
-      .catch(err => this.props.handleError(err.message));
+    if (this.props.songs.length === 0) {
+      this.props.loadingData(true);
+      fetchData(`songs.json?per_page=901`)
+        .then(response => cleanSongs(response.data))
+        .then(
+          results =>
+            this.props.allSongs(results) && this.props.loadingData(false)
+        )
+        .catch(err => this.props.handleError(err.message));
+    }
   };
 
   fetchVenues = () => {
-    this.props.loadingData(true);
-    fetchData(`venues.json?per_page=651`)
-      .then(response => cleanVenues(response.data))
-      .then(
-        results =>
-          this.props.allVenues(results) && this.props.loadingData(false)
-      )
-      .catch(err => this.props.handleError(err.message));
+    if (this.props.venues.length === 0) {
+      this.props.loadingData(true);
+      fetchData(`venues.json?per_page=651`)
+        .then(response => cleanVenues(response.data))
+        .then(
+          results =>
+            this.props.allVenues(results) && this.props.loadingData(false)
+        )
+        .catch(err => this.props.handleError(err.message));
+    }
   };
 
   componentToRender = currentPath => {
@@ -139,7 +148,9 @@ export const mapStateToProps = state => ({
   songs: state.songs,
   venues: state.venues,
   shows: state.shows,
-  isLoading: state.loadingData
+  isLoading: state.loadingData,
+  upcoming: state.upcoming,
+  show: state.show
 });
 
 export const mapDispatchToProps = dispatch => ({
