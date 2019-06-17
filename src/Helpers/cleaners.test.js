@@ -7,6 +7,10 @@ import {
   setData
 } from "./cleaners";
 import MockData from "./mockData";
+import React from "react";
+
+const mockSetList = MockData.mockSetList;
+const mockName = "Encore";
 
 describe("cleaners", () => {
   describe("cleanSongs", () => {
