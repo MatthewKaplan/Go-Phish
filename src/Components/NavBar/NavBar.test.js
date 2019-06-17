@@ -12,6 +12,7 @@ const tours = MockData.mockTours;
 const members = MockData.mockMember;
 let mockLoadingData = jest.fn();
 let mockToggleSubNav = jest.fn();
+const mockYears = [];
 
 describe("NavBar", () => {
   let wrapper, instance;
@@ -21,7 +22,7 @@ describe("NavBar", () => {
 
   beforeEach(() => {
     wrapper = shallow(
-      <NavBar loadingData={mockLoadingData} toggleSubNav={mockToggleSubNav} />
+      <NavBar loadingData={mockLoadingData} toggleSubNav={mockToggleSubNav} years={mockYears} />
     );
     instance = wrapper.instance();
   });

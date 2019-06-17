@@ -14,12 +14,12 @@ import { cleanTours } from "../../Helpers/cleaners";
 import "./NavBar.scss";
 import PropTypes from "prop-types";
 
-
 export class NavBar extends Component {
   state = { subNav: false };
 
   fetchYears = () => {
     this.toggleSubNav(false);
+    if(this.props.years.length === 0) {
     this.props.loadingData(true);
     fetchData(`years?include_show_counts=true`)
       .then(
@@ -27,6 +27,7 @@ export class NavBar extends Component {
           this.props.allYears(results.data) && this.props.loadingData(false)
       )
       .catch(err => this.props.handleError(err.message));
+    }
   };
 
   fetchTours = () => {
@@ -153,8 +154,12 @@ NavBar.propTypes = {
   allTours: PropTypes.func,
   allMembers: PropTypes.func,
   loadingData: PropTypes.func,
-  handleError: PropTypes.func,
+  handleError: PropTypes.func
 };
+
+export const mapStateToProps = state => ({
+  years: state.years
+});
 
 export const mapDispatchToProps = dispatch => ({
   allYears: years => dispatch(allYears(years)),
@@ -165,6 +170,6 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(NavBar);
