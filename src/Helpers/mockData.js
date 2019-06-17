@@ -18,6 +18,29 @@ const mockVenue = {
   slug: "les-schwab-amphitheatre"
 };
 
+const mockVenues = [
+  {
+    country: "USA",
+    id: 803,
+    location: "Bend, OR",
+    name: "Les Schwab Amphitheatre",
+    show_dates: ["2015-07-21", "2015-07-22", "2012-04-23"],
+    show_ids: [1815, 1816],
+    shows_count: 2,
+    slug: "les-schwab-amphitheatre"
+  },
+  {
+    country: "USA",
+    id: 803,
+    location: "Bend, OR",
+    name: "Les Schwab Amphitheatre",
+    show_dates: ["2015-07-21", "2015-07-22", "2012-04-23"],
+    show_ids: [1815, 1816],
+    shows_count: 2,
+    slug: "les-schwab-amphitheatre"
+  }
+];
+
 const mockMember = [
   {
     id: 1,
@@ -2077,6 +2100,29 @@ const mockUncleanVenues = [
   }
 ];
 
+const mockCleanVenues = [
+  {
+    id: 11,
+    slug: "the-academy",
+    name: "The Academy",
+    location: "New York, NY",
+    country: "USA",
+    shows_count: 1,
+    show_dates: ["1991-07-15"],
+    show_ids: [472]
+  },
+  {
+    id: 13,
+    slug: "acker-gym-chico-state-university",
+    name: "Acker Gym, Chico State University",
+    location: "Chico, CA",
+    country: "USA",
+    shows_count: 1,
+    show_dates: ["1994-12-04"],
+    show_ids: [256]
+  }
+];
+
 const mockTourShow = [
   {
     date: "2013-12-28",
@@ -2381,9 +2427,1629 @@ const mockTotalSongs = [
   "The Lizards"
 ];
 
-const mockSmallerSongTotal = [
-  "Free"
+const mockSmallerSongTotal = ["Free"];
+
+const mockUncleanSongs = [
+  {
+    id: 899,
+    title: "Garden Party",
+    alias_for: null,
+    tracks_count: 1,
+    slug: "garden-party",
+    updated_at: "2013-01-01T20:13:56Z"
+  },
+  {
+    id: 710,
+    title: "Spanish Flea",
+    alias_for: null,
+    tracks_count: 1,
+    slug: "spanish-flea",
+    updated_at: "2012-08-25T15:04:02Z"
+  },
+  {
+    id: 898,
+    title: "Fly Like an Eagle",
+    alias_for: null,
+    tracks_count: 1,
+    slug: "fly-like-an-eagle",
+    updated_at: "2013-01-01T20:13:44Z"
+  }
 ];
+
+const mockCleanedSongs = [
+  {
+    id: 899,
+    title: "Garden Party",
+    tracks_count: 1,
+    slug: "garden-party"
+  },
+  {
+    id: 710,
+    title: "Spanish Flea",
+    tracks_count: 1,
+    slug: "spanish-flea"
+  },
+  {
+    id: 898,
+    title: "Fly Like an Eagle",
+    tracks_count: 1,
+    slug: "fly-like-an-eagle"
+  }
+];
+
+const mockUncleanTours = [
+  {
+    id: 1,
+    name: "1983 Tour",
+    shows_count: 1,
+    slug: "1983-tour",
+    starts_on: "1983-12-02",
+    ends_on: "1983-12-02",
+    shows: [
+      {
+        id: 1324,
+        date: "1983-12-02",
+        duration: 1031524,
+        incomplete: true,
+        sbd: true,
+        remastered: false,
+        tour_id: 1,
+        venue_id: 306,
+        likes_count: 17,
+        taper_notes:
+          'Phish\r\nHarris-Millis Cafeteria\r\nUniversity Of Vermont\r\nBurlington VT\r\n12/2/83 (portion)\r\n\r\nSource: FM > ?? > CDR > EAC > FLAC\r\nThanks to: Geoff Ecker for the source disc.\r\n\r\nSet II\r\n\r\n1. Scarlet Begonias [9:18] >\r\n2. Fire On The Mountain [7:52]\r\n\r\n\r\nNotes: This is a portion of the first Phish gig that was broadcast on\r\n       "The Bunny" Coventry radio broadcast.',
+        updated_at: "2018-12-21T08:10:28Z",
+        venue_name: "Harris-Millis Cafeteria, University of Vermont",
+        location: "Burlington, VT"
+      }
+    ],
+    updated_at: "2013-10-08T04:34:44Z"
+  },
+  {
+    id: 2,
+    name: "1984 Tour",
+    shows_count: 2,
+    slug: "1984-tour",
+    starts_on: "1984-11-03",
+    ends_on: "1984-12-01",
+    shows: [
+      {
+        id: 1334,
+        date: "1984-11-03",
+        duration: 4214569,
+        incomplete: true,
+        sbd: false,
+        remastered: false,
+        tour_id: 2,
+        venue_id: 610,
+        likes_count: 8,
+        taper_notes:
+          "Phish\r\n11/3/83\r\nSlade Hall Basement, University of Vermont - Burlington, VT\r\n\r\nSource: Aud > cass/2 > DAT\r\nConversion: DA-P1 > Fiji > Sound Forge 4.5 > CD Wave > SHN v3\r\nConversion and Encoding by Mike Wren <mikew@etree.org> 11/3/00\r\n\r\nThanks Shaggy for the seed!\r\n\r\n--------------------------------------------------------------\r\nhttp://etree.org - The standard in lossless audio distribution\r\n--------------------------------------------------------------\r\n\r\n01  Ignition Sequence\t\t\t\t\t(00:30)\r\n02  The Midnight Hour (Wilson Pickett)\t\t\t(06:22)\r\n03  Wild Child (Lou Reed)\t\t\t\t(05:20)\r\n04  St. Stephen Jam > Bertha (Grateful Dead)\t\t(13:39)\r\n05  Can't You Hear Me Knockin' (Rolling Stones) *\t(09:39)\r\n06  Camel Walk\t\t\t\t\t\t(01:17)\r\n07  Eyes of the World > (Grateful Dead)\t\t\t(17:54)\r\n08  Whipping Post (Allman Brothers)\t\t\t(16:03)\r\n\r\n*With \"St. Stephen\" (Grateful Dead) jam. \r\n\r\nTotal Time: 70:44",
+        updated_at: "2018-12-21T08:10:28Z",
+        venue_name: "Slade Hall, University of Vermont",
+        location: "Burlington, VT"
+      },
+      {
+        id: 2,
+        date: "1984-12-01",
+        duration: 5726850,
+        incomplete: false,
+        sbd: true,
+        remastered: false,
+        tour_id: 2,
+        venue_id: 467,
+        likes_count: 11,
+        taper_notes:
+          "---------------------------------------------------------------------------\r\ninfo file for version circulated on 12/01/07 (more remastering and 44.1 kHz seed)\r\n---------------------------------------------------------------------------\r\n\r\nPhish - 12/1/84 (w/ full 10/17/85 filler on disc two)\r\nNectar's, Burlington, VT\r\n\r\nThe First Circulated Phish Show\r\n\r\nSource: SBD > Cass1 > DAT > CD-R > EAC > WAV >\r\nCool Edit for Re-mastering (see notes at bottom) > SHN>WAV>Final Cut Pro for pitch correction>SHN\r\n\r\nRe-mastering, Shortened, md5sums & uploaded by Mike Wren - mikew@etree.org\r\n\r\nReleased to commemorate the one year anniversary of etree.org\r\n\r\n\r\nPitch correction by Hunter Seamons using Final Cut Pro (12/31/06; remastered 12/1/07)\r\n\r\n\r\n-----\r\n\r\n12/1/84\r\n\r\nDisc 1:\r\n\r\n1) Scarlet Begonias >\r\n2) Fire >\r\n3) Fire on the Mountain\r\n4) Makisupa Policeman\r\n5) Slave to the Traffic Light\r\n6) Spanish Flea\r\n7) Don't Want You No More >\r\n8) Cities >\r\n9) Drums >\r\n10) Skippy the Wondermouse >\r\n\r\n\r\nDisc 2:\r\n\r\n1) Fluffhead\r\n\r\nEncore:\r\n2) Eyes of the World\r\n\r\n-----\r\n\r\nFiller:\r\n\r\n10/17/85\r\n\r\n3) Star Trek Jam >\r\n4) Alumni Blues >\r\n5) Mike's Song\r\n6) Dave's Energy Guide\r\n7) Revolution >\r\n8) Anarchy\r\n9) Camel Walk\r\n10) Run Like an Antelope\r\n11) McGrupp and the Watchful Hosemasters\r\n\r\n\r\n-----\r\n\r\nPREVIOUS NOTES by Mike Wren:\r\n\r\n* Thanks to Lee Farber for the original seed!\r\n\r\n* There was some re-mastering done to clean up the original\r\ntape hiss from this classic show. The processes I took are\r\nas follows:\r\n\r\n1) Amplified both discs 175% across the board.\r\n2) Sampled a section of silence to obtain a decent noise floor\r\nsample (25,000 sample points used).\r\n3) Applied this sample against both discs at 64 percent.\r\n4) Applied a graphic equalizer to boost the high and low spectrums\r\n(specifically between 600 - 800 Hz and 8k & 10 kHz).\r\n***Note: I cut everything above 11 kHz 18dB because nothing\r\nexisted above that freq. range on the original recording.\r\n\r\n\r\nNEW NOTES by Hunter Seamons (12/31/06):\r\n\r\nI noticed the pitch was too high in both shows listed in this seed. I decreased the pitch in 12.01.84 by 7%, and I decreased the pitch in 10.17.85 by 9%.\r\n\r\n\r\nREMASTERED (12/01/07):\r\n\r\nAs this was my first seed, I naturally made some mistakes the first time around. I made all changes by going back to the original file set by Mike Wren and redoing the process, so this is as fresh as it gets. The new changes from my previous seed are as follows:\r\n\r\n1) SBE fix\r\n\r\n2) Encoded at 44.1 kHz (The last source I did was accidently encoded at a \"false\" 48 kHz. Whether this makes any difference sonically has not been determined.)\r\n\r\n3) Different speed reductions at 6% and 8%, respectively. (I believe I was a hair off the first time around, so I wanted to use this opportunity to make the changes.)\r\n\r\n4) NO CUTS! (I made some unorthodox, millisecond cuts before between songs, due to my inexperience of pitch correcting at the time. These went largely unnoticed, as far as I can tell.)\r\n\r\nThese changes should make this source better for the long haul.\r\n\r\nEnjoy this historic show on its 23rd anniversary!",
+        updated_at: "2018-12-21T08:10:12Z",
+        venue_name: "Nectar's",
+        location: "Burlington, VT"
+      }
+    ],
+    updated_at: "2013-11-26T00:03:57Z"
+  }
+];
+
+const mockCleanTours = [
+  {
+    id: 1,
+    name: "1983 Tour",
+    shows_count: 1,
+    slug: "1983-tour",
+    starts_on: "1983-12-02",
+    ends_on: "1983-12-02",
+    shows: [
+      {
+        id: 1324,
+        date: "1983-12-02",
+        tour_id: 1,
+        venue_id: 306,
+        venue_name: "Harris-Millis Cafeteria, University of Vermont",
+        location: "Burlington, VT"
+      }
+    ]
+  },
+  {
+    id: 2,
+    name: "1984 Tour",
+    shows_count: 2,
+    slug: "1984-tour",
+    starts_on: "1984-11-03",
+    ends_on: "1984-12-01",
+    shows: [
+      {
+        id: 1334,
+        date: "1984-11-03",
+        tour_id: 2,
+        venue_id: 610,
+        venue_name: "Slade Hall, University of Vermont",
+        location: "Burlington, VT"
+      },
+      {
+        id: 2,
+        date: "1984-12-01",
+        tour_id: 2,
+        venue_id: 467,
+        venue_name: "Nectar's",
+        location: "Burlington, VT"
+      }
+    ]
+  }
+];
+
+const mockUncleanShow = [
+  {
+    id: 1987,
+    date: "2019-02-21",
+    duration: 9658254,
+    incomplete: false,
+    sbd: false,
+    remastered: false,
+    tags: [],
+    tour_id: 106,
+    venue: {
+      id: 817,
+      slug: "barcelo-maya-beach",
+      name: "Barcelo Maya Beach",
+      other_names: [],
+      latitude: 20.631389,
+      longitude: -87.073056,
+      shows_count: 6,
+      location: "Riviera Maya, Quintana Roo, Mexico",
+      updated_at: "2017-01-16T03:57:12Z"
+    },
+    venue_name: "Barcelo Maya Beach",
+    taper_notes:
+      "Phish\nBarcelo Maya Grand Resort\nRiviera Maya, Quintana Roo, Mexico\n02/21/2019\n\nSource 1: AKG CK-61 ULS (DIN) > Nbob actives > Nbox Platinum > Tascam DR-70D @ 24bit/96kHz\nSource 2: AKG CK-63 ULS (DINa) > Nbob actives > Nbox Platinum > Tascam DR-70D @ 24bit/96kHz\nLocation: OTS/DFC, clamped to SBD fence, 8ft up\nTransfer: SD > WaveLab 6 (4 Channel Mix, Gain, Fades, Convert to 16bit/48kHz with Apogee UV22HR Dither) > CDWave (Tracking) > Traders Little Helper (FLAC6)\nTagging: FLACs Tagged With Mp3tag v2.89\n\nRecorded by Ryan Stearns\n\n\nSet 1:\n\n01 Intro\n02 Spock's Brain\n03 Twist\n04 Free\n05 Who Loves the Sun\n06 Everything's Right\n07 We Are Come to Outlive Our Brains\n08 Rise/Come Together\n09 Funky Bitch\n10 Sand\n\nSet 2: \n\n01 Intro\n02 Soul Planet > \n03 Spanish Moon > \n04 I Always Wanted It This Way > \n05 Death Don't Hurt Very Long\n06 2001 > \n07 Bathtub Gin\n08 The Squirming Coil\nEncore:\n09 Waste\n10 Bold As Love",
+    likes_count: 4,
+    tracks: [
+      {
+        id: 33499,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "Spock's Brain",
+        position: 1,
+        duration: 417984,
+        set: "1",
+        set_name: "Set 1",
+        likes_count: 1,
+        slug: "spocks-brain",
+        tags: [],
+        mp3: "https://phish.in/audio/000/033/499/33499.mp3",
+        song_ids: [718],
+        updated_at: "2019-02-28T02:57:48Z"
+      },
+      {
+        id: 33500,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "Twist",
+        position: 2,
+        duration: 546480,
+        set: "1",
+        set_name: "Set 1",
+        likes_count: 2,
+        slug: "twist",
+        tags: [],
+        mp3: "https://phish.in/audio/000/033/500/33500.mp3",
+        song_ids: [806],
+        updated_at: "2019-02-28T02:57:49Z"
+      },
+      {
+        id: 33501,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "Free",
+        position: 3,
+        duration: 547776,
+        set: "1",
+        set_name: "Set 1",
+        likes_count: 2,
+        slug: "free",
+        tags: [],
+        mp3: "https://phish.in/audio/000/033/501/33501.mp3",
+        song_ids: [276],
+        updated_at: "2019-02-28T02:57:49Z"
+      },
+      {
+        id: 33502,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "Who Loves the Sun?",
+        position: 4,
+        duration: 194112,
+        set: "1",
+        set_name: "Set 1",
+        likes_count: 1,
+        slug: "who-loves-the-sun",
+        tags: [
+          {
+            id: 19,
+            name: "Banter",
+            priority: 17,
+            group: "Spoken Word",
+            color: "#d39752",
+            notes: "Trey says this doesn't suck",
+            transcript:
+              "TREY: For the sun birds among you, for the sun birds among you. (after pause) You know, it still doesn't suck.  It didn't suck last time, it doesnt suck now. Still unsucky, still unsucky all these years later.",
+            starts_at_second: 160,
+            ends_at_second: null
+          }
+        ],
+        mp3: "https://phish.in/audio/000/033/502/33502.mp3",
+        song_ids: [852],
+        updated_at: "2019-02-28T02:57:49Z"
+      },
+      {
+        id: 33503,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "Everything's Right",
+        position: 5,
+        duration: 946032,
+        set: "1",
+        set_name: "Set 1",
+        likes_count: 4,
+        slug: "everythings-right",
+        tags: [],
+        mp3: "https://phish.in/audio/000/033/503/33503.mp3",
+        song_ids: [982],
+        updated_at: "2019-02-28T02:57:49Z"
+      },
+      {
+        id: 33504,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "We Are Come to Outlive Our Brains",
+        position: 6,
+        duration: 401232,
+        set: "1",
+        set_name: "Set 1",
+        likes_count: 1,
+        slug: "we-are-come-to-outlive-our-brains",
+        tags: [],
+        mp3: "https://phish.in/audio/000/033/504/33504.mp3",
+        song_ids: [1017],
+        updated_at: "2019-02-28T02:57:50Z"
+      },
+      {
+        id: 33505,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "Rise/Come Together",
+        position: 7,
+        duration: 306744,
+        set: "1",
+        set_name: "Set 1",
+        likes_count: 1,
+        slug: "rise-come-together",
+        tags: [],
+        mp3: "https://phish.in/audio/000/033/505/33505.mp3",
+        song_ids: [165],
+        updated_at: "2019-02-28T02:57:50Z"
+      },
+      {
+        id: 33506,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "Funky Bitch",
+        position: 8,
+        duration: 409944,
+        set: "1",
+        set_name: "Set 1",
+        likes_count: 1,
+        slug: "funky-bitch",
+        tags: [],
+        mp3: "https://phish.in/audio/000/033/506/33506.mp3",
+        song_ids: [285],
+        updated_at: "2019-02-28T02:57:50Z"
+      },
+      {
+        id: 33507,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "Sand",
+        position: 9,
+        duration: 613848,
+        set: "1",
+        set_name: "Set 1",
+        likes_count: 1,
+        slug: "sand",
+        tags: [],
+        mp3: "https://phish.in/audio/000/033/507/33507.mp3",
+        song_ids: [660],
+        updated_at: "2019-02-28T02:57:50Z"
+      },
+      {
+        id: 33508,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "Soul Planet",
+        position: 10,
+        duration: 570096,
+        set: "2",
+        set_name: "Set 2",
+        likes_count: 1,
+        slug: "soul-planet",
+        tags: [],
+        mp3: "https://phish.in/audio/000/033/508/33508.mp3",
+        song_ids: [1010],
+        updated_at: "2019-02-28T02:57:51Z"
+      },
+      {
+        id: 33509,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "Spanish Moon",
+        position: 11,
+        duration: 371784,
+        set: "2",
+        set_name: "Set 2",
+        likes_count: 6,
+        slug: "spanish-moon",
+        tags: [],
+        mp3: "https://phish.in/audio/000/033/509/33509.mp3",
+        song_ids: [711],
+        updated_at: "2019-02-28T02:57:51Z"
+      },
+      {
+        id: 33510,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "I Always Wanted It This Way",
+        position: 12,
+        duration: 1223280,
+        set: "2",
+        set_name: "Set 2",
+        likes_count: 5,
+        slug: "i-always-wanted-it-this-way",
+        tags: [
+          {
+            id: 4,
+            name: "Jamcharts",
+            priority: 4,
+            group: "Curated Selections",
+            color: "#e88890",
+            notes:
+              "Around 8:30, the music begins to peel away from the typical play, settling into pulsing, low-key groove. Page and Trey add color, giving the playing a warmer, upbeat sentiment, which gradually builds to a blissful peak. The playing settles back down to a funky, crunchy groove after 16:45, before further settling into transition space.",
+            transcript: null,
+            starts_at_second: null,
+            ends_at_second: null
+          },
+          {
+            id: 17,
+            name: "Tease",
+            priority: 15,
+            group: "Song Content",
+            color: "#8fabd9",
+            notes: "We Are Come To Outlive Our Brains",
+            transcript: null,
+            starts_at_second: null,
+            ends_at_second: null
+          }
+        ],
+        mp3: "https://phish.in/audio/000/033/510/33510.mp3",
+        song_ids: [963],
+        updated_at: "2019-02-28T02:57:51Z"
+      },
+      {
+        id: 33511,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "Death Don't Hurt Very Long",
+        position: 13,
+        duration: 383760,
+        set: "2",
+        set_name: "Set 2",
+        likes_count: 1,
+        slug: "death-dont-hurt-very-long",
+        tags: [],
+        mp3: "https://phish.in/audio/000/033/511/33511.mp3",
+        song_ids: [1021],
+        updated_at: "2019-02-28T02:57:52Z"
+      },
+      {
+        id: 33512,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "Also Sprach Zarathustra",
+        position: 14,
+        duration: 784176,
+        set: "2",
+        set_name: "Set 2",
+        likes_count: 5,
+        slug: "also-sprach-zarathustra",
+        tags: [
+          {
+            id: 4,
+            name: "Jamcharts",
+            priority: 4,
+            group: "Curated Selections",
+            color: "#e88890",
+            notes:
+              'Gets the party going with some "Death Don\'t Hurt Very Long" teases, then as the jam continues the bottom drops out and Trey and Page whip up a dark ambient space. Fish comes back in and they go into the "chorus", only with the dark ambient space mixed in. A very unique experience. This ain\'t your average 3.0 "Also Sprach Zarathustra".',
+            transcript: null,
+            starts_at_second: null,
+            ends_at_second: null
+          },
+          {
+            id: 17,
+            name: "Tease",
+            priority: 15,
+            group: "Song Content",
+            color: "#8fabd9",
+            notes: "Death Don't Hurt Very Long",
+            transcript: null,
+            starts_at_second: null,
+            ends_at_second: null
+          },
+          {
+            id: 17,
+            name: "Tease",
+            priority: 15,
+            group: "Song Content",
+            color: "#8fabd9",
+            notes: "I Always Wanted It This Way",
+            transcript: null,
+            starts_at_second: null,
+            ends_at_second: null
+          },
+          {
+            id: 17,
+            name: "Tease",
+            priority: 15,
+            group: "Song Content",
+            color: "#8fabd9",
+            notes: "Mrs. Robinson",
+            transcript: null,
+            starts_at_second: null,
+            ends_at_second: null
+          },
+          {
+            id: 17,
+            name: "Tease",
+            priority: 15,
+            group: "Song Content",
+            color: "#8fabd9",
+            notes: "Miss You by Rolling Stones",
+            transcript: null,
+            starts_at_second: null,
+            ends_at_second: null
+          }
+        ],
+        mp3: "https://phish.in/audio/000/033/512/33512.mp3",
+        song_ids: [28],
+        updated_at: "2019-02-28T02:57:52Z"
+      },
+      {
+        id: 33513,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "Bathtub Gin",
+        position: 15,
+        duration: 608184,
+        set: "2",
+        set_name: "Set 2",
+        likes_count: 3,
+        slug: "bathtub-gin",
+        tags: [],
+        mp3: "https://phish.in/audio/000/033/513/33513.mp3",
+        song_ids: [67],
+        updated_at: "2019-02-28T02:57:52Z"
+      },
+      {
+        id: 33514,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "The Squirming Coil",
+        position: 16,
+        duration: 576078,
+        set: "2",
+        set_name: "Set 2",
+        likes_count: 1,
+        slug: "the-squirming-coil",
+        tags: [
+          {
+            id: 19,
+            name: "Banter",
+            priority: 17,
+            group: "Spoken Word",
+            color: "#d39752",
+            notes: "Page thanks the audience",
+            transcript:
+              "PAGE: Thank you so much for coming down here and spending time with us.  This is amazing.  Thank you.  We're so happy you're here, thanks guys.",
+            starts_at_second: 550,
+            ends_at_second: null
+          }
+        ],
+        mp3: "https://phish.in/audio/000/033/514/33514.mp3",
+        song_ids: [722],
+        updated_at: "2019-02-28T02:57:53Z"
+      },
+      {
+        id: 33515,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "Waste",
+        position: 17,
+        duration: 357864,
+        set: "E",
+        set_name: "Encore",
+        likes_count: 1,
+        slug: "waste",
+        tags: [],
+        mp3: "https://phish.in/audio/000/033/515/33515.mp3",
+        song_ids: [828],
+        updated_at: "2019-02-28T02:57:53Z"
+      },
+      {
+        id: 33516,
+        show_id: 1987,
+        show_date: "2019-02-21",
+        title: "Bold As Love",
+        position: 18,
+        duration: 398880,
+        set: "E",
+        set_name: "Encore",
+        likes_count: 1,
+        slug: "bold-as-love",
+        tags: [],
+        mp3: "https://phish.in/audio/000/033/516/33516.mp3",
+        song_ids: [106],
+        updated_at: "2019-02-28T02:57:53Z"
+      }
+    ],
+    updated_at: "2019-02-28T02:58:30Z"
+  }
+];
+
+const mockCleanShow = [
+  {
+    date: "2019-02-21",
+    id: 1987,
+    tour_id: 106,
+    venue_name: "Barcelo Maya Beach",
+    location: "Riviera Maya, Quintana Roo, Mexico",
+    tracks: [
+      {
+        id: 33499,
+        mp3: "https://phish.in/audio/000/033/499/33499.mp3",
+        position: 1,
+        set_name: "Set 1",
+        show_id: 1987,
+        title: "Spock's Brain",
+        song_ids: 718
+      },
+      {
+        id: 33500,
+        mp3: "https://phish.in/audio/000/033/500/33500.mp3",
+        position: 2,
+        set_name: "Set 1",
+        show_id: 1987,
+        title: "Twist",
+        song_ids: 806
+      },
+      {
+        id: 33501,
+        mp3: "https://phish.in/audio/000/033/501/33501.mp3",
+        position: 3,
+        set_name: "Set 1",
+        show_id: 1987,
+        title: "Free",
+        song_ids: 276
+      },
+      {
+        id: 33502,
+        mp3: "https://phish.in/audio/000/033/502/33502.mp3",
+        position: 4,
+        set_name: "Set 1",
+        show_id: 1987,
+        title: "Who Loves the Sun?",
+        song_ids: 852
+      },
+      {
+        id: 33503,
+        mp3: "https://phish.in/audio/000/033/503/33503.mp3",
+        position: 5,
+        set_name: "Set 1",
+        show_id: 1987,
+        title: "Everything's Right",
+        song_ids: 982
+      },
+      {
+        id: 33504,
+        mp3: "https://phish.in/audio/000/033/504/33504.mp3",
+        position: 6,
+        set_name: "Set 1",
+        show_id: 1987,
+        title: "We Are Come to Outlive Our Brains",
+        song_ids: 1017
+      },
+      {
+        id: 33505,
+        mp3: "https://phish.in/audio/000/033/505/33505.mp3",
+        position: 7,
+        set_name: "Set 1",
+        show_id: 1987,
+        title: "Rise/Come Together",
+        song_ids: 165
+      },
+      {
+        id: 33506,
+        mp3: "https://phish.in/audio/000/033/506/33506.mp3",
+        position: 8,
+        set_name: "Set 1",
+        show_id: 1987,
+        title: "Funky Bitch",
+        song_ids: 285
+      },
+      {
+        id: 33507,
+        mp3: "https://phish.in/audio/000/033/507/33507.mp3",
+        position: 9,
+        set_name: "Set 1",
+        show_id: 1987,
+        title: "Sand",
+        song_ids: 660
+      },
+      {
+        id: 33508,
+        mp3: "https://phish.in/audio/000/033/508/33508.mp3",
+        position: 10,
+        set_name: "Set 2",
+        show_id: 1987,
+        title: "Soul Planet",
+        song_ids: 1010
+      },
+      {
+        id: 33509,
+        mp3: "https://phish.in/audio/000/033/509/33509.mp3",
+        position: 11,
+        set_name: "Set 2",
+        show_id: 1987,
+        title: "Spanish Moon",
+        song_ids: 711
+      },
+      {
+        id: 33510,
+        mp3: "https://phish.in/audio/000/033/510/33510.mp3",
+        position: 12,
+        set_name: "Set 2",
+        show_id: 1987,
+        title: "I Always Wanted It This Way",
+        song_ids: 963
+      },
+      {
+        id: 33511,
+        mp3: "https://phish.in/audio/000/033/511/33511.mp3",
+        position: 13,
+        set_name: "Set 2",
+        show_id: 1987,
+        title: "Death Don't Hurt Very Long",
+        song_ids: 1021
+      },
+      {
+        id: 33512,
+        mp3: "https://phish.in/audio/000/033/512/33512.mp3",
+        position: 14,
+        set_name: "Set 2",
+        show_id: 1987,
+        title: "Also Sprach Zarathustra",
+        song_ids: 28
+      },
+      {
+        id: 33513,
+        mp3: "https://phish.in/audio/000/033/513/33513.mp3",
+        position: 15,
+        set_name: "Set 2",
+        show_id: 1987,
+        title: "Bathtub Gin",
+        song_ids: 67
+      },
+      {
+        id: 33514,
+        mp3: "https://phish.in/audio/000/033/514/33514.mp3",
+        position: 16,
+        set_name: "Set 2",
+        show_id: 1987,
+        title: "The Squirming Coil",
+        song_ids: 722
+      },
+      {
+        id: 33515,
+        mp3: "https://phish.in/audio/000/033/515/33515.mp3",
+        position: 17,
+        set_name: "Encore",
+        show_id: 1987,
+        title: "Waste",
+        song_ids: 828
+      },
+      {
+        id: 33516,
+        mp3: "https://phish.in/audio/000/033/516/33516.mp3",
+        position: 18,
+        set_name: "Encore",
+        show_id: 1987,
+        title: "Bold As Love",
+        song_ids: 106
+      }
+    ],
+    venue: {
+      id: 817,
+      slug: "barcelo-maya-beach",
+      name: "Barcelo Maya Beach",
+      other_names: [],
+      latitude: 20.631389,
+      longitude: -87.073056,
+      shows_count: 6,
+      location: "Riviera Maya, Quintana Roo, Mexico",
+      updated_at: "2017-01-16T03:57:12Z"
+    }
+  }
+];
+
+const mockUncleanRandomShow = {
+  id: 58,
+  date: "1992-04-15",
+  duration: 7154733,
+  incomplete: true,
+  sbd: true,
+  remastered: false,
+  tags: [
+    {
+      id: 1,
+      name: "SBD",
+      priority: 1,
+      group: "Audio",
+      color: "#999999",
+      notes: null
+    }
+  ],
+  tour_id: 14,
+  venue: {
+    id: 710,
+    slug: "variety-arts-center",
+    name: "Variety Arts Center",
+    other_names: [],
+    latitude: 34.052234,
+    longitude: -118.243685,
+    shows_count: 1,
+    location: "Los Angeles, CA",
+    updated_at: "2013-03-23T02:15:58Z"
+  },
+  venue_name: "Variety Arts Center",
+  taper_notes:
+    'Phish\r\n04-15-92 \r\nVariety Arts Theater - Los Angeles, CA \r\n\r\nSource: SBD > Cass/0 > DAT > HHb CDR880 > CDR > EAC > SHN\r\n\r\nSHN Conversion and fixes by Ben Mohr (bmohr@udel.edu)\r\n\r\n------------------------------------\r\n Disc 1:                    (58:08)\r\n------------------------------------\r\n-Set 1-\r\n1. Oh Kee Pa Ceremony >     (02:02)\r\n2. Suzy Greenberg           (05:22)\r\n3. Foam                     (07:53)\r\n4. Guelah Papyrus           (05:38)\r\n5. Sparkle                  (04:08)\r\n6. Stash                    (09:07)\r\n7. Uncle Pen                (04:27)\r\n8. Cavern                   (04:49)\r\n9. I Didn\'t Know            (03:54)\r\n10. All Things Reconsidered (03:24)\r\n11. Runaway Jim             (07:18)\r\n\r\n------------------------------------\r\n Disc 2:                    (61:05)\r\n------------------------------------\r\n-Set 2-\r\n1. Chalk Dust Torture       (06:01)\r\n2. You Enjoy Myself*        (19:34)\r\n3. Reba                     (11:37)\r\n4. The Landlady >           (02:55)\r\n5. NICU                     (05:14)\r\n6. CAI > Cracklin\' Rosie >CAI (06:13)\r\n7. My Sweet One             (02:16)\r\n8. Golgi Apparatus          (04:34)\r\n-Encore- \r\n[Memories]  \r\n[Sweet Adeline]\r\n9. Rocky Top                (02:37)\r\n\r\n* with "Sunshine of Your Love" (Cream) and "Rolling on the River" teases\r\n\r\nNotes:\r\n-Since Memories and Sweet Adeline were played without mics, the soundboard did \r\n  not pick up anything and therefore, the songs were not recorded.\r\n-Mic feedback at beginning of d1t02.\r\n-Slight diginoise d2t06 2:19\r\n-Tape flips (no second flip?):\r\n  d1t09 3:08 (46:35)\r\n\r\nFixes:\r\n-d1t02 3:22.410-3:22.429 fixed right left channel dropout by applying left channel\r\n-d1t06 3:26.149-3:26.165 fixed right left channel dropout by applying left channel\r\n-d1t09 0:53.128-0:53.131 removed digizap\r\n-d2t02 10:38.104-10:39.592 L channel amplitude drop fixed by applying R channel at 60%\r\n-d2t02 10:39.791-10:41.841 R channel amplitude drop fixed by applying L channel at 140%\r\n-d2t03 11:25.339 (2.065sec) removed skip',
+  likes_count: 3,
+  tracks: [
+    {
+      id: 1085,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "The Oh Kee Pa Ceremony",
+      position: 1,
+      duration: 122279,
+      set: "1",
+      set_name: "Set 1",
+      likes_count: 0,
+      slug: "the-oh-kee-pa-ceremony",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/085/1085.mp3",
+      song_ids: [566],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1086,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "Suzy Greenberg",
+      position: 2,
+      duration: 322795,
+      set: "1",
+      set_name: "Set 1",
+      likes_count: 1,
+      slug: "suzy-greenberg",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/086/1086.mp3",
+      song_ids: [742],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1087,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "Foam",
+      position: 3,
+      duration: 473783,
+      set: "1",
+      set_name: "Set 1",
+      likes_count: 1,
+      slug: "foam",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/087/1087.mp3",
+      song_ids: [266],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1088,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "Guelah Papyrus",
+      position: 4,
+      duration: 338730,
+      set: "1",
+      set_name: "Set 1",
+      likes_count: 1,
+      slug: "guelah-papyrus",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/088/1088.mp3",
+      song_ids: [315],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1089,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "Sparkle",
+      position: 5,
+      duration: 248477,
+      set: "1",
+      set_name: "Set 1",
+      likes_count: 1,
+      slug: "sparkle",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/089/1089.mp3",
+      song_ids: [712],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1090,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "Stash",
+      position: 6,
+      duration: 547971,
+      set: "1",
+      set_name: "Set 1",
+      likes_count: 1,
+      slug: "stash",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/090/1090.mp3",
+      song_ids: [728],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1091,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "Uncle Pen",
+      position: 7,
+      duration: 267468,
+      set: "1",
+      set_name: "Set 1",
+      likes_count: 1,
+      slug: "uncle-pen",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/091/1091.mp3",
+      song_ids: [808],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1092,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "Cavern",
+      position: 8,
+      duration: 290038,
+      set: "1",
+      set_name: "Set 1",
+      likes_count: 1,
+      slug: "cavern",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/092/1092.mp3",
+      song_ids: [142],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1093,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "I Didn't Know",
+      position: 9,
+      duration: 234240,
+      set: "1",
+      set_name: "Set 1",
+      likes_count: 0,
+      slug: "i-didnt-know",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        },
+        {
+          id: 10,
+          name: "A Cappella",
+          priority: 8,
+          group: "Instrumentation",
+          color: "#be8ccc",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/093/1093.mp3",
+      song_ids: [365],
+      updated_at: "2013-04-04T20:16:14Z"
+    },
+    {
+      id: 1094,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "All Things Reconsidered",
+      position: 10,
+      duration: 204565,
+      set: "1",
+      set_name: "Set 1",
+      likes_count: 0,
+      slug: "all-things-reconsidered",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/094/1094.mp3",
+      song_ids: [27],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1095,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "Runaway Jim",
+      position: 11,
+      duration: 438596,
+      set: "1",
+      set_name: "Set 1",
+      likes_count: 1,
+      slug: "runaway-jim",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/095/1095.mp3",
+      song_ids: [652],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1096,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "Chalk Dust Torture",
+      position: 12,
+      duration: 361535,
+      set: "2",
+      set_name: "Set 2",
+      likes_count: 1,
+      slug: "chalk-dust-torture",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/096/1096.mp3",
+      song_ids: [144],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1097,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "You Enjoy Myself",
+      position: 13,
+      duration: 1174335,
+      set: "2",
+      set_name: "Set 2",
+      likes_count: 1,
+      slug: "you-enjoy-myself",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        },
+        {
+          id: 17,
+          name: "Tease",
+          priority: 15,
+          group: "Song Content",
+          color: "#8fabd9",
+          notes: "Proud Mary by Creedance Clearwater Revival",
+          transcript: null,
+          starts_at_second: 968,
+          ends_at_second: null
+        },
+        {
+          id: 17,
+          name: "Tease",
+          priority: 15,
+          group: "Song Content",
+          color: "#8fabd9",
+          notes: "Sunshine of Your Love by Cream",
+          transcript: null,
+          starts_at_second: 863,
+          ends_at_second: null
+        },
+        {
+          id: 17,
+          name: "Tease",
+          priority: 15,
+          group: "Song Content",
+          color: "#8fabd9",
+          notes: "Theme from Rawhide by Frankie Laine",
+          transcript: null,
+          starts_at_second: 980,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/097/1097.mp3",
+      song_ids: [879],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1098,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "Reba",
+      position: 14,
+      duration: 697365,
+      set: "2",
+      set_name: "Set 2",
+      likes_count: 2,
+      slug: "reba",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/098/1098.mp3",
+      song_ids: [616],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1099,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "The Landlady",
+      position: 15,
+      duration: 175726,
+      set: "2",
+      set_name: "Set 2",
+      likes_count: 1,
+      slug: "the-landlady",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/099/1099.mp3",
+      song_ids: [433],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1100,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "NICU",
+      position: 16,
+      duration: 314723,
+      set: "2",
+      set_name: "Set 2",
+      likes_count: 2,
+      slug: "nicu",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/100/1100.mp3",
+      song_ids: [547],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1101,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "Cold as Ice > Cracklin' Rosie > Cold as Ice",
+      position: 17,
+      duration: 373081,
+      set: "2",
+      set_name: "Set 2",
+      likes_count: 0,
+      slug: "cold-as-ice-cracklin-rosie-cold-as-ice",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/101/1101.mp3",
+      song_ids: [158, 176],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1102,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "My Sweet One",
+      position: 18,
+      duration: 136908,
+      set: "2",
+      set_name: "Set 2",
+      likes_count: 0,
+      slug: "my-sweet-one",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/102/1102.mp3",
+      song_ids: [540],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1103,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "Golgi Apparatus",
+      position: 19,
+      duration: 274260,
+      set: "2",
+      set_name: "Set 2",
+      likes_count: 1,
+      slug: "golgi-apparatus",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/103/1103.mp3",
+      song_ids: [304],
+      updated_at: "2013-03-30T04:56:35Z"
+    },
+    {
+      id: 1104,
+      show_id: 58,
+      show_date: "1992-04-15",
+      title: "Rocky Top",
+      position: 20,
+      duration: 157858,
+      set: "E",
+      set_name: "Encore",
+      likes_count: 0,
+      slug: "rocky-top",
+      tags: [
+        {
+          id: 1,
+          name: "SBD",
+          priority: 1,
+          group: "Audio",
+          color: "#999999",
+          notes: null,
+          transcript: null,
+          starts_at_second: null,
+          ends_at_second: null
+        }
+      ],
+      mp3: "https://phish.in/audio/000/001/104/1104.mp3",
+      song_ids: [643],
+      updated_at: "2013-03-30T04:56:35Z"
+    }
+  ],
+  updated_at: "2018-12-21T08:10:13Z"
+};
+
+const mockCleanRandomShow = {
+  date: "1992-04-15",
+  id: 58,
+  tour_id: 14,
+  venue_name: "Variety Arts Center",
+  location: "Los Angeles, CA",
+  tracks: [
+    {
+      id: 1085,
+      mp3: "https://phish.in/audio/000/001/085/1085.mp3",
+      position: 1,
+      set_name: "Set 1",
+      show_id: 58,
+      title: "The Oh Kee Pa Ceremony",
+      song_ids: 566
+    },
+    {
+      id: 1086,
+      mp3: "https://phish.in/audio/000/001/086/1086.mp3",
+      position: 2,
+      set_name: "Set 1",
+      show_id: 58,
+      title: "Suzy Greenberg",
+      song_ids: 742
+    },
+    {
+      id: 1087,
+      mp3: "https://phish.in/audio/000/001/087/1087.mp3",
+      position: 3,
+      set_name: "Set 1",
+      show_id: 58,
+      title: "Foam",
+      song_ids: 266
+    },
+    {
+      id: 1088,
+      mp3: "https://phish.in/audio/000/001/088/1088.mp3",
+      position: 4,
+      set_name: "Set 1",
+      show_id: 58,
+      title: "Guelah Papyrus",
+      song_ids: 315
+    },
+    {
+      id: 1089,
+      mp3: "https://phish.in/audio/000/001/089/1089.mp3",
+      position: 5,
+      set_name: "Set 1",
+      show_id: 58,
+      title: "Sparkle",
+      song_ids: 712
+    },
+    {
+      id: 1090,
+      mp3: "https://phish.in/audio/000/001/090/1090.mp3",
+      position: 6,
+      set_name: "Set 1",
+      show_id: 58,
+      title: "Stash",
+      song_ids: 728
+    },
+    {
+      id: 1091,
+      mp3: "https://phish.in/audio/000/001/091/1091.mp3",
+      position: 7,
+      set_name: "Set 1",
+      show_id: 58,
+      title: "Uncle Pen",
+      song_ids: 808
+    },
+    {
+      id: 1092,
+      mp3: "https://phish.in/audio/000/001/092/1092.mp3",
+      position: 8,
+      set_name: "Set 1",
+      show_id: 58,
+      title: "Cavern",
+      song_ids: 142
+    },
+    {
+      id: 1093,
+      mp3: "https://phish.in/audio/000/001/093/1093.mp3",
+      position: 9,
+      set_name: "Set 1",
+      show_id: 58,
+      title: "I Didn't Know",
+      song_ids: 365
+    },
+    {
+      id: 1094,
+      mp3: "https://phish.in/audio/000/001/094/1094.mp3",
+      position: 10,
+      set_name: "Set 1",
+      show_id: 58,
+      title: "All Things Reconsidered",
+      song_ids: 27
+    },
+    {
+      id: 1095,
+      mp3: "https://phish.in/audio/000/001/095/1095.mp3",
+      position: 11,
+      set_name: "Set 1",
+      show_id: 58,
+      title: "Runaway Jim",
+      song_ids: 652
+    },
+    {
+      id: 1096,
+      mp3: "https://phish.in/audio/000/001/096/1096.mp3",
+      position: 12,
+      set_name: "Set 2",
+      show_id: 58,
+      title: "Chalk Dust Torture",
+      song_ids: 144
+    },
+    {
+      id: 1097,
+      mp3: "https://phish.in/audio/000/001/097/1097.mp3",
+      position: 13,
+      set_name: "Set 2",
+      show_id: 58,
+      title: "You Enjoy Myself",
+      song_ids: 879
+    },
+    {
+      id: 1098,
+      mp3: "https://phish.in/audio/000/001/098/1098.mp3",
+      position: 14,
+      set_name: "Set 2",
+      show_id: 58,
+      title: "Reba",
+      song_ids: 616
+    },
+    {
+      id: 1099,
+      mp3: "https://phish.in/audio/000/001/099/1099.mp3",
+      position: 15,
+      set_name: "Set 2",
+      show_id: 58,
+      title: "The Landlady",
+      song_ids: 433
+    },
+    {
+      id: 1100,
+      mp3: "https://phish.in/audio/000/001/100/1100.mp3",
+      position: 16,
+      set_name: "Set 2",
+      show_id: 58,
+      title: "NICU",
+      song_ids: 547
+    },
+    {
+      id: 1101,
+      mp3: "https://phish.in/audio/000/001/101/1101.mp3",
+      position: 17,
+      set_name: "Set 2",
+      show_id: 58,
+      title: "Cold as Ice > Cracklin' Rosie > Cold as Ice",
+      song_ids: 158
+    },
+    {
+      id: 1102,
+      mp3: "https://phish.in/audio/000/001/102/1102.mp3",
+      position: 18,
+      set_name: "Set 2",
+      show_id: 58,
+      title: "My Sweet One",
+      song_ids: 540
+    },
+    {
+      id: 1103,
+      mp3: "https://phish.in/audio/000/001/103/1103.mp3",
+      position: 19,
+      set_name: "Set 2",
+      show_id: 58,
+      title: "Golgi Apparatus",
+      song_ids: 304
+    },
+    {
+      id: 1104,
+      mp3: "https://phish.in/audio/000/001/104/1104.mp3",
+      position: 20,
+      set_name: "Encore",
+      show_id: 58,
+      title: "Rocky Top",
+      song_ids: 643
+    }
+  ],
+  venue: {
+    id: 710,
+    slug: "variety-arts-center",
+    name: "Variety Arts Center",
+    other_names: [],
+    latitude: 34.052234,
+    longitude: -118.243685,
+    shows_count: 1,
+    location: "Los Angeles, CA",
+    updated_at: "2013-03-23T02:15:58Z"
+  }
+};
 
 module.exports = {
   mockSong,
@@ -2407,5 +4073,15 @@ module.exports = {
   mockUniqueVenues,
   mockUniqueSongs,
   mockTotalSongs,
-  mockSmallerSongTotal
+  mockSmallerSongTotal,
+  mockUncleanSongs,
+  mockCleanedSongs,
+  mockCleanVenues,
+  mockUncleanTours,
+  mockCleanTours,
+  mockUncleanShow,
+  mockCleanShow,
+  mockUncleanRandomShow,
+  mockCleanRandomShow,
+  mockVenues
 };

@@ -31,7 +31,7 @@ export class SetLists extends Component {
 }
 
 SetLists.propTypes = {
-  setList: PropTypes.func
+  setList: PropTypes.array
 };
 
 export const mapStateToProps = state => ({

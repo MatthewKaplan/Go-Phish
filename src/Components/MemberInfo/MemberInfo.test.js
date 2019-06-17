@@ -20,9 +20,8 @@ describe("MemberInfo", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it.skip("should invoke 'closePopup' when button is clicked", () => {
-    jest.spyOn(instance, "closePopup");
+  it("should invoke 'closePopup' when button is clicked", () => {
     wrapper.find("[data-test='close-popup']").simulate("click");
-    expect(closePopup).toHaveBeenCalled();
+    expect(mockClosePopup).toHaveBeenCalled();
   });
 });

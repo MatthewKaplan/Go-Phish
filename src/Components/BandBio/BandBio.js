@@ -42,7 +42,7 @@ export class BandBio extends Component {
 
 BandBio.propTypes = {
   members: PropTypes.array,
-  member: PropTypes.object
+  member: PropTypes.array
 };
 
 export const mapStateToProps = state => ({

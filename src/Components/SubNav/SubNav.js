@@ -6,7 +6,6 @@ import "./SubNav.scss";
 import { cleanSongs, cleanVenues } from "../../Helpers/cleaners";
 import PropTypes from "prop-types";
 
-
 export class SubNav extends Component {
   state = { venues: [], songs: [], searchChar: "A" };
   componentDidMount() {
@@ -54,170 +53,198 @@ export class SubNav extends Component {
     });
   };
 
-  render() {
+  whatToFetch = char => {
     const currentPath = window.location.href;
-    const { searchChar } = this.state;
-    let whatToFetch;
     if (currentPath === "http://localhost:3000/Venues") {
-      whatToFetch = this.filterVenues;
+      this.filterVenues(char);
     } else {
-      whatToFetch = this.filterSongs;
+      this.filterSongs(char);
     }
+  };
+
+  render() {
+    const { searchChar } = this.state;
     return (
       <nav className="sub-nav">
         <div
           className={searchChar === "A" ? "char_link" : null}
-          onClick={() => whatToFetch("A")}
+          data-test='a-btn'
+          onClick={() => this.whatToFetch("A")}
         >
           A
         </div>
         <div
           className={searchChar === "B" ? "char_link" : null}
-          onClick={() => whatToFetch("B")}
+          data-test='b-btn'
+          onClick={() => this.whatToFetch("B")}
         >
           B
         </div>
         <div
           className={searchChar === "C" ? "char_link" : null}
-          onClick={() => whatToFetch("C")}
+          data-test='c-btn'
+          onClick={() => this.whatToFetch("C")}
         >
           C
         </div>
         <div
           className={searchChar === "D" ? "char_link" : null}
-          onClick={() => whatToFetch("D")}
+          data-test='d-btn'
+          onClick={() => this.whatToFetch("D")}
         >
           D
         </div>
         <div
           className={searchChar === "E" ? "char_link" : null}
-          onClick={() => whatToFetch("E")}
+          data-test='e-btn'
+          onClick={() => this.whatToFetch("E")}
         >
           E
         </div>
         <div
           className={searchChar === "F" ? "char_link" : null}
-          onClick={() => whatToFetch("F")}
+          data-test='f-btn'
+          onClick={() => this.whatToFetch("F")}
         >
           F
         </div>
         <div
           className={searchChar === "G" ? "char_link" : null}
-          onClick={() => whatToFetch("G")}
+          data-test='g-btn'
+          onClick={() => this.whatToFetch("G")}
         >
           G
         </div>
         <div
           className={searchChar === "H" ? "char_link" : null}
-          onClick={() => whatToFetch("H")}
+          data-test='h-btn'
+          onClick={() => this.whatToFetch("H")}
         >
           H
         </div>
         <div
           className={searchChar === "I" ? "char_link" : null}
-          onClick={() => whatToFetch("I")}
+          data-test='i-btn'
+          onClick={() => this.whatToFetch("I")}
         >
           I
         </div>
         <div
           className={searchChar === "J" ? "char_link" : null}
-          onClick={() => whatToFetch("J")}
+          data-test='j-btn'
+          onClick={() => this.whatToFetch("J")}
         >
           J
         </div>
         <div
           className={searchChar === "K" ? "char_link" : null}
-          onClick={() => whatToFetch("K")}
+          data-test='k-btn'
+          onClick={() => this.whatToFetch("K")}
         >
           K
         </div>
         <div
           className={searchChar === "L" ? "char_link" : null}
-          onClick={() => whatToFetch("L")}
+          data-test='l-btn'
+          onClick={() => this.whatToFetch("L")}
         >
           L
         </div>
         <div
           className={searchChar === "M" ? "char_link" : null}
-          onClick={() => whatToFetch("M")}
+          data-test='m-btn'
+          onClick={() => this.whatToFetch("M")}
         >
           M
         </div>
         <div
           className={searchChar === "N" ? "char_link" : null}
-          onClick={() => whatToFetch("N")}
+          data-test='n-btn'
+          onClick={() => this.whatToFetch("N")}
         >
           N
         </div>
         <div
           className={searchChar === "O" ? "char_link" : null}
-          onClick={() => whatToFetch("O")}
+          data-test='o-btn'
+          onClick={() => this.whatToFetch("O")}
         >
           O
         </div>
         <div
           className={searchChar === "P" ? "char_link" : null}
-          onClick={() => whatToFetch("P")}
+          data-test='p-btn'
+          onClick={() => this.whatToFetch("P")}
         >
           P
         </div>
         <div
           className={searchChar === "Q" ? "char_link" : null}
-          onClick={() => whatToFetch("Q")}
+          data-test='q-btn'
+          onClick={() => this.whatToFetch("Q")}
         >
           Q
         </div>
         <div
           className={searchChar === "R" ? "char_link" : null}
-          onClick={() => whatToFetch("R")}
+          data-test='r-btn'
+          onClick={() => this.whatToFetch("R")}
         >
           R
         </div>
         <div
           className={searchChar === "S" ? "char_link" : null}
-          onClick={() => whatToFetch("S")}
+          data-test='s-btn'
+          onClick={() => this.whatToFetch("S")}
         >
           S
         </div>
         <div
           className={searchChar === "T" ? "char_link" : null}
-          onClick={() => whatToFetch("T")}
+          data-test='t-btn'
+          onClick={() => this.whatToFetch("T")}
         >
           T
         </div>
         <div
           className={searchChar === "U" ? "char_link" : null}
-          onClick={() => whatToFetch("U")}
+          data-test='u-btn'
+          onClick={() => this.whatToFetch("U")}
         >
           U
         </div>
         <div
           className={searchChar === "V" ? "char_link" : null}
-          onClick={() => whatToFetch("V")}
+          data-test='v-btn'
+          onClick={() => this.whatToFetch("V")}
         >
           V
         </div>
         <div
           className={searchChar === "W" ? "char_link" : null}
-          onClick={() => whatToFetch("W")}
+          data-test='w-btn'
+          onClick={() => this.whatToFetch("W")}
         >
           W
         </div>
         <div
           className={searchChar === "X" ? "char_link" : null}
-          onClick={() => whatToFetch("X")}
+          data-test='x-btn'
+          onClick={() => this.whatToFetch("X")}
         >
           X
         </div>
         <div
           className={searchChar === "Y" ? "char_link" : null}
-          onClick={() => whatToFetch("Y")}
+          data-test='y-btn'
+          onClick={() => this.whatToFetch("Y")}
         >
           Y
         </div>
         <div
           className={searchChar === "Z" ? "char_link" : null}
-          onClick={() => whatToFetch("Z")}
+          data-test='z-btn'
+          onClick={() => this.whatToFetch("Z")}
         >
           Z
         </div>
@@ -228,7 +255,7 @@ export class SubNav extends Component {
 
 SubNav.propTypes = {
   songs: PropTypes.array,
-  venues: PropTypes.array,
+  venues: PropTypes.object,
   allSongs: PropTypes.func,
   allVenues: PropTypes.func,
   handleError: PropTypes.func

@@ -6,8 +6,8 @@ const ids = require("shortid");
 
 export class UserStats extends Component {
   state = {
-    songStats: false,
-    showStats: true,
+    songStats: true,
+    showStats: false,
     tourStats: false,
     totalSongs: false,
     unheardSongs: false,
@@ -148,7 +148,7 @@ export class UserStats extends Component {
               </section>
               <section className="stat">
                 <h2>Precent of All Shows:</h2>
-                <p>{((userShows.length / songs.length) * 100).toFixed(2)} %</p>
+                <p>{((userShows.length / 1587) * 100).toFixed(2)} %</p>
               </section>
               <section
                 className="stat pointer"

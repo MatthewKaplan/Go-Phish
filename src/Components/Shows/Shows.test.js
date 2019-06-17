@@ -67,13 +67,6 @@ describe("Shows", () => {
       instance.addToList();
       expect(wrapper.state()).toEqual({ inList: true });
     });
-
-    // it("should invoke 'userShowList' with correct params when invoked", () => {
-    //   instance.addToList();
-    //   instance.checkIfSaved(mockShow);
-    //   console.log(mockShow.some(show => show))
-    //   expect(mockUserShowList).toHaveBeenCalledWith(mockUserShowList);
-    // })
   });
 });
 
