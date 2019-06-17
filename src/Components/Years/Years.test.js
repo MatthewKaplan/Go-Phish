@@ -13,6 +13,7 @@ const shows = MockData.mockShow;
 const mockYear = MockData.mockYears;
 const mockLoadingData = jest.fn();
 const mockCurrentShows = jest.fn();
+const mockHandleError = jest.fn();
 
 describe("Years", () => {
   let wrapper, instance;
@@ -25,6 +26,7 @@ describe("Years", () => {
         year={mockYear}
         loadingData={mockLoadingData}
         currentShows={mockCurrentShows}
+        handleError={mockHandleError}
       />
     );
     instance = wrapper.instance();
@@ -75,6 +77,21 @@ describe("Years", () => {
       expect(mockCurrentShows).toHaveBeenCalledWith(1) &&
         expect(mockLoadingData).toHaveBeenCalledWith(false);
     });
+
+    it("should throw an error if the response is not ok", async () => {
+      window.fetch = jest.fn().mockImplementationOnce(() =>
+        Promise.resolve({
+          ok: false
+        })
+      );
+
+      try {
+        await fetchData("wwww.mockLink.com");
+      } catch (error) {
+        expect(error.message).toBe("Failed to fetch data");
+        expect(mockHandleError).toHaveBeenCalledWith(error.message);
+      }
+    });
   });
 });
 
@@ -96,7 +113,7 @@ describe("mapDispatchToProps", () => {
   });
 
   it("should call dispatch for handleError", () => {
-    const error = "Mock Error"
+    const error = "Mock Error";
     const mockDispatch = jest.fn();
     const actionToDispatch = actions.handleError(error);
     const mappedProps = mapDispatchToProps(mockDispatch);

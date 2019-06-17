@@ -36,8 +36,8 @@ describe("UserStats", () => {
 
   it("should have default state", () => {
     expect(wrapper.state()).toEqual({
-      songStats: false,
-      showStats: true,
+      songStats: true,
+      showStats: false,
       tourStats: false,
       totalSongs: false,
       unheardSongs: false,
@@ -49,12 +49,14 @@ describe("UserStats", () => {
   });
 
   it("should change state of 'displayShows' when Number of shows is clicked", () => {
+    wrapper.setState({ showStats: true });
     expect(wrapper.state().displayShows).toEqual(false);
     wrapper.find("[data-test='number-of-shows']").simulate("click");
     expect(wrapper.state().displayShows).toEqual(true);
   });
 
   it("should change state of 'displayYears' when Years is clicked", () => {
+    wrapper.setState({ showStats: true });
     expect(wrapper.state().displayYears).toEqual(false);
     wrapper.find("[data-test='display-years']").simulate("click");
     expect(wrapper.state().displayYears).toEqual(true);
@@ -90,12 +92,12 @@ describe("UserStats", () => {
 
   describe("displayStats", () => {
     it("should change the state of 'songStats', 'showStats', and 'tourStats' with the given values when invoked", () => {
-      expect(wrapper.state().songStats).toEqual(false);
-      expect(wrapper.state().showStats).toEqual(true);
-      expect(wrapper.state().tourStats).toEqual(false);
-      instance.displayStats(true, false, true);
       expect(wrapper.state().songStats).toEqual(true);
       expect(wrapper.state().showStats).toEqual(false);
+      expect(wrapper.state().tourStats).toEqual(false);
+      instance.displayStats(false, true, true);
+      expect(wrapper.state().songStats).toEqual(false);
+      expect(wrapper.state().showStats).toEqual(true);
       expect(wrapper.state().tourStats).toEqual(true);
     });
     it("should invoke 'displayStats' with the correct params when song stats btn is clicked.", () => {

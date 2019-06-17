@@ -39,8 +39,9 @@ export class MainPage extends Component {
   fetchUpcomingShows = () => {
     fetchMembers(
       "https://cors-anywhere.herokuapp.com/https://mighty-mountain-16368.herokuapp.com/api/v1/phishTour"
-    ).then(response => this.props.upcomingShows(response))
-    .catch(err => this.props.handleError(err.message));
+    )
+      .then(response => this.props.upcomingShows(response))
+      .catch(err => this.props.handleError(err.message));
   };
 
   fetchRandomShow = () => {
@@ -61,8 +62,7 @@ export class MainPage extends Component {
     fetchData(`songs.json?per_page=901`)
       .then(response => cleanSongs(response.data))
       .then(
-        results =>
-          this.props.allSongs(results) && this.props.loadingData(false)
+        results => this.props.allSongs(results) && this.props.loadingData(false)
       )
       .catch(err => this.props.handleError(err.message));
   };

@@ -99,18 +99,6 @@ const cleanRandomShow = data => {
   };
 };
 
-// const cleanTourShows = data => {
-//   const showInfo = data.map(show => {
-//     return {
-//       date: show.date,
-//       id: show.id,
-//       tour_id: show.tour_id,
-//       venue_name: show.venue_name,
-
-//     }
-//   })
-// }
-
 const setData = (setList, name) => {
   const setOne = setList.filter(track => track.set_name === name);
   if(setOne.length > 0) {

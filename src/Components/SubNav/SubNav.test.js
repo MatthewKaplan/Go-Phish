@@ -16,6 +16,7 @@ const mockCleanVenues = jest.fn();
 const mockAllVenues = jest.fn();
 const mockAllSongs = jest.fn();
 const mockToggleActiveState = jest.fn();
+const mockWhatToFetch = jest.fn();
 
 describe("SubNav", () => {
   let wrapper, instance;
@@ -30,6 +31,7 @@ describe("SubNav", () => {
         allVenues={mockAllVenues}
         allSongs={mockAllSongs}
         toggleActiveState={mockToggleActiveState}
+        whatToFetch={mockWhatToFetch}
       />
     );
     instance = wrapper.instance();
@@ -119,6 +121,142 @@ describe("SubNav", () => {
     it("should invoke 'allVenues' with the correct params when invoked", () => {
       instance.filterSongs("M");
       expect(mockAllSongs).toHaveBeenCalledWith(mockSong);
+    });
+  });
+
+  describe("Nav Clicks", () => {
+    beforeEach(() => {
+      jest.spyOn(instance, "whatToFetch");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'A' ", () => {
+      wrapper.find("[data-test='a-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("A");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'B' ", () => {
+      wrapper.find("[data-test='b-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("B");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'C' ", () => {
+      wrapper.find("[data-test='c-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("C");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'D' ", () => {
+      wrapper.find("[data-test='d-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("D");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'E' ", () => {
+      wrapper.find("[data-test='e-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("E");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'F' ", () => {
+      wrapper.find("[data-test='f-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("F");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'G' ", () => {
+      wrapper.find("[data-test='g-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("G");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'H' ", () => {
+      wrapper.find("[data-test='h-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("H");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'I' ", () => {
+      wrapper.find("[data-test='i-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("I");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'J' ", () => {
+      wrapper.find("[data-test='j-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("J");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'K' ", () => {
+      wrapper.find("[data-test='k-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("K");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'L' ", () => {
+      wrapper.find("[data-test='l-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("L");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'M' ", () => {
+      wrapper.find("[data-test='m-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("M");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'N' ", () => {
+      wrapper.find("[data-test='n-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("N");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'O' ", () => {
+      wrapper.find("[data-test='o-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("O");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'P' ", () => {
+      wrapper.find("[data-test='p-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("P");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'Q' ", () => {
+      wrapper.find("[data-test='q-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("Q");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'R' ", () => {
+      wrapper.find("[data-test='r-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("R");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'S' ", () => {
+      wrapper.find("[data-test='s-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("S");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'T' ", () => {
+      wrapper.find("[data-test='t-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("T");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'U' ", () => {
+      wrapper.find("[data-test='u-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("U");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'V' ", () => {
+      wrapper.find("[data-test='v-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("V");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'W' ", () => {
+      wrapper.find("[data-test='w-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("W");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'X' ", () => {
+      wrapper.find("[data-test='x-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("X");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'Y' ", () => {
+      wrapper.find("[data-test='y-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("Y");
+    });
+
+    it("should invoke 'whatToFetch' with the param 'Z' ", () => {
+      wrapper.find("[data-test='z-btn']").simulate("click");
+      expect(instance.whatToFetch).toHaveBeenCalledWith("Z");
     });
   });
 });

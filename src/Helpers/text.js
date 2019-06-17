@@ -82,14 +82,4 @@ const bandBio = () => {
   );
 };
 
-const mockSongTotals = () => {
-  return (
-    <React.Fragment>
-    <p className="song-title">Free</p>
-    <p>1</p>
-    </React.Fragment>
-    )
-  }
-
-
-export {bandBio, mockSongTotals};
+export { bandBio };

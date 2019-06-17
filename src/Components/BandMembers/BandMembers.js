@@ -31,7 +31,7 @@ export class BandMembers extends Component {
 }
 
 BandMembers.propTypes = {
-  member: PropTypes.object
+  member: PropTypes.array
 };
 
 export const mapDispatchToProps = dispatch => ({
