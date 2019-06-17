@@ -42,8 +42,6 @@ describe("MainPage", () => {
         location={mockLocation}
         years={mockYears}
         tours={mockTours}
-        songs={mockSongs}
-        venues={mockVenues}
         shows={mockShows}
         isLoading={mockIsLoading}
         upcomingShows={mockUpcomingShows}
@@ -54,6 +52,10 @@ describe("MainPage", () => {
         allVenues={mockAllVenues}
         cleanRandomShow={mockCleanRandomShow}
         randomShow={mockRandomShow}
+        upcoming={[]}
+        show={[]}
+        songs={[]}
+        venues={[]}
       />
     );
     instance = wrapper.instance();
@@ -255,11 +257,11 @@ describe("MainPage", () => {
     });
     it("should render 'Songs' components when '/Songs' is passed through", () => {
       const results = instance.componentToRender("/Songs");
-      expect(results).toHaveLength(1);
+      expect(results).toHaveLength(0);
     });
     it("should render 'Venues' components when '/Venues' is passed through", () => {
       const results = instance.componentToRender("/Venues");
-      expect(results).toHaveLength(2);
+      expect(results).toHaveLength(0);
     });
     it("should render 'Shows' components when '/Shows' is passed through", () => {
       const results = instance.componentToRender("/Shows");
@@ -276,7 +278,9 @@ describe("mapStateToProps", () => {
       tours: [],
       venues: [],
       shows: [],
-      isLoading: undefined
+      isLoading: undefined,
+      upcoming: [],
+      show: []
     };
     const expected = {
       songs: [],
@@ -284,7 +288,9 @@ describe("mapStateToProps", () => {
       tours: [],
       venues: [],
       shows: [],
-      isLoading: undefined
+      isLoading: undefined,
+      upcoming: [],
+      show: []
     };
 
     const mockprops = mapStateToProps(mockData);
