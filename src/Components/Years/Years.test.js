@@ -70,7 +70,7 @@ describe("Years", () => {
       expect(mockCurrentShows).toHaveBeenCalledWith(1);
     });
 
-    it("should finally invoke 'loadingData' with correct params", () => {
+    it("should invoke 'loadingData' with correct params", () => {
       cleanShows.mockImplementation(() => Promise.resolve(1));
       instance.handleClick(mockYear.date);
       expect(cleanShows).toHaveBeenCalled();
@@ -78,19 +78,12 @@ describe("Years", () => {
         expect(mockLoadingData).toHaveBeenCalledWith(false);
     });
 
-    it("should throw an error if the response is not ok", async () => {
-      window.fetch = jest.fn().mockImplementationOnce(() =>
-        Promise.resolve({
-          ok: false
-        })
+    it("should finally throw an error if the response is not ok and save that error to redux store", async () => {
+      fetchData.mockImplementationOnce(() =>
+        Promise.reject(new Error("Fetch failed"))
       );
-
-      try {
-        await fetchData("wwww.mockLink.com");
-      } catch (error) {
-        expect(error.message).toBe("Failed to fetch data");
-        expect(mockHandleError).toHaveBeenCalledWith(error.message);
-      }
+      await wrapper.instance().handleClick();
+      expect(mockHandleError).toHaveBeenCalledWith("Fetch failed");
     });
   });
 });

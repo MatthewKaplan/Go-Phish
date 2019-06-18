@@ -108,7 +108,7 @@ export class UserStats extends Component {
     }, new Set(songsHeard));
 
     return notHeard.map(song => {
-      return <p key={ids.generate()}>{song}</p>;
+      return (<p key={ids.generate()}>{song}</p>)
     });
   };
 

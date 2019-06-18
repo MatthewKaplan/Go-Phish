@@ -4,12 +4,18 @@ import * as actions from "../../Actions/index";
 import { shallow } from "enzyme";
 import { NavBar, mapDispatchToProps } from "./NavBar";
 import { fetchData, fetchMembers } from "../../api/apiCalls";
+import { cleanTours } from "../../Helpers/cleaners";
 
 jest.mock("../../api/apiCalls.js");
+jest.mock("../../Helpers/cleaners.js");
 
 const years = MockData.mockYears;
 const tours = MockData.mockTours;
 const members = MockData.mockMember;
+const mockHandleError = jest.fn();
+const mockAllYears = jest.fn();
+const mockAllTours = jest.fn();
+const mockAllMembers = jest.fn();
 let mockLoadingData = jest.fn();
 let mockToggleSubNav = jest.fn();
 
@@ -21,7 +27,17 @@ describe("NavBar", () => {
 
   beforeEach(() => {
     wrapper = shallow(
-      <NavBar loadingData={mockLoadingData} toggleSubNav={mockToggleSubNav} years={[]} tours={[]} members={[]}/>
+      <NavBar
+        loadingData={mockLoadingData}
+        allYears={mockAllYears}
+        allTours={mockAllTours}
+        toggleSubNav={mockToggleSubNav}
+        years={[]}
+        tours={[]}
+        members={[]}
+        handleError={mockHandleError}
+        allMembers={mockAllMembers}
+      />
     );
     instance = wrapper.instance();
   });
@@ -100,6 +116,24 @@ describe("NavBar", () => {
       instance.fetchYears();
       expect(fetchData).toHaveBeenCalledWith("years?include_show_counts=true");
     });
+
+    it("should invoke 'allYears' with the results from 'fetchData'", () => {
+      instance.fetchYears();
+      expect(mockAllYears).toHaveBeenCalled();
+    });
+
+    it("should invoke 'loadingData' with correct params", () => {
+      instance.fetchYears();
+      expect(mockLoadingData).toHaveBeenCalledWith(false);
+    });
+
+    it("should finally throw an error if the response is not ok and save that error to redux store", async () => {
+      fetchData.mockImplementationOnce(() =>
+        Promise.reject(new Error("Fetch failed"))
+      );
+      await wrapper.instance().fetchYears();
+      expect(mockHandleError).toHaveBeenCalledWith("Fetch failed");
+    });
   });
 
   describe("fetchTours", () => {
@@ -118,6 +152,30 @@ describe("NavBar", () => {
     it("should invoke 'fetchData' with the correct params", () => {
       instance.fetchTours();
       expect(fetchData).toHaveBeenCalledWith("tours.json?per_page=99");
+    });
+
+    it("should invoke 'cleanTours' with results from 'fetchData'", () => {
+      cleanTours.mockImplementation(() => Promise.resolve(1));
+      instance.fetchTours();
+      expect(cleanTours).toHaveBeenCalled();
+    });
+
+    it("should invoke 'allTours' with the results from 'cleanTours'", () => {
+      instance.fetchTours();
+      expect(mockAllTours).toHaveBeenCalled();
+    });
+
+    it("should invoke 'loadingData' with correct params", () => {
+      instance.fetchTours();
+      expect(mockLoadingData).toHaveBeenCalledWith(false);
+    });
+
+    it("should finally throw an error if the response is not ok and save that error to redux store", async () => {
+      fetchData.mockImplementationOnce(() =>
+        Promise.reject(new Error("Fetch failed"))
+      );
+      await wrapper.instance().fetchTours();
+      expect(mockHandleError).toHaveBeenCalledWith("Fetch failed");
     });
   });
 
@@ -139,6 +197,66 @@ describe("NavBar", () => {
       expect(fetchMembers).toHaveBeenCalledWith(
         "https://cors-anywhere.herokuapp.com/https://peaceful-castle-66511.herokuapp.com/api/v1/phish/members"
       );
+    });
+
+    it("should invoke 'allMembers' with the results from 'fetchMembers'", () => {
+      instance.fetchPhishData();
+      expect(mockAllMembers).toHaveBeenCalled();
+    });
+
+    it("should invoke 'loadingData' with the correct params", () => {
+      instance.fetchPhishData();
+      expect(mockLoadingData).toHaveBeenCalledWith(false);
+    });
+
+    it("should finally throw an error if the response is not ok and save that error to redux store", async () => {
+      fetchMembers.mockImplementationOnce(() =>
+        Promise.reject(new Error("Fetch failed"))
+      );
+      await wrapper.instance().fetchPhishData();
+      expect(mockHandleError).toHaveBeenCalledWith("Fetch failed");
+    });
+  });
+});
+
+describe("fetches when redux store is already full", () => {
+  let wrapper, instance;
+
+  beforeEach(() => {
+    wrapper = shallow(
+      <NavBar
+        loadingData={mockLoadingData}
+        allYears={mockAllYears}
+        allTours={mockAllTours}
+        toggleSubNav={mockToggleSubNav}
+        years={years}
+        tours={tours}
+        members={members}
+        handleError={mockHandleError}
+        allMembers={mockAllMembers}
+      />
+    );
+    instance = wrapper.instance();
+  });
+
+  describe("fetchYears with full redux", () => {
+    it("shouldn't invoke 'fetchMembers' while the redux store already has 'years' saved", () => {
+      const result = instance.fetchYears();
+      expect(result).toMatchObject({});
+    });
+  });
+
+  describe("fetchPhishData with full redux", () => {
+    it("shouldn't invoke 'fetchData' while the redux store already has 'members' saved", () => {
+      const result = instance.fetchPhishData();
+      expect(result).toMatchObject({});
+    });
+  });
+
+  describe("fetchTours with full redux", () => {
+    it("shouldn't invoke 'fetchData' while the redux store already has 'tours' saved", () => {
+      const result = instance.fetchTours();
+      expect(result).toMatchObject({});
     });
   });
 });

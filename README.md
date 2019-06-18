@@ -71,7 +71,7 @@ $ npm t -- --coverage --watchAll=false
 ```
 
 <p align="center">
-  <img src="https://i.imgur.com/BwwqBFE.png" alt="project test coverage">
+  <img src="https://i.imgur.com/joQNyMw.png" alt="project test coverage">
 </p>
 
 ## Project Tools:

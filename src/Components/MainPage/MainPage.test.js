@@ -9,6 +9,7 @@ import {
   cleanSongs,
   cleanRandomShow
 } from "../../Helpers/cleaners";
+import reactElementToJSXString from 'react-element-to-jsx-string';
 
 jest.mock("../../api/apiCalls.js");
 jest.mock("../../Helpers/cleaners.js");
@@ -19,15 +20,8 @@ const mockSongs = MockData.mockSong;
 const mockVenues = MockData.mockVenues;
 const mockShows = MockData.mockShow;
 const mockIsLoading = false;
-const mockLocation = jest.fn();
-const mockAllSongs = jest.fn();
-const mockUpcomingShows = jest.fn();
-const mockCleanSongs = jest.fn();
-const mockLoadingData = jest.fn();
-const mockCleanVenues = jest.fn();
-const mockAllVenues = jest.fn();
-const mockCleanRandomShow = jest.fn();
-const mockRandomShow = jest.fn();
+let mockLocation, mockAllSongs, mockUpcomingShows, mockCleanSongs, mockLoadingData, mockCleanVenues, mockAllVenues, mockCleanRandomShow, mockRandomShow, mockHandleError;
+mockLocation = mockAllSongs = mockUpcomingShows = mockCleanSongs = mockLoadingData = mockCleanVenues = mockAllVenues = mockCleanRandomShow = mockRandomShow = mockHandleError = jest.fn();
 
 describe("MainPage", () => {
   let wrapper, instance;
@@ -56,6 +50,7 @@ describe("MainPage", () => {
         show={[]}
         songs={[]}
         venues={[]}
+        handleError={mockHandleError}
       />
     );
     instance = wrapper.instance();
@@ -72,7 +67,7 @@ describe("MainPage", () => {
 
   it("should have default state", () => {
     expect(wrapper.state()).toEqual({
-      randomShowFetching: true
+      randomShowFetching: false
     });
   });
 
@@ -104,18 +99,10 @@ describe("MainPage", () => {
       expect(mockUpcomingShows).toHaveBeenCalledWith(1);
     });
 
-    it("should throw an error if the response is not ok", async () => {
-      window.fetch = jest.fn().mockImplementationOnce(() =>
-        Promise.resolve({
-          ok: false
-        })
-      );
-
-      try {
-        await fetchMembers("wwww.mockLink.com");
-      } catch (error) {
-        expect(error.message).toBe("Failed to fetch data");
-      }
+    it("should finally throw an error if the response is not ok and save that error to redux store", async () => {
+      fetchMembers.mockImplementationOnce(() => Promise.reject(new Error('Fetch failed')))
+      await wrapper.instance().fetchUpcomingShows()
+      expect(mockHandleError).toHaveBeenCalledWith('Fetch failed')
     });
   });
 
@@ -149,24 +136,17 @@ describe("MainPage", () => {
     });
 
     it("should set the state of 'randomShowFetching' back to false after everything is finished", () => {
+      wrapper.setState({ randomShowFetching: true })
       expect(wrapper.state().randomShowFetching).toEqual(true);
       instance.fetchRandomShow();
       expect(mockRandomShow).toHaveBeenCalled() &&
         expect(wrapper.state().randomShowFetching).toEqual(false);
     });
 
-    it("should finally throw an error if the response is not ok", async () => {
-      window.fetch = jest.fn().mockImplementationOnce(() =>
-        Promise.resolve({
-          ok: false
-        })
-      );
-
-      try {
-        await fetchData("wwww.mockLink.com");
-      } catch (error) {
-        expect(error.message).toBe("Failed to fetch data");
-      }
+    it("should finally throw an error if the response is not ok and save that error to redux store", async () => {
+      fetchData.mockImplementationOnce(() => Promise.reject(new Error('Fetch failed')))
+      await wrapper.instance().fetchRandomShow()
+      expect(mockHandleError).toHaveBeenCalledWith('Fetch failed')
     });
   });
 
@@ -197,18 +177,10 @@ describe("MainPage", () => {
         expect(mockLoadingData).toHaveBeenCalled();
     });
 
-    it("should finally throw an error if the response is not ok", async () => {
-      window.fetch = jest.fn().mockImplementationOnce(() =>
-        Promise.resolve({
-          ok: false
-        })
-      );
-
-      try {
-        await fetchMembers("wwww.mockLink.com");
-      } catch (error) {
-        expect(error.message).toBe("Failed to fetch data");
-      }
+    it("should finally throw an error if the response is not ok and save that error to redux store", async () => {
+      fetchData.mockImplementationOnce(() => Promise.reject(new Error('Fetch failed')))
+      await wrapper.instance().fetchSongs()
+      expect(mockHandleError).toHaveBeenCalledWith('Fetch failed')
     });
   });
 
@@ -231,18 +203,10 @@ describe("MainPage", () => {
       expect(mockAllVenues).toHaveBeenCalled();
     });
 
-    it("should throw an error if the response is not ok", async () => {
-      window.fetch = jest.fn().mockImplementationOnce(() =>
-        Promise.resolve({
-          ok: false
-        })
-      );
-
-      try {
-        await fetchData("wwww.mockLink.com");
-      } catch (error) {
-        expect(error.message).toBe("Failed to fetch data");
-      }
+    it("should finally throw an error if the response is not ok and save that error to redux store", async () => {
+      fetchData.mockImplementationOnce(() => Promise.reject(new Error('Fetch failed')))
+      await wrapper.instance().fetchVenues()
+      expect(mockHandleError).toHaveBeenCalledWith('Fetch failed')
     });
   });
 
@@ -267,8 +231,79 @@ describe("MainPage", () => {
       const results = instance.componentToRender("/Shows");
       expect(results).toHaveLength(1);
     });
+    it("should render 'SetLists' components when '/SetLists' is passed through", () => {
+      const results = instance.componentToRender("/SetList");
+      expect(reactElementToJSXString(results)).toEqual("<Connect(SetLists) />")
+    });
+    it("should render 'UserStats' components when '/UserStats' is passed through", () => {
+      const results = instance.componentToRender("/UserStats");
+      expect(reactElementToJSXString(results)).toEqual("<Connect(UserStats) />")
+    });
+    it("should render 'HomePage' component by default", () => {
+      const results = instance.componentToRender();
+      expect(reactElementToJSXString(results)).toEqual("<Connect(HomePage) />")
+    });
   });
 });
+
+describe("fetches when redux store is already full", () => {
+  let wrapper, instance;
+
+  beforeEach(() => {
+    wrapper = shallow(
+      <MainPage
+        loadingData={mockLocation}
+        location={mockLocation}
+        years={mockYears}
+        tours={mockTours}
+        shows={mockShows}
+        isLoading={mockIsLoading}
+        upcomingShows={mockUpcomingShows}
+        cleanSongs={mockCleanSongs}
+        cleanVenues={mockCleanVenues}
+        allSongs={mockAllSongs}
+        loadingData={mockLoadingData}
+        allVenues={mockAllVenues}
+        cleanRandomShow={mockCleanRandomShow}
+        randomShow={mockRandomShow}
+        handleError={mockHandleError}
+        upcoming={mockShows}
+        show={mockShows}
+        songs={mockSongs}
+        venues={mockVenues}
+      />
+    );
+    instance = wrapper.instance();
+  });
+
+  describe("fetchUpcomingShows with full redux", () => {
+    it("shouldn't invoke 'fetchMembers' while the redux store already has 'upcoming' saved", () => {
+      const result = instance.fetchUpcomingShows();
+      expect(result).toMatchObject({});
+    })
+  })
+
+  describe("fetchRandomShow with full redux", () => {
+    it("shouldn't invoke 'fetchData' while the redux store already has 'upcoming' saved", () => {     
+      const result = instance.fetchRandomShow();
+      expect(result).toMatchObject({});
+    })
+  })
+
+  describe("fetchSongs with full redux", () => {
+    it("shouldn't invoke 'fetchData' while the redux store already has 'upcoming' saved", () => {     
+      const result = instance.fetchSongs();
+      expect(result).toMatchObject({});
+    })
+  })
+
+  describe("fetchVenues with full redux", () => {
+    it("shouldn't invoke 'fetchData' while the redux store already has 'upcoming' saved", () => {     
+      const result = instance.fetchVenues();
+      expect(result).toMatchObject({});
+    })
+  })
+})
 
 describe("mapStateToProps", () => {
   it("should return an object", () => {

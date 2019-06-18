@@ -2,6 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import MockData from "../../Helpers/mockData";
 import { UserStats, mapStateToProps } from "./UserStats";
+import reactElementToJSXString from "react-element-to-jsx-string";
 
 const mockUserShows = MockData.mockUserShows;
 const mockSongs = MockData.mockSong;
@@ -12,6 +13,7 @@ const mockUniqueTours = MockData.mockUniqueTours;
 const mockUniqueVenues = MockData.mockUniqueVenues;
 const mockUniqueSongs = MockData.mockUniqueSongs;
 const mockTotalSongs = MockData.mockTotalSongs;
+const mockAllSongs = MockData.mockAllSongs;
 const mockUniqueCitiesVar = jest.fn();
 const mockDisplayStats = jest.fn();
 
@@ -22,7 +24,7 @@ describe("UserStats", () => {
     wrapper = shallow(
       <UserStats
         userShows={mockUserShows}
-        songs={mockSongs}
+        songs={mockAllSongs}
         getStates={mockUniqueCitiesVar}
         displayStats={mockDisplayStats}
       />
@@ -158,6 +160,12 @@ describe("UserStats", () => {
   describe("getTotalSongs", () => {
     it("should return an array of total songs played when invoked", () => {
       expect(instance.getTotalSongs()).toEqual(mockTotalSongs);
+    });
+  });
+
+  describe("songsNotHeard", () => {
+    it.skip("should return a list of songs the user hasn't heard (not on their list)", () => {
+      const result = instance.songsNotHeard();
     });
   });
 });
