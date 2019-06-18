@@ -12,6 +12,7 @@ let mockCurrentSetList = jest.fn();
 let mockUserShowList = jest.fn();
 const show = MockData.mockSingleShow;
 const mockSaved = true;
+const mockRemoveFromList = jest.fn();
 const mockShowId = true;
 
 describe("Shows", () => {
@@ -27,6 +28,7 @@ describe("Shows", () => {
         shows={mockSingleShow}
         saved={mockSaved}
         showId={mockShowId}
+        removeFromList={mockRemoveFromList}
       />
     );
     instance = wrapper.instance();
@@ -67,7 +69,19 @@ describe("Shows", () => {
       instance.addToList();
       expect(wrapper.state()).toEqual({ inList: true });
     });
+
+    it("should invoke 'userShowList' with the new show added", () => {
+      instance.addToList(mockSingleShow);
+      expect(mockUserShowList).toHaveBeenCalled();
+    })
   });
+
+  describe("removeFromList", () => {
+    it.skip("should invoke 'removeFromList' with correctparams when remove btn is clicked", () => {
+      wrapper.find("[data-test='remove-btn']").simulate("click")
+      expect(mockRemoveFromList).toHaveBeenCalled()
+    })
+  })
 });
 
 describe("mapStateToProps", () => {

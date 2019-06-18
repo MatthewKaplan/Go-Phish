@@ -8,15 +8,16 @@ import "./Years.scss";
 import PropTypes from "prop-types";
 
 export class Years extends Component {
-  handleClick = year => {
+  handleClick = async year => {
     this.props.loadingData(true);
-    fetchData(`years/${year}`)
-      .then(response => cleanShows(response.data))
-      .then(
-        result =>
-          this.props.currentShows(result) && this.props.loadingData(false)
-      )
-      .catch(err => this.props.handleError(err));
+    try {
+      const yearResults = await fetchData(`years/${year}`);
+      const cleanYearResults = await cleanShows(yearResults.data);
+      this.props.currentShows(cleanYearResults);
+      this.props.loadingData(false);
+    } catch (error) {
+      this.props.handleError(error.message);
+    }
   };
 
   render() {

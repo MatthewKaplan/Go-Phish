@@ -53,7 +53,7 @@ export class HomePage extends Component {
         </section>
         <div className={showTour ? "random-show" : "random-show-active"}>
           <section className="random-show-top">
-            {show.length ? this.renderRandomInfo() : null}
+            {show.length && this.renderRandomInfo()}
           </section>
           <div className="sets">
             <section className="set-one">

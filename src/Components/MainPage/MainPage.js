@@ -36,54 +36,57 @@ export class MainPage extends Component {
     this.fetchUpcomingShows();
   }
 
-  fetchUpcomingShows = () => {
+  fetchUpcomingShows = async () => {
     if (this.props.upcoming.length === 0) {
-      fetchMembers(
-        "https://cors-anywhere.herokuapp.com/https://mighty-mountain-16368.herokuapp.com/api/v1/phishTour"
-      )
-        .then(response => this.props.upcomingShows(response))
-        .catch(err => this.props.handleError(err.message));
+      const url = "https://cors-anywhere.herokuapp.com/https://mighty-mountain-16368.herokuapp.com/api/v1/phishTour";
+      try {
+        const upcomingShowsResult = await fetchMembers(url);
+        this.props.upcomingShows(upcomingShowsResult)
+      } catch (error) {
+        this.props.handleError(error.message)
+      }
     }
   };
 
-  fetchRandomShow = () => {
+  fetchRandomShow = async () => {
     if (this.props.show.length === 0) {
-      this.props.loadingData(true);
       this.setState({ randomShowFetching: true });
-      fetchData(`random-show`)
-        .then(response => cleanRandomShow(response.data))
-        .then(
-          results =>
-            this.props.randomShow(results) &&
-            this.setState({ randomShowFetching: false })
-        )
-        .catch(err => this.props.handleError(err.message));
+      try {
+        const randomShow = await fetchData(`random-show`);
+        const cleanRandom = cleanRandomShow(randomShow.data);
+        this.props.randomShow(cleanRandom);
+        this.setState({ randomShowFetching: false });
+      } catch (error) {
+        this.props.handleError(error.message);
+      }
     }
   };
 
-  fetchSongs = () => {
+  fetchSongs = async () => {
     if (this.props.songs.length === 0) {
       this.props.loadingData(true);
-      fetchData(`songs.json?per_page=901`)
-        .then(response => cleanSongs(response.data))
-        .then(
-          results =>
-            this.props.allSongs(results) && this.props.loadingData(false)
-        )
-        .catch(err => this.props.handleError(err.message));
+      try {
+        const songsResults = await fetchData(`songs.json?per_page=901`);
+        const cleanSongsResults = cleanSongs(songsResults.data);
+        this.props.allSongs(cleanSongsResults);
+        this.props.loadingData(false);
+      } catch (error) {
+        this.props.handleError(error.message);
+      }
     }
   };
 
-  fetchVenues = () => {
+  fetchVenues = async () => {
     if (this.props.venues.length === 0) {
       this.props.loadingData(true);
-      fetchData(`venues.json?per_page=651`)
-        .then(response => cleanVenues(response.data))
-        .then(
-          results =>
-            this.props.allVenues(results) && this.props.loadingData(false)
-        )
-        .catch(err => this.props.handleError(err.message));
+      try {
+        const venueResults = await fetchData(`venues.json?per_page=651`);
+        const cleanVenueResults = cleanVenues(venueResults.data);
+        this.props.allVenues(cleanVenueResults);
+        this.props.loadingData(false);
+      } catch (error) {
+        this.props.handleError(error.message);
+      }
     }
   };
 

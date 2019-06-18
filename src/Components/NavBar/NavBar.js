@@ -17,45 +17,48 @@ import PropTypes from "prop-types";
 export class NavBar extends Component {
   state = { subNav: false };
 
-  fetchYears = () => {
+  fetchYears = async () => {
     this.toggleSubNav(false);
     if (this.props.years.length === 0) {
       this.props.loadingData(true);
-      fetchData(`years?include_show_counts=true`)
-        .then(
-          results =>
-            this.props.allYears(results.data) && this.props.loadingData(false)
-        )
-        .catch(err => this.props.handleError(err.message));
+      try {
+        const yearsResults = await fetchData(`years?include_show_counts=true`);
+        this.props.allYears(yearsResults.data);
+        this.props.loadingData(false);
+      } catch (error) {
+        this.props.handleError(error.message);
+      }
     }
   };
 
-  fetchTours = () => {
+  fetchTours = async () => {
     this.toggleSubNav(false);
     if (this.props.tours.length === 0) {
       this.props.loadingData(true);
-      fetchData(`tours.json?per_page=99`)
-        .then(response => cleanTours(response.data))
-        .then(
-          results =>
-            this.props.allTours(results) && this.props.loadingData(false)
-        )
-        .catch(err => this.props.handleError(err.message));
+
+      try {
+        const tourResults = await fetchData(`tours.json?per_page=99`);
+        const cleanTourResults = cleanTours(tourResults.data);
+        this.props.allTours(cleanTourResults);
+        this.props.loadingData(false);
+      } catch (error) {
+        this.props.handleError(error.message);
+      }
     }
   };
 
-  fetchPhishData = () => {
+  fetchPhishData = async () => {
     this.toggleSubNav(false);
     if (this.props.members.length === 0) {
+      const url = `https://cors-anywhere.herokuapp.com/https://peaceful-castle-66511.herokuapp.com/api/v1/phish/members`;
       this.props.loadingData(true);
-      fetchMembers(
-        `https://cors-anywhere.herokuapp.com/https://peaceful-castle-66511.herokuapp.com/api/v1/phish/members`
-      )
-        .then(
-          results =>
-            this.props.allMembers(results) && this.props.loadingData(false)
-        )
-        .catch(err => this.props.handleError(err.message));
+      try {
+        const memberResults = await fetchMembers(url);
+        this.props.allMembers(memberResults);
+        this.props.loadingData(false);
+      } catch (error) {
+        this.props.handleError(error.message);
+      }
     }
   };
 

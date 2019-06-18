@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 export class Shows extends Component {
   state = { inList: false };
   componentDidMount() {
-    this.checkIfSaved(this.props.userShows);
+    this.checkIfSaved();
   }
 
   handleClick = show => {
@@ -26,15 +26,16 @@ export class Shows extends Component {
 
   removeFromList = showId => {
     this.setState({ inList: false });
-    let shows = this.props.userShows;
+    const { userShows } = this.props;
 
-    const filteredShows = shows.filter(show => show.id !== showId);
+    const filteredShows = userShows.filter(show => show.id !== showId);
     this.props.userShowList(filteredShows);
   };
 
-  checkIfSaved = shows => {
+  checkIfSaved = () => {
     const showId = this.props.show.id;
-    let saved = shows.some(show => show.id === showId);
+    const { userShows } = this.props;
+    let saved = userShows.some(show => show.id === showId);
     this.setState({
       inList: saved
     });
