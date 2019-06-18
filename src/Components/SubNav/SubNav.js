@@ -43,8 +43,8 @@ export class SubNav extends Component {
     this.props.allVenues(filteredVenues);
   };
 
-  filterSongs = path => {
-    this.props.allSongs(this.state.songs);
+  filterSongs = async path => {
+    await this.props.allSongs(this.state.songs);
     this.toggleActiveState(path);
     const { songs } = this.props;
     const filteredSongs = songs.filter(song => {

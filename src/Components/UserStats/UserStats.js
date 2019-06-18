@@ -121,7 +121,7 @@ export class UserStats extends Component {
   };
 
   render() {
-    const { userShows, songs } = this.props;
+    const { userShows } = this.props;
     const {
       songStats,
       showStats,

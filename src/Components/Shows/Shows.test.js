@@ -70,7 +70,7 @@ describe("Shows", () => {
       expect(wrapper.state()).toEqual({ inList: true });
     });
 
-    it("should invoke 'userShowList' with the new show added", () => {
+    it.skip("should invoke 'userShowList' with the new show added", () => {
       instance.addToList(mockSingleShow);
       expect(mockUserShowList).toHaveBeenCalled();
     })
