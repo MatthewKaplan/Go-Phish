@@ -4,9 +4,7 @@ GoPhish is a web application for Phish fans by Phish fans. Phish fans may visit 
 
 ## Site deployed live at:
 
-```
-https://gophish.netlify.com/
-```
+[https://gophish.netlify.com/](https://gophish.netlify.com/)
 
 ## Preview:
 
@@ -71,22 +69,23 @@ $ npm t -- --coverage --watchAll=false
 ```
 
 <p align="center">
-  <img src="https://i.imgur.com/joQNyMw.png" alt="project test coverage">
+  <img src="https://i.imgur.com/UYvQZHF.png" alt="project test coverage">
 </p>
 
 ## Project Tools:
 
-JSX
-Javascript
-React
-Sass
-React-Router
-Redux
+- Javascript
+- React.js
+- node.js
+- Heroku
+- SASS
+- React-Router
+- Redux
 
 ## Tested With:
 
-Jest
-Enzyme
+- Jest
+- Enzyme
 
 ## Contributing:
 

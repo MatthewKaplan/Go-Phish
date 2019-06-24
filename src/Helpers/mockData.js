@@ -1991,77 +1991,185 @@ const mockUpcomingShows = [
 ];
 
 const mockSingleShow = {
-  date: "1988-02-03",
-  id: 369,
-  tour_id: 6,
-  venue_name: "Gallaghers",
-  location: "Waitsfield, VT",
+  date: "2019-02-21",
+  id: 1987,
+  tour_id: 106,
+  venue_name: "Barcelo Maya Beach",
+  location: "Riviera Maya, Quintana Roo, Mexico",
   tracks: [
     {
-      id: 7705,
-      mp3: "https://phish.in/audio/000/007/705/7705.mp3",
+      id: 33499,
+      mp3: "https://phish.in/audio/000/033/499/33499.mp3",
       position: 1,
       set_name: "Set 1",
-      show_id: 369,
-      title: "David Bowie",
-      song_ids: 979
+      show_id: 1987,
+      title: "Spock's Brain",
+      song_ids: 718
     },
     {
-      id: 7706,
-      mp3: "https://phish.in/audio/000/007/706/7706.mp3",
+      id: 33500,
+      mp3: "https://phish.in/audio/000/033/500/33500.mp3",
       position: 2,
-      set_name: "Set 2",
-      show_id: 369,
-      title: "Sympathy for the Devil",
-      song_ids: 751
+      set_name: "Set 1",
+      show_id: 1987,
+      title: "Twist",
+      song_ids: 806
     },
     {
-      id: 7707,
-      mp3: "https://phish.in/audio/000/007/707/7707.mp3",
+      id: 33501,
+      mp3: "https://phish.in/audio/000/033/501/33501.mp3",
       position: 3,
-      set_name: "Set 2",
-      show_id: 369,
-      title: "Fee",
-      song_ids: 248
+      set_name: "Set 1",
+      show_id: 1987,
+      title: "Free",
+      song_ids: 276
     },
     {
-      id: 7708,
-      mp3: "https://phish.in/audio/000/007/708/7708.mp3",
+      id: 33502,
+      mp3: "https://phish.in/audio/000/033/502/33502.mp3",
       position: 4,
-      set_name: "Set 2",
-      show_id: 369,
-      title: "Run Like an Antelope",
-      song_ids: 651
+      set_name: "Set 1",
+      show_id: 1987,
+      title: "Who Loves the Sun?",
+      song_ids: 852
     },
     {
-      id: 7709,
-      mp3: "https://phish.in/audio/000/007/709/7709.mp3",
+      id: 33503,
+      mp3: "https://phish.in/audio/000/033/503/33503.mp3",
       position: 5,
-      set_name: "Set 2",
-      show_id: 369,
-      title: "AC/DC Bag",
-      song_ids: 11
+      set_name: "Set 1",
+      show_id: 1987,
+      title: "Everything's Right",
+      song_ids: 982
     },
     {
-      id: 7710,
-      mp3: "https://phish.in/audio/000/007/710/7710.mp3",
+      id: 33504,
+      mp3: "https://phish.in/audio/000/033/504/33504.mp3",
       position: 6,
+      set_name: "Set 1",
+      show_id: 1987,
+      title: "We Are Come to Outlive Our Brains",
+      song_ids: 1017
+    },
+    {
+      id: 33505,
+      mp3: "https://phish.in/audio/000/033/505/33505.mp3",
+      position: 7,
+      set_name: "Set 1",
+      show_id: 1987,
+      title: "Rise/Come Together",
+      song_ids: 165
+    },
+    {
+      id: 33506,
+      mp3: "https://phish.in/audio/000/033/506/33506.mp3",
+      position: 8,
+      set_name: "Set 1",
+      show_id: 1987,
+      title: "Funky Bitch",
+      song_ids: 285
+    },
+    {
+      id: 33507,
+      mp3: "https://phish.in/audio/000/033/507/33507.mp3",
+      position: 9,
+      set_name: "Set 1",
+      show_id: 1987,
+      title: "Sand",
+      song_ids: 660
+    },
+    {
+      id: 33508,
+      mp3: "https://phish.in/audio/000/033/508/33508.mp3",
+      position: 10,
       set_name: "Set 2",
-      show_id: 369,
-      title: "Possum",
-      song_ids: 595
+      show_id: 1987,
+      title: "Soul Planet",
+      song_ids: 1010
+    },
+    {
+      id: 33509,
+      mp3: "https://phish.in/audio/000/033/509/33509.mp3",
+      position: 11,
+      set_name: "Set 2",
+      show_id: 1987,
+      title: "Spanish Moon",
+      song_ids: 711
+    },
+    {
+      id: 33510,
+      mp3: "https://phish.in/audio/000/033/510/33510.mp3",
+      position: 12,
+      set_name: "Set 2",
+      show_id: 1987,
+      title: "I Always Wanted It This Way",
+      song_ids: 963
+    },
+    {
+      id: 33511,
+      mp3: "https://phish.in/audio/000/033/511/33511.mp3",
+      position: 13,
+      set_name: "Set 2",
+      show_id: 1987,
+      title: "Death Don't Hurt Very Long",
+      song_ids: 1021
+    },
+    {
+      id: 33512,
+      mp3: "https://phish.in/audio/000/033/512/33512.mp3",
+      position: 14,
+      set_name: "Set 2",
+      show_id: 1987,
+      title: "Also Sprach Zarathustra",
+      song_ids: 28
+    },
+    {
+      id: 33513,
+      mp3: "https://phish.in/audio/000/033/513/33513.mp3",
+      position: 15,
+      set_name: "Set 2",
+      show_id: 1987,
+      title: "Bathtub Gin",
+      song_ids: 67
+    },
+    {
+      id: 33514,
+      mp3: "https://phish.in/audio/000/033/514/33514.mp3",
+      position: 16,
+      set_name: "Set 2",
+      show_id: 1987,
+      title: "The Squirming Coil",
+      song_ids: 722
+    },
+    {
+      id: 33515,
+      mp3: "https://phish.in/audio/000/033/515/33515.mp3",
+      position: 17,
+      set_name: "Encore",
+      show_id: 1987,
+      title: "Waste",
+      song_ids: 828
+    },
+    {
+      id: 33516,
+      mp3: "https://phish.in/audio/000/033/516/33516.mp3",
+      position: 18,
+      set_name: "Encore",
+      show_id: 1987,
+      title: "Bold As Love",
+      song_ids: 106
     }
   ],
   venue: {
-    id: 272,
-    slug: "gallagher-s",
-    name: "Gallaghers",
+    id: 817,
+    slug: "barcelo-maya-beach",
+    name: "Barcelo Maya Beach",
     other_names: [],
-    latitude: 44.19599,
-    longitude: -72.82602,
-    shows_count: 3,
-    location: "Waitsfield, VT",
-    updated_at: "2013-02-23T22:45:30Z"
+    latitude: 20.631389,
+    longitude: -87.073056,
+    shows_count: 6,
+    location: "Riviera Maya, Quintana Roo, Mexico",
+    updated_at: "2017-01-16T03:57:12Z"
   }
 };
 
@@ -4321,7 +4429,7 @@ const mockAllSongs = [
   "Everything Is Hollow",
   "Split Open and Melt",
   "Wilson"
-]
+];
 
 module.exports = {
   mockSong,

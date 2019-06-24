@@ -13,7 +13,6 @@ let mockUserShowList = jest.fn();
 const show = MockData.mockSingleShow;
 const mockSaved = true;
 const mockRemoveFromList = jest.fn();
-const mockShowId = true;
 
 describe("Shows", () => {
   let wrapper, instance;
@@ -27,7 +26,6 @@ describe("Shows", () => {
         userShowList={mockUserShowList}
         shows={mockSingleShow}
         saved={mockSaved}
-        showId={mockShowId}
         removeFromList={mockRemoveFromList}
       />
     );
@@ -63,25 +61,46 @@ describe("Shows", () => {
     });
   });
 
-  describe("addToList", () => {
-    it("should change state of 'inList' when invoked", () => {
-      expect(wrapper.state()).toEqual({ inList: false });
-      instance.addToList();
-      expect(wrapper.state()).toEqual({ inList: true });
+  describe("removeFromList", () => {
+    it("should invoke 'removeFromList' with correctparams when remove btn is clicked", () => {
+      let MockFn = jest.spyOn(wrapper.instance(), "removeFromList");
+      wrapper.setState({ inList: true });
+      wrapper.find("[data-test='remove-btn']").simulate("click");
+      expect(MockFn).toHaveBeenCalledWith(1987);
     });
 
-    it.skip("should invoke 'userShowList' with the new show added", () => {
-      instance.addToList(mockSingleShow);
-      expect(mockUserShowList).toHaveBeenCalled();
-    })
+    it("should change the state of inList to false when invoked", () => {
+      wrapper.setState({ inList: true });
+      expect(wrapper.state("inList")).toEqual(true);
+      instance.removeFromList(1987);
+      expect(wrapper.state("inList")).toEqual(false);
+    });
+
+    it("should invoke 'userShowList' with the correct params", () => {
+      instance.removeFromList(1987);
+      expect(mockUserShowList).toHaveBeenCalledWith(userList);
+    });
   });
 
-  describe("removeFromList", () => {
-    it.skip("should invoke 'removeFromList' with correctparams when remove btn is clicked", () => {
-      wrapper.find("[data-test='remove-btn']").simulate("click")
-      expect(mockRemoveFromList).toHaveBeenCalled()
-    })
-  })
+  describe("addToList", () => {
+    it("should invoke 'addToList' when add button is clicked", () => {
+      let MockFn = jest.spyOn(wrapper.instance(), "addToList");
+      wrapper.setState({ inList: false });
+      wrapper.find("[data-test='add-btn']").simulate("click");
+      expect(MockFn).toHaveBeenCalled();
+    });
+
+    it("should change state of 'inList' when invoked", () => {
+      expect(wrapper.state()).toEqual({ inList: true });
+      instance.addToList();
+      expect(wrapper.state()).toEqual({ inList: false });
+    });
+
+    it("should invoke 'userShowList' with the new show added", () => {
+      instance.addToList(mockSingleShow);
+      expect(mockUserShowList).toHaveBeenCalled();
+    });
+  });
 });
 
 describe("mapStateToProps", () => {
