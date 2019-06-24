@@ -2,7 +2,7 @@ import React from "react";
 import MockData from "../../Helpers/mockData";
 import * as actions from "../../Actions/index";
 import { shallow } from "enzyme";
-import { NavBar, mapDispatchToProps } from "./NavBar";
+import { NavBar, mapDispatchToProps, mapStateToProps } from "./NavBar";
 import { fetchData, fetchMembers } from "../../api/apiCalls";
 import { cleanTours } from "../../Helpers/cleaners";
 
@@ -258,6 +258,24 @@ describe("fetches when redux store is already full", () => {
       const result = instance.fetchTours();
       expect(result).toMatchObject({});
     });
+  });
+});
+
+describe("mapStateToProps", () => {
+  it("should return an object", () => {
+    const mockData = {
+      years: [],
+      tours: [],
+      members: []
+    };
+    const expected = {
+      years: [],
+      tours: [],
+      members: []
+    };
+
+    const mockprops = mapStateToProps(mockData);
+    expect(mockprops).toEqual(expected);
   });
 });
 

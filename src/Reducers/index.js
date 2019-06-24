@@ -21,7 +21,7 @@ export const rootReducer = combineReducers({
   venues: venuesReducer,
   shows: showsReducer,
   setList: setListReducer,
-  loadingData: loadingReducer,
+  isLoading: loadingReducer,
   show: randomShowReducer,
   upcoming: upcomingShowsReducer,
   userShows: userShowListReducer

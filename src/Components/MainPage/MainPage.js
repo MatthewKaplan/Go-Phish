@@ -115,6 +115,7 @@ export class MainPage extends Component {
 
   render() {
     const { isLoading } = this.props;
+    console.log(isLoading)
     const { randomShowFetching } = this.state;
 
     return (
@@ -151,7 +152,7 @@ export const mapStateToProps = state => ({
   songs: state.songs,
   venues: state.venues,
   shows: state.shows,
-  isLoading: state.loadingData,
+  isLoading: state.isLoading,
   upcoming: state.upcoming,
   show: state.show
 });
@@ -159,7 +160,7 @@ export const mapStateToProps = state => ({
 export const mapDispatchToProps = dispatch => ({
   allSongs: songs => dispatch(allSongs(songs)),
   allVenues: venues => dispatch(allVenues(venues)),
-  loadingData: bool => dispatch(loadingData(bool)),
+  loadingData: isLoading => dispatch(loadingData(isLoading)),
   randomShow: show => dispatch(randomShow(show)),
   upcomingShows: upcoming => dispatch(upcomingShows(upcoming)),
   handleError: errorMessage => dispatch(handleError(errorMessage))

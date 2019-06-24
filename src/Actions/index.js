@@ -38,9 +38,9 @@ export const currentSetList = setlist => ({
   setlist
 });
 
-export const loadingData = bool => ({
+export const loadingData = isLoading => ({
   type: "LOADING",
-  isLoading: bool
+  isLoading
 });
 
 export const randomShow = show => ({

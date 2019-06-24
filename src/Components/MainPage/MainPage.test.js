@@ -9,7 +9,7 @@ import {
   cleanSongs,
   cleanRandomShow
 } from "../../Helpers/cleaners";
-import reactElementToJSXString from 'react-element-to-jsx-string';
+import reactElementToJSXString from "react-element-to-jsx-string";
 
 jest.mock("../../api/apiCalls.js");
 jest.mock("../../Helpers/cleaners.js");
@@ -19,8 +19,16 @@ const mockTours = MockData.mockTours;
 const mockSongs = MockData.mockSong;
 const mockVenues = MockData.mockVenues;
 const mockShows = MockData.mockShow;
-const mockIsLoading = false;
-let mockLocation, mockAllSongs, mockUpcomingShows, mockCleanSongs, mockLoadingData, mockCleanVenues, mockAllVenues, mockCleanRandomShow, mockRandomShow, mockHandleError;
+let mockLocation,
+  mockAllSongs,
+  mockUpcomingShows,
+  mockCleanSongs,
+  mockLoadingData,
+  mockCleanVenues,
+  mockAllVenues,
+  mockCleanRandomShow,
+  mockRandomShow,
+  mockHandleError;
 mockLocation = mockAllSongs = mockUpcomingShows = mockCleanSongs = mockLoadingData = mockCleanVenues = mockAllVenues = mockCleanRandomShow = mockRandomShow = mockHandleError = jest.fn();
 
 describe("MainPage", () => {
@@ -32,12 +40,10 @@ describe("MainPage", () => {
   beforeEach(() => {
     wrapper = shallow(
       <MainPage
-        loadingData={mockLocation}
         location={mockLocation}
         years={mockYears}
         tours={mockTours}
         shows={mockShows}
-        isLoading={mockIsLoading}
         upcomingShows={mockUpcomingShows}
         cleanSongs={mockCleanSongs}
         cleanVenues={mockCleanVenues}
@@ -53,6 +59,7 @@ describe("MainPage", () => {
         handleError={mockHandleError}
       />
     );
+
     instance = wrapper.instance();
   });
 
@@ -93,16 +100,15 @@ describe("MainPage", () => {
 
     it("should invoke 'upcomingShows' with the response from 'fetchMembers'", () => {
       instance.fetchUpcomingShows();
-      expect(fetchMembers).toHaveBeenCalledWith(
-        "https://cors-anywhere.herokuapp.com/https://mighty-mountain-16368.herokuapp.com/api/v1/phishTour"
-      );
       expect(mockUpcomingShows).toHaveBeenCalledWith(1);
     });
 
     it("should finally throw an error if the response is not ok and save that error to redux store", async () => {
-      fetchMembers.mockImplementationOnce(() => Promise.reject(new Error('Fetch failed')))
-      await wrapper.instance().fetchUpcomingShows()
-      expect(mockHandleError).toHaveBeenCalledWith('Fetch failed')
+      fetchMembers.mockImplementationOnce(() =>
+        Promise.reject(new Error("Fetch failed"))
+      );
+      await instance.fetchUpcomingShows();
+      expect(mockHandleError).toHaveBeenCalledWith("Fetch failed");
     });
   });
 
@@ -136,7 +142,7 @@ describe("MainPage", () => {
     });
 
     it("should set the state of 'randomShowFetching' back to false after everything is finished", () => {
-      wrapper.setState({ randomShowFetching: true })
+      wrapper.setState({ randomShowFetching: true });
       expect(wrapper.state().randomShowFetching).toEqual(true);
       instance.fetchRandomShow();
       expect(mockRandomShow).toHaveBeenCalled() &&
@@ -144,9 +150,11 @@ describe("MainPage", () => {
     });
 
     it("should finally throw an error if the response is not ok and save that error to redux store", async () => {
-      fetchData.mockImplementationOnce(() => Promise.reject(new Error('Fetch failed')))
-      await wrapper.instance().fetchRandomShow()
-      expect(mockHandleError).toHaveBeenCalledWith('Fetch failed')
+      fetchData.mockImplementationOnce(() =>
+        Promise.reject(new Error("Fetch failed"))
+      );
+      await instance.fetchRandomShow();
+      expect(mockHandleError).toHaveBeenCalledWith("Fetch failed");
     });
   });
 
@@ -178,9 +186,11 @@ describe("MainPage", () => {
     });
 
     it("should finally throw an error if the response is not ok and save that error to redux store", async () => {
-      fetchData.mockImplementationOnce(() => Promise.reject(new Error('Fetch failed')))
-      await wrapper.instance().fetchSongs()
-      expect(mockHandleError).toHaveBeenCalledWith('Fetch failed')
+      fetchData.mockImplementationOnce(() =>
+        Promise.reject(new Error("Fetch failed"))
+      );
+      await instance.fetchSongs();
+      expect(mockHandleError).toHaveBeenCalledWith("Fetch failed");
     });
   });
 
@@ -204,9 +214,11 @@ describe("MainPage", () => {
     });
 
     it("should finally throw an error if the response is not ok and save that error to redux store", async () => {
-      fetchData.mockImplementationOnce(() => Promise.reject(new Error('Fetch failed')))
-      await wrapper.instance().fetchVenues()
-      expect(mockHandleError).toHaveBeenCalledWith('Fetch failed')
+      fetchData.mockImplementationOnce(() =>
+        Promise.reject(new Error("Fetch failed"))
+      );
+      await instance.fetchVenues();
+      expect(mockHandleError).toHaveBeenCalledWith("Fetch failed");
     });
   });
 
@@ -233,15 +245,17 @@ describe("MainPage", () => {
     });
     it("should render 'SetLists' components when '/SetLists' is passed through", () => {
       const results = instance.componentToRender("/SetList");
-      expect(reactElementToJSXString(results)).toEqual("<Connect(SetLists) />")
+      expect(reactElementToJSXString(results)).toEqual("<Connect(SetLists) />");
     });
     it("should render 'UserStats' components when '/UserStats' is passed through", () => {
       const results = instance.componentToRender("/UserStats");
-      expect(reactElementToJSXString(results)).toEqual("<Connect(UserStats) />")
+      expect(reactElementToJSXString(results)).toEqual(
+        "<Connect(UserStats) />"
+      );
     });
     it("should render 'HomePage' component by default", () => {
       const results = instance.componentToRender();
-      expect(reactElementToJSXString(results)).toEqual("<Connect(HomePage) />")
+      expect(reactElementToJSXString(results)).toEqual("<Connect(HomePage) />");
     });
   });
 });
@@ -252,12 +266,10 @@ describe("fetches when redux store is already full", () => {
   beforeEach(() => {
     wrapper = shallow(
       <MainPage
-        loadingData={mockLocation}
         location={mockLocation}
         years={mockYears}
         tours={mockTours}
         shows={mockShows}
-        isLoading={mockIsLoading}
         upcomingShows={mockUpcomingShows}
         cleanSongs={mockCleanSongs}
         cleanVenues={mockCleanVenues}
@@ -280,30 +292,30 @@ describe("fetches when redux store is already full", () => {
     it("shouldn't invoke 'fetchMembers' while the redux store already has 'upcoming' saved", () => {
       const result = instance.fetchUpcomingShows();
       expect(result).toMatchObject({});
-    })
-  })
+    });
+  });
 
   describe("fetchRandomShow with full redux", () => {
-    it("shouldn't invoke 'fetchData' while the redux store already has 'upcoming' saved", () => {     
+    it("shouldn't invoke 'fetchData' while the redux store already has 'upcoming' saved", () => {
       const result = instance.fetchRandomShow();
       expect(result).toMatchObject({});
-    })
-  })
+    });
+  });
 
   describe("fetchSongs with full redux", () => {
-    it("shouldn't invoke 'fetchData' while the redux store already has 'upcoming' saved", () => {     
+    it("shouldn't invoke 'fetchData' while the redux store already has 'upcoming' saved", () => {
       const result = instance.fetchSongs();
       expect(result).toMatchObject({});
-    })
-  })
+    });
+  });
 
   describe("fetchVenues with full redux", () => {
-    it("shouldn't invoke 'fetchData' while the redux store already has 'upcoming' saved", () => {     
+    it("shouldn't invoke 'fetchData' while the redux store already has 'upcoming' saved", () => {
       const result = instance.fetchVenues();
       expect(result).toMatchObject({});
-    })
-  })
-})
+    });
+  });
+});
 
 describe("mapStateToProps", () => {
   it("should return an object", () => {
@@ -313,7 +325,7 @@ describe("mapStateToProps", () => {
       tours: [],
       venues: [],
       shows: [],
-      isLoading: undefined,
+      isLoading: false,
       upcoming: [],
       show: []
     };
@@ -323,7 +335,7 @@ describe("mapStateToProps", () => {
       tours: [],
       venues: [],
       shows: [],
-      isLoading: undefined,
+      isLoading: false,
       upcoming: [],
       show: []
     };
@@ -352,9 +364,9 @@ describe("mapDispatchToProps", () => {
 
   it("should call dispatch for loadingData", () => {
     const mockDispatch = jest.fn();
-    const actionToDispatch = actions.loadingData(mockIsLoading);
+    const actionToDispatch = actions.loadingData(false);
     const mappedProps = mapDispatchToProps(mockDispatch);
-    mappedProps.loadingData(mockIsLoading);
+    mappedProps.loadingData(false);
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
   });
 
