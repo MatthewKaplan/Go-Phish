@@ -95,7 +95,7 @@ Please make sure to update tests as appropriate.
 
 ## Made Possible By:
 
-The Phish.in API
+[The Phish.in API](http://phish.in/api-docs)
 
 ## License
 
