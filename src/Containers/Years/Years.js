@@ -4,7 +4,6 @@ import { cleanShows } from "../../Helpers/cleaners";
 import { connect } from "react-redux";
 import { currentShows, loadingData, handleError } from "../../Actions/index";
 import { Link } from "react-router-dom";
-import "./Years.scss";
 import PropTypes from "prop-types";
 
 export class Years extends Component {

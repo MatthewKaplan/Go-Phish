@@ -1,5 +1,5 @@
-import React from "react";
-import { shallow } from "enzyme";
+import React from "./node_modules/react";
+import { shallow } from "./node_modules/enzyme";
 import * as actions from "../../Actions/index";
 import MockData from "../../Helpers/mockData";
 import { fetchData, fetchMembers } from "../../api/apiCalls";
@@ -9,7 +9,7 @@ import {
   cleanSongs,
   cleanRandomShow
 } from "../../Helpers/cleaners";
-import reactElementToJSXString from "react-element-to-jsx-string";
+import reactElementToJSXString from "./node_modules/react-element-to-jsx-string";
 
 jest.mock("../../api/apiCalls.js");
 jest.mock("../../Helpers/cleaners.js");

@@ -1,0 +1,33 @@
+@import './variables';
+@import '../Components/App/App.scss';
+@import '../Containers/BandBio/BandBio.scss';
+@import '../Containers/BandMembers/BandMembers.scss';
+@import '../Containers/HomePage/HomePage.scss';
+@import '../Components/Loading/Loading.scss';
+@import '../Containers/MainPage/MainPage.scss';
+@import '../Components/MemberInfo/MemberInfo.scss';
+@import '../Containers/NavBar/NavBar.scss';
+@import '../Components/NotFound/NotFound.scss';
+@import '../Containers/SetLists/SetLists.scss';
+@import '../Containers/Shows/Shows.scss';
+@import '../Components/Songs/Songs.scss';
+@import '../Containers/SubNav/SubNav.scss';
+@import '../Containers/Tours/Tours.scss';
+@import '../Components/UpcomingShows/UpcomingShows.scss';
+@import '../Containers/UserStats/UserStats.scss';
+@import '../Components/Venues/Venues.scss';
+@import '../Containers/Years/Years.scss';
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

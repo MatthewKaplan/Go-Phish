@@ -1,5 +1,4 @@
 import React from "react";
-import "./Venues.scss";
 
 export const Venues = ({ venue }) => {
   return (

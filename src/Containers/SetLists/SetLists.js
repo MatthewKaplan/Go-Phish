@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./SetLists.scss";
 import { connect } from "react-redux";
 import { setData } from "../../Helpers/cleaners";
 import PropTypes from "prop-types";

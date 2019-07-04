@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { currentSetList, userShowList } from "../../Actions/index";
 import { Link } from "react-router-dom";
-import "./Shows.scss";
 import PropTypes from "prop-types";
 
 export class Shows extends Component {

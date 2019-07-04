@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./UserStats.scss";
 import PropTypes from "prop-types";
 const ids = require("shortid");
 
