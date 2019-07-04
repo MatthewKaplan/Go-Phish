@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { fetchData } from "../../api/apiCalls";
 import { connect } from "react-redux";
 import { allSongs, allVenues, handleError } from "../../Actions/index";
-import "./SubNav.scss";
 import { cleanSongs, cleanVenues } from "../../Helpers/cleaners";
 import PropTypes from "prop-types";
 

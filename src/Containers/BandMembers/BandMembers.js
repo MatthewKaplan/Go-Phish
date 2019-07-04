@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./BandMembers.scss";
 import { connect } from "react-redux";
 import { currentMember } from "../../Actions/index";
 import PropTypes from "prop-types";

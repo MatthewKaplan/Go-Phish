@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchData, fetchMembers } from "../../api/apiCalls";
-import SubNav from "../SubNav/SubNav";
+import SubNav from "../../Containers/SubNav/SubNav";
 import {
   allYears,
   allTours,
@@ -11,7 +11,6 @@ import {
   handleError
 } from "../../Actions/index";
 import { cleanTours } from "../../Helpers/cleaners";
-import "./NavBar.scss";
 import PropTypes from "prop-types";
 
 export class NavBar extends Component {

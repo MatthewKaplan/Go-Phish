@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import "./HomePage.scss";
 import { setData } from "../../Helpers/cleaners";
 import { connect } from "react-redux";
 import { ReactComponent as Arrow } from "../../Assets/arrow.svg";
-import UpcomingShows from "../UpcomingShows/UpcomingShows";
+import UpcomingShows from "../../Components/UpcomingShows/UpcomingShows";
 import PropTypes from "prop-types";
 
 export class HomePage extends Component {

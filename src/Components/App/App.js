@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import "./App.scss";
-import NavBar from "../NavBar/NavBar";
-import MainPage from "../MainPage/MainPage";
+import NavBar from "../../Containers/NavBar/NavBar";
+import MainPage from "../../Containers/MainPage/MainPage";
 import NotFound from "../NotFound/NotFound";
-import BandBio from "../BandBio/BandBio";
+import BandBio from "../../Containers/BandBio/BandBio";
 import { Route, Switch } from "react-router-dom";
 
 class App extends Component {

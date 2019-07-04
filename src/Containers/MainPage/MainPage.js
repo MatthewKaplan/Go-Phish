@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./MainPage.scss";
 import { fetchData, fetchMembers } from "../../api/apiCalls";
 import {
   allSongs,
@@ -10,21 +9,22 @@ import {
   handleError
 } from "../../Actions/index";
 import { connect } from "react-redux";
-import Tours from "../Tours/Tours";
-import Years from "../Years/Years";
-import { Songs } from "../Songs/Songs";
-import { Venues } from "../Venues/Venues";
-import Shows from "../Shows/Shows";
-import HomePage from "../HomePage/HomePage";
-import SetLists from "../SetLists/SetLists";
-import { Loading } from "../Loading/Loading";
-import UserStats from "../UserStats/UserStats";
+import Tours from "../../Containers/Tours/Tours";
+import Years from "../../Containers/Years/Years";
+import { Songs } from "../../Components/Songs/Songs";
+import { Venues } from "../../Components/Venues/Venues";
+import Shows from "../../Containers/Shows/Shows";
+import HomePage from "../../Containers/HomePage/HomePage";
+import SetLists from "../../Containers/SetLists/SetLists";
+import { Loading } from "../../Components/Loading/Loading";
+import UserStats from "../../Containers/UserStats/UserStats";
 import {
   cleanSongs,
   cleanVenues,
   cleanRandomShow
 } from "../../Helpers/cleaners";
 import PropTypes from "prop-types";
+
 
 export class MainPage extends Component {
   state = { randomShowFetching: false };

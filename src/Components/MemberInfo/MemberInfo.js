@@ -1,5 +1,4 @@
 import React from "react";
-import "./MemberInfo.scss";
 
 export const MemberInfo = ({ currentMember, closePopup }) => {
   return (
