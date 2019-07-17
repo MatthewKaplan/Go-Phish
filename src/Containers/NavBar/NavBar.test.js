@@ -4,7 +4,7 @@ import * as actions from "../../Actions/index";
 import { shallow } from "enzyme";
 import { NavBar, mapDispatchToProps, mapStateToProps } from "./NavBar";
 import { fetchData, fetchMembers } from "../../api/apiCalls";
-import { cleanTours } from "../../Helpers/cleaners";
+import { cleanTours, cleanSongs, cleanVenues } from "../../Helpers/cleaners";
 
 jest.mock("../../api/apiCalls.js");
 jest.mock("../../Helpers/cleaners.js");
@@ -16,6 +16,8 @@ const mockHandleError = jest.fn();
 const mockAllYears = jest.fn();
 const mockAllTours = jest.fn();
 const mockAllMembers = jest.fn();
+const mockAllVenues = jest.fn();
+const mockAllSongs = jest.fn();
 let mockLoadingData = jest.fn();
 let mockToggleSubNav = jest.fn();
 
@@ -31,10 +33,14 @@ describe("NavBar", () => {
         loadingData={mockLoadingData}
         allYears={mockAllYears}
         allTours={mockAllTours}
+        allVenues={mockAllVenues}
+        allSongs={mockAllSongs}
         toggleSubNav={mockToggleSubNav}
         years={[]}
         tours={[]}
         members={[]}
+        songs={[]}
+        venues={[]}
         handleError={mockHandleError}
         allMembers={mockAllMembers}
       />
@@ -178,6 +184,70 @@ describe("NavBar", () => {
       expect(mockHandleError).toHaveBeenCalledWith("Fetch failed");
     });
   });
+  
+  describe("fetchSongs", () => {
+    it("should call 'fetchData' with correct params when fetchSongs is invoked", () => {
+      instance.fetchSongs();
+      expect(fetchData).toHaveBeenCalledWith("songs.json?per_page=901");
+    });
+
+    it("should clean the response of 'fetchSongs' when invoked", async () => {
+      cleanSongs.mockImplementation(() => Promise.resolve(1));
+      instance.fetchSongs();
+      expect(cleanSongs).toHaveBeenCalled();
+    });
+
+    it("should invoke 'allSongs' with the results from 'cleanSongs'", () => {
+      cleanSongs.mockImplementation(() => Promise.resolve(1));
+      instance.fetchSongs();
+      expect(cleanSongs).toHaveBeenCalled();
+      expect(mockAllSongs).toHaveBeenCalled();
+    });
+
+    it("should invoke 'loadingData' with the correct params", () => {
+      cleanSongs.mockImplementation(() => Promise.resolve(1));
+      instance.fetchSongs();
+      expect(cleanSongs).toHaveBeenCalled();
+      expect(mockAllSongs).toHaveBeenCalled() &&
+        expect(mockLoadingData).toHaveBeenCalled();
+    });
+
+    it("should finally throw an error if the response is not ok and save that error to redux store", async () => {
+      fetchData.mockImplementationOnce(() =>
+        Promise.reject(new Error("Fetch failed"))
+      );
+      await instance.fetchSongs();
+      expect(mockHandleError).toHaveBeenCalledWith("Fetch failed");
+    });
+  });
+
+  describe("fetchVenues", () => {
+    it("should call 'fetchData' with correct params when fetchVenues is invoked", () => {
+      instance.fetchVenues();
+      expect(fetchData).toHaveBeenCalledWith("venues.json?per_page=651");
+    });
+
+    it("should clean the response of 'fetchVenues' when invoked", async () => {
+      cleanVenues.mockImplementation(() => Promise.resolve(1));
+      instance.fetchVenues();
+      expect(cleanVenues).toHaveBeenCalled();
+    });
+
+    it("should invoke 'allVenues' with results from 'cleanVenues'", () => {
+      cleanVenues.mockImplementation(() => Promise.resolve(1));
+      instance.fetchVenues();
+      expect(cleanSongs).toHaveBeenCalled();
+      expect(mockAllVenues).toHaveBeenCalled();
+    });
+
+    it("should finally throw an error if the response is not ok and save that error to redux store", async () => {
+      fetchData.mockImplementationOnce(() =>
+        Promise.reject(new Error("Fetch failed"))
+      );
+      await instance.fetchVenues();
+      expect(mockHandleError).toHaveBeenCalledWith("Fetch failed");
+    });
+  });
 
   describe("fetchPhishData", () => {
     it("should set the state of subNav to false", () => {
@@ -234,6 +304,8 @@ describe("fetches when redux store is already full", () => {
         members={members}
         handleError={mockHandleError}
         allMembers={mockAllMembers}
+        venues={MockData.mockVenues}
+        songs={MockData.mockSong}
       />
     );
     instance = wrapper.instance();
@@ -259,6 +331,20 @@ describe("fetches when redux store is already full", () => {
       expect(result).toMatchObject({});
     });
   });
+
+  describe('fetchVenues with full redux', () => {
+		it("shouldn't invoke 'fetchData' while the redux store already has 'upcoming' saved", () => {
+			const result = instance.fetchVenues();
+			expect(result).toMatchObject({});
+		});
+  });
+  
+  describe('fetchSongs with full redux', () => {
+		it("shouldn't invoke 'fetchData' while the redux store already has 'upcoming' saved", () => {
+			const result = instance.fetchSongs();
+			expect(result).toMatchObject({});
+		});
+	});
 });
 
 describe("mapStateToProps", () => {
@@ -318,6 +404,22 @@ describe("mapDispatchToProps", () => {
     const actionToDispatch = actions.handleError(error);
     const mappedProps = mapDispatchToProps(mockDispatch);
     mappedProps.handleError(error);
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+  });
+
+  it("should call dispatch for allSongs", () => {
+    const mockDispatch = jest.fn();
+    const actionToDispatch = actions.allSongs(MockData.mockSong);
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.allSongs(MockData.mockSong);
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+  });
+
+  it("should call dispatch for allVenues", () => {
+    const mockDispatch = jest.fn();
+    const actionToDispatch = actions.allVenues(MockData.mockVenues);
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.allVenues(MockData.mockVenues);
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
   });
 });

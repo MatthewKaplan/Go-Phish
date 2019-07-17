@@ -8,9 +8,11 @@ import {
   allTours,
   allMembers,
   loadingData,
-  handleError
+  handleError,
+  allSongs,
+  allVenues
 } from "../../Actions/index";
-import { cleanTours } from "../../Helpers/cleaners";
+import { cleanTours, cleanSongs, cleanVenues } from "../../Helpers/cleaners";
 import PropTypes from "prop-types";
 
 export class NavBar extends Component {
@@ -39,6 +41,36 @@ export class NavBar extends Component {
         const tourResults = await fetchData(`tours.json?per_page=99`);
         const cleanTourResults = cleanTours(tourResults.data);
         this.props.allTours(cleanTourResults);
+        this.props.loadingData(false);
+      } catch (error) {
+        this.props.handleError(error.message);
+      }
+    }
+  };
+
+  fetchSongs = async () => {
+    this.toggleSubNav(true)
+    if (this.props.songs.length === 0) {
+      this.props.loadingData(true);
+      try {
+        const songsResults = await fetchData(`songs.json?per_page=901`);
+        const cleanSongsResults = cleanSongs(songsResults.data);
+        this.props.allSongs(cleanSongsResults);
+        this.props.loadingData(false);
+      } catch (error) {
+        this.props.handleError(error.message);
+      }
+    }
+  };
+
+  fetchVenues = async () => {
+    this.toggleSubNav(true)
+    if (this.props.venues.length === 0) {
+      this.props.loadingData(true);
+      try {
+        const venueResults = await fetchData(`venues.json?per_page=651`);
+        const cleanVenueResults = cleanVenues(venueResults.data);
+        this.props.allVenues(cleanVenueResults);
         this.props.loadingData(false);
       } catch (error) {
         this.props.handleError(error.message);
@@ -111,7 +143,7 @@ export class NavBar extends Component {
                   activeClassName="active"
                   className="link"
                   data-test="venue-btn"
-                  onClick={() => this.toggleSubNav(true)}
+                  onClick={() => this.fetchVenues()}
                 >
                   Venues
                 </NavLink>
@@ -122,7 +154,7 @@ export class NavBar extends Component {
                   activeClassName="active"
                   className="link"
                   data-test="songs-btn"
-                  onClick={() => this.toggleSubNav(true)}
+                  onClick={() => this.fetchSongs()}
                 >
                   Songs
                 </NavLink>
@@ -167,7 +199,9 @@ NavBar.propTypes = {
 export const mapStateToProps = state => ({
   years: state.years,
   tours: state.tours,
-  members: state.members
+  members: state.members,
+  songs: state.songs,
+  venues: state.venues
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -175,6 +209,8 @@ export const mapDispatchToProps = dispatch => ({
   allTours: tours => dispatch(allTours(tours)),
   allMembers: members => dispatch(allMembers(members)),
   loadingData: bool => dispatch(loadingData(bool)),
+  allSongs: songs => dispatch(allSongs(songs)),
+  allVenues: venues => dispatch(allVenues(venues)),
   handleError: errorMessage => dispatch(handleError(errorMessage))
 });
 
