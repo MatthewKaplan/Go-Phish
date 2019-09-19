@@ -220,3 +220,11 @@
 		}
 	}
 }
+
+@media screen and (max-width: 375px) {
+	.home-page-component .summer-tour-artwork {
+		background-size: 335px 325px;
+		width: 335px;
+		height: 325px;
+	}
+}
