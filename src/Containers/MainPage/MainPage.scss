@@ -1,9 +1,14 @@
 .main-page {
-
   .page-to-render {
     margin: 25px 20px 0 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 40px;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .main-page {
+    margin-top: 80px;
   }
 }

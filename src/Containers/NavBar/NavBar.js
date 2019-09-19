@@ -71,7 +71,7 @@ export class NavBar extends Component {
   };
 
   toggleSubNav = bool => {
-    this.toggleSidebar();
+    {bool === true && this.toggleSidebar()};
     this.setState({
       subNav: bool
     });
