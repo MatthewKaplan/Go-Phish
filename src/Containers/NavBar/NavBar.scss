@@ -1,154 +1,153 @@
 body {
-  overflow-x: hidden;
+	overflow-x: hidden;
 }
 
 .link {
-  text-decoration: none;
-  color: #eee;
+	text-decoration: none;
+	color: #eee;
 }
 
 .logo-link {
-  color: black;
+	color: black;
 }
 
 header {
-  width: 100%;
-  background-color: #772953;
+	width: 100%;
+	background-color: #772953;
 }
 
 .container {
-  max-width: 120rem;
-  width: 90%;
-  margin: 0 auto;
+	max-width: 120rem;
+	width: 90%;
+	margin: 0 auto;
 }
 
 nav {
-  padding-top: 2rem;
-  padding-bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-transform: uppercase;
-  font-size: 1.6rem;
+	padding-top: 2rem;
+	padding-bottom: 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	text-transform: uppercase;
+	font-size: 1.6rem;
 }
 
 .logo {
-  font-size: 3rem;
-  font-weight: 300;
-  transform: translateX(-100rem);
-  animation: slideIn .5s forwards;
+	font-size: 3rem;
+	font-weight: 300;
+	transform: translateX(-100rem);
+	animation: slideIn .5s forwards;
 }
 
 .logo span {
-  color: crimson;
+	color: crimson;
 }
 
 nav ul {
-  display: flex;
+	display: flex;
 }
 
 nav ul li {
-  list-style: none;
-  padding: 1rem 0;
-  margin: 0 2rem;
-  position: relative;
-  letter-spacing: 2px;
-  transform: translateX(100rem);
-  animation: slideIn .5s forwards;
-  color: #eee;
+	list-style: none;
+	padding: 1rem 0;
+	margin: 0 2rem;
+	position: relative;
+	letter-spacing: 2px;
+	transform: translateX(100rem);
+	animation: slideIn .5s forwards;
+	color: #eee;
 }
 
 .navbar .nav-pills .active {
-  background-color: gold;
-  color:Black ;
-  font-weight:bold;
+	background-color: gold;
+	color: Black;
+	font-weight: bold;
 }
 
 nav ul li:nth-child(1) {
-  animation-delay: 0s;
+	animation-delay: 0s;
 }
 
 nav ul li:nth-child(2) {
-  animation-delay: .5s;
+	animation-delay: .5s;
 }
 
 nav ul li:nth-child(3) {
-  animation-delay: 1s;
+	animation-delay: 1s;
 }
 
 nav ul li:nth-child(4) {
-  animation-delay: 1.5s;
+	animation-delay: 1.5s;
 }
 
 nav ul li:nth-child(5) {
-  animation-delay: 2s;
+	animation-delay: 2s;
 }
 
 nav ul li:nth-child(6) {
-  animation-delay: 2.5s;
+	animation-delay: 2.5s;
 }
 
 nav ul li:last-child {
-  margin-right: 0;
+	margin-right: 0;
 }
 
 nav ul li::before,
 nav ul li::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: crimson;
-  left: 0;
-  transform: scaleX(0);
-  transition: all .5s;
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	background-color: crimson;
+	left: 0;
+	transform: scaleX(0);
+	transition: all .5s;
 }
 
 nav ul li::before {
-  top: 0;
-  transform-origin: left;
+	top: 0;
+	transform-origin: left;
 }
 
 nav ul li::after {
-  bottom: 0;
-  transform-origin: right;
+	bottom: 0;
+	transform-origin: right;
 }
 
 nav ul li:hover::before,
 nav ul li:hover::after {
-  transform: scaleX(1);
+	transform: scaleX(1);
 }
 
 .sub-nav {
-  color: #666666;
-  font-size: 13px;
-  margin: 0 auto;
-  width: 940px;
-  background-color: #d9dbdc;
-  height: 21px;
-  text-align: center;
-  background-color: #d9dbdc;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  padding: 16px 9px 16px 9px;
+	color: #666666;
+	font-size: 13px;
+	margin: 0 auto;
+	width: 940px;
+	background-color: #d9dbdc;
+	height: 21px;
+	text-align: center;
+	background-color: #d9dbdc;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	padding: 16px 9px 16px 9px;
 }
 
 a {
-  text-decoration: none;
-  color: #772953;
+	text-decoration: none;
+	color: #772953;
 }
 
 .active {
-  color:crimson;
+	color: crimson;
 }
 
 @keyframes slideIn {
-  from {
-
-  }
-  to {
-    transform: translateX(0);
-  }
+	from {
+	}
+	to {
+		transform: translateX(0);
+	}
 }
 
 .sidebar-navigation {
@@ -267,11 +266,17 @@ a {
 
 	.contact-menu {
 		visibility: visible;
-  }
+	}
 
-  .logo {
-    font-size: 2rem;
-    margin: 20px 0 0 14px;
-    width: 33%;
-  }
+	.logo {
+		font-size: 2rem;
+		margin: 20px 0 0 14px;
+		width: 33%;
+	}
+}
+
+@media screen and (max-width: 415px) {
+	.sidebar-navigation .icon {
+		left: 81%;
+	}
 }

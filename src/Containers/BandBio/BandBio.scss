@@ -33,12 +33,12 @@
 @media screen and (max-width: 415px) {
 	.band-bio-component {
 		.band-bio {
-			margin: 80px 0 0 0;
+			margin: 65px 0 0 0;
 		}
 
 		.band-photo {
 			height: 340px;
-			max-width: 380px;
+			max-width: 415px;
 			float: none;
 			padding: 0;
 		}
@@ -46,7 +46,7 @@
 		.phish-history {
 			text-align: left;
 			max-width: 360px;
-			margin: 0 auto;
+			margin: 10px auto;
 		}
 
 		.band-members {
@@ -66,10 +66,16 @@
 			left: 0%;
 			right: 0%;
 			background-size: 100vh;
-    }
-    
-    .info {
-      height: auto;
-    }
+		}
+
+		.info {
+			height: auto;
+		}
+	}
+}
+
+@media screen and (max-width: 415px) {
+	.band-bio-component .phish-history {
+		max-width: 345px;
 	}
 }
