@@ -1,31 +1,75 @@
 .band-bio-component {
-  .band-photo {
-    height: 640px;
-    max-width: 881px;
-    float: right;
-    padding: 0 0 30px 40px;
-  }
+	.band-photo {
+		height: 640px;
+		max-width: 881px;
+		float: right;
+		padding: 0 0 30px 40px;
+	}
 
-  .band-bio {
-    margin: 30px 50px 0 50px;
-  }
+	.band-bio {
+		margin: 30px 50px 0 50px;
+	}
 
-  .name {
-    font-size: 30px;
-  }
+	.name {
+		font-size: 30px;
+	}
 
-  .phish-history {
-    text-align: left;
-  }
+	.phish-history {
+		text-align: left;
+	}
 
-  .band-members {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 25px;
-  }
+	.band-members {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-column-gap: 25px;
+	}
 
-  .text-indent {
-    text-indent: 10px;
-    line-height: 1.5rem;
-  }
+	.text-indent {
+		text-indent: 10px;
+		line-height: 1.5rem;
+	}
+}
+
+@media screen and (max-width: 415px) {
+	.band-bio-component {
+		.band-bio {
+			margin: 80px 0 0 0;
+		}
+
+		.band-photo {
+			height: 340px;
+			max-width: 380px;
+			float: none;
+			padding: 0;
+		}
+
+		.phish-history {
+			text-align: left;
+			max-width: 360px;
+			margin: 0 auto;
+		}
+
+		.band-members {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.band-member-cards .member {
+			background-size: 365px 325px;
+			height: 350px;
+			width: 364px;
+			border-radius: 0px;
+			margin-bottom: 0px;
+		}
+
+		.member-info {
+			left: 0%;
+			right: 0%;
+			background-size: 100vh;
+    }
+    
+    .info {
+      height: auto;
+    }
+	}
 }

@@ -1,176 +1,222 @@
 .home-page-component {
-  width: 95vw;
-  height: 100vh;
+	width: 95vw;
+	height: 100vh;
 
-  .arrow {
-    z-index: 3;
-    fill: #c7c7c7;
-    height: 50px;
-    width: 70px;
-    top: 85%;
-    position: absolute;
-    &:hover {
-      cursor: pointer;
-      fill: rgb(226, 226, 226);
-    }
-  }
+	.arrow {
+		z-index: 3;
+		fill: #c7c7c7;
+		height: 50px;
+		width: 70px;
+		top: 85%;
+		position: absolute;
+		&:hover {
+			cursor: pointer;
+			fill: rgb(226, 226, 226);
+		}
+	}
 
-  .arrow-down {
-    transform: rotate(270deg) scale(0.8);
-    transition: 2s;
-    &:hover {
-      transform: rotate(270deg) scale(1);
-    }
-  }
+	.arrow-down {
+		transform: rotate(270deg) scale(0.8);
+		transition: 2s;
+		&:hover {
+			transform: rotate(270deg) scale(1);
+		}
+	}
 
-  .arrow-up {
-    transform: rotate(90deg) scale(0.8);
-    transition: 0.5s;
-    &:hover {
-      transform: rotate(90deg) scale(1);
-    }
-  }
+	.arrow-up {
+		transform: rotate(90deg) scale(0.8);
+		transition: 0.5s;
+		&:hover {
+			transform: rotate(90deg) scale(1);
+		}
+	}
 
-  .summer-tour-artwork {
-    background-image: url("https://i.imgur.com/WRtf90U.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 1200px;
-    margin: 0 auto;
-    height: 400px;
-    background-position: center;
-    transition: 1s;
-    box-shadow: 0px 2px 10px 3px #0000006b;
+	.summer-tour-artwork {
+		background-image: url("https://i.imgur.com/WRtf90U.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
+		width: 1200px;
+		margin: 0 auto;
+		height: 400px;
+		background-position: center;
+		transition: 1s;
+		box-shadow: 0px 2px 10px 3px #0000006b;
 
-    &::after {
-      content: "";
-      transition: 1s;
-      top: 85%;
-      right: 0px;
-      background: linear-gradient(
-        to top,
-        rgba(35, 31, 32, 1) 0%,
-        rgba(125, 185, 232, 0) 100%
-      );
-      transition: 1s;
-      position: absolute;
-      width: 100%;
-      z-index: 2;
-      height: 60px;
-    }
-  }
+		&::after {
+			content: "";
+			transition: 1s;
+			top: 85%;
+			right: 0px;
+			background: linear-gradient(to top, rgba(35, 31, 32, 1) 0%, rgba(125, 185, 232, 0) 100%);
+			transition: 1s;
+			position: absolute;
+			width: 100%;
+			z-index: 2;
+			height: 60px;
+		}
+	}
 
-  .summer-tour {
-    transition: all 2000ms linear;
-    height: 0%;
-    overflow: hidden;
-  }
+	.summer-tour {
+		transition: all 2000ms linear;
+		height: 0%;
+		overflow: hidden;
+	}
 
-  .summer-tour-active {
-    height: 87%;
-  }
+	.summer-tour-active {
+		height: 87%;
+	}
 
-  .random-show-active {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    max-width: 1200px;
-    margin: 30px auto;
-  }
+	.random-show-active {
+		display: grid;
+		grid-template-columns: 1fr 3fr 1fr;
+		max-width: 1200px;
+		margin: 30px auto;
+	}
 
-  .random-show {
-    display: none;
-  }
+	.random-show {
+		display: none;
+	}
 
-  .sets {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    height: auto;
-    background-image: url("https://i.imgur.com/9GB0xeq.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+	.sets {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		height: auto;
+		background-image: url("https://i.imgur.com/9GB0xeq.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
 
-  .venue-info {
-    color: #eee;
-    padding-top: 25px;
-    cursor: pointer;
-    margin: 10px 20px 10px 20px;
+	.venue-info {
+		color: #eee;
+		padding-top: 25px;
+		cursor: pointer;
+		margin: 10px 20px 10px 20px;
 
-    &:hover {
-      color: #e36740;
-    }
-  }
+		&:hover {
+			color: #e36740;
+		}
+	}
 
-  .song-title {
-    color: #eee;
-    font-size: 22px;
-  }
+	.song-title {
+		color: #eee;
+		font-size: 22px;
+	}
 
-  .random-show-top {
-    background-color: #772953;
-    border-radius: 14px 0 0 14px;
-  }
+	.random-show-top {
+		background-color: #772953;
+		border-radius: 14px 0 0 14px;
+	}
 
-  .set-one,
-  .set-two {
-    position: relative;
-    top: 0px;
-    background-color: rgba(0, 0, 0, 0.706);
-    border-radius: 12px;
-    color: #fff;
-    height: auto;
-    margin: auto;
-    width: 90%;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    padding: 10px;
+	.set-one,
+	.set-two {
+		position: relative;
+		top: 0px;
+		background-color: rgba(0, 0, 0, 0.706);
+		border-radius: 12px;
+		color: #fff;
+		height: auto;
+		margin: auto;
+		width: 90%;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		text-align: center;
+		padding: 10px;
 
-    h2 {
-      text-align: left;
-      margin-left: 5px;
-    }
+		h2 {
+			text-align: left;
+			margin-left: 5px;
+		}
 
-    div {
-      margin: 10px;
-    }
-  }
+		div {
+			margin: 10px;
+		}
+	}
 
-  .encore {
-    background-color: #772953;
-    border-radius: 0 14px 14px 0;
+	.encore {
+		background-color: #772953;
+		border-radius: 0 14px 14px 0;
 
-    h2 {
-      color: #eee;
-      margin-top: 25%;
-    }
+		h2 {
+			color: #eee;
+			margin-top: 25%;
+		}
 
-    div {
-      margin: 10px;
-    }
-  }
+		div {
+			margin: 10px;
+		}
+	}
 
-  .encore-songs {
-    color: #eee;
-  }
+	.encore-songs {
+		color: #eee;
+	}
 }
 
 .slideshow-section {
-  div {
-    position: relative;
-    height: 525px;
-    width: 520px;
-  }
+	div {
+		position: relative;
+		height: 525px;
+		width: 520px;
+	}
 
-  .slide-image {
-    filter: brightness(0.9);
-    box-sizing: border-box;
-    position: relative;
-    background-position: top center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    display: table;
-    padding: 40px;
-  }
+	.slide-image {
+		filter: brightness(0.9);
+		box-sizing: border-box;
+		position: relative;
+		background-position: top center;
+		background-size: cover;
+		width: 100%;
+		height: 100%;
+		display: table;
+		padding: 40px;
+	}
+}
+
+@media screen and (max-width: 415px) {
+	.home-page-component {
+		width: 90vw;
+		.summer-tour-artwork {
+			background-size: 380px 350px;
+			width: 380px;
+			height: 350px;
+		}
+
+		.random-show-active {
+			display: flex;
+			flex-direction: column;
+			max-width: 370px;
+		}
+
+		.random-show-top {
+			border-radius: 14px 14px 0 0;
+		}
+
+		.encore {
+			border-radius: 0 0 14px 14px;
+		}
+
+		.upcoming-shows-component {
+			width: 345px;
+		}
+
+		.ticket-btn {
+			display: none;
+		}
+
+		.upcoming-shows-component .bottom-border {
+			margin-left: 0px;
+		}
+
+		.upcoming-shows-component .show-card {
+			height: 100px;
+			width: 345px;
+			margin-left: 0px;
+			h1 {
+				font-size: 17px;
+			}
+		}
+
+		.arrow {
+			right: 40%;
+		}
+	}
 }

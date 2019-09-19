@@ -10,5 +10,8 @@
 @media screen and (max-width: 415px) {
   .main-page {
     margin-top: 80px;
+    .page-to-render {
+      grid-template-columns: 1fr;
+    }
   }
 }

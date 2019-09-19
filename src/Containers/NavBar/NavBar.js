@@ -155,7 +155,7 @@ export class NavBar extends Component {
                     activeClassName="active"
                     className="link"
                     data-test="venue-btn"
-                    onClick={() => this.toggleSubNav(true)}
+                    onClick={() => this.fetchVenues()}
                   >
                     Venues
                   </NavLink>
@@ -166,7 +166,7 @@ export class NavBar extends Component {
                     activeClassName="active"
                     className="link"
                     data-test="songs-btn"
-                    onClick={() => this.toggleSubNav(true)}
+                    onClick={() => this.fetchSongs()}
                   >
                     Songs
                   </NavLink>
@@ -246,7 +246,7 @@ export class NavBar extends Component {
                     activeClassName="active"
                     className="link"
                     data-test="venue-btn"
-                    onClick={() => this.toggleSubNav(true)}
+                    onClick={() => this.fetchVenues()}
                   >
                     Venues
                   </NavLink>
@@ -257,7 +257,7 @@ export class NavBar extends Component {
                     activeClassName="active"
                     className="link"
                     data-test="songs-btn"
-                    onClick={() => this.toggleSubNav(true)}
+                    onClick={() => this.fetchSongs()}
                   >
                     Songs
                   </NavLink>
