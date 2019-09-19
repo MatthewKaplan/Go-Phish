@@ -1,170 +1,187 @@
 .user-stats-component {
-  transition: all 2000ms linear;
+	transition: all 2000ms linear;
 
-  
-  width: 100vw;
-  .all-stats {
-    width: 50vw;
-    margin: 0 auto;
-    .stat {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-    h2 {
-      text-align: left;
-    }
-  }
+	width: 100vw;
+	.all-stats {
+		width: 50vw;
+		margin: 0 auto;
+		.stat {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+		h2 {
+			text-align: left;
+		}
+	}
 
-  .btn-container {
-    width: 75vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin: 25px auto;
-    button {
-      width: 300px;
-      height: 50px;
-      border: 3px solid #772953;
-      font-size: 30px;
-      color: #772953;
-    }
-    .tour-stats-btn,
-    .show-stats-btn,
-    .song-stats-btn {
-      background-color: #772953;
-      color: white;
-    }
-  }
+	.btn-container {
+		width: 75vw;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		margin: 25px auto;
+		button {
+			width: 300px;
+			height: 50px;
+			border: 3px solid #772953;
+			font-size: 30px;
+			color: #772953;
+		}
+		.tour-stats-btn,
+		.show-stats-btn,
+		.song-stats-btn {
+			background-color: #772953;
+			color: white;
+		}
+	}
 
+	.total-songs-active {
+		transition: all 2000ms linear;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		margin-top: 20px;
+		height: 4000px;
 
-  .total-songs-active {
-    transition: all 2000ms linear;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 20px;
-    height: 4000px;
+		.song-title {
+			text-align: left;
+		}
+	}
 
+	.total-songs {
+		transition: all 2000ms linear;
+		margin-top: 20px;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
 
-    .song-title {
-      text-align: left;
-    }
-  }
+		height: 0px;
+		overflow: hidden;
+		.song-title {
+			text-align: left;
+		}
+	}
 
-  .total-songs {
-    transition: all 2000ms linear;
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+	.total-unheard-songs-active {
+		transition: all 2000ms linear;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		margin-top: 20px;
+		height: 8000px;
 
-    height: 0px;
-    overflow: hidden;
-    .song-title {
-      text-align: left;
-    }
-  }
+		p {
+			text-align: left;
+		}
+	}
 
-  .total-unheard-songs-active {
-    transition: all 2000ms linear;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 20px;
-    height: 8000px;
+	.total-unheard-songs {
+		transition: all 2000ms linear;
+		margin-top: 20px;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
 
+		height: 0px;
+		overflow: hidden;
+		p {
+			text-align: left;
+		}
+	}
 
-    p {
-      text-align: left;
-    }
-  }
+	.show-location-active {
+		transition: all 2000ms linear;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		margin-top: 20px;
+		height: 200px;
 
-  .total-unheard-songs {
-    transition: all 2000ms linear;
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+		p {
+			text-align: left;
+		}
+	}
 
-    height: 0px;
-    overflow: hidden;
-    p {
-      text-align: left;
-    }
-  }
+	.show-location {
+		transition: all 2000ms linear;
+		margin-top: 20px;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
 
-  .show-location-active {
-    transition: all 2000ms linear;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 20px;
-    height: 200px;
+		height: 0px;
+		overflow: hidden;
+		p {
+			text-align: left;
+		}
+	}
 
+	.display-shows-active {
+		transition: all 2000ms linear;
+		display: grid;
+		grid-template-columns: 2fr 2fr 1fr;
+		margin-top: 20px;
+		grid-gap: 10px;
+		height: 600px;
 
-    p {
-      text-align: left;
-    }
-  }
+		p {
+			text-align: left;
+		}
+	}
 
-  .show-location {
-    transition: all 2000ms linear;
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+	.display-shows {
+		transition: all 2000ms linear;
+		margin-top: 20px;
+		display: grid;
+		grid-template-columns: 2fr 2fr 1fr;
+		grid-gap: 10px;
 
-    height: 0px;
-    overflow: hidden;
-    p {
-      text-align: left;
-    }
-  }
+		height: 0px;
+		overflow: hidden;
+		p {
+			text-align: left;
+		}
+	}
 
-  .display-shows-active {
-    transition: all 2000ms linear;
-    display: grid;
-    grid-template-columns: 2fr 2fr 1fr;
-    margin-top: 20px;
-    grid-gap: 10px;
-    height: 600px;
+	.display-years-active {
+		transition: all 2000ms linear;
+		margin-top: 20px;
+		height: auto;
 
+		p {
+			text-align: center;
+		}
+	}
 
-    p {
-      text-align: left;
-    }
-  }
+	.display-years {
+		transition: all 2000ms linear;
+		margin-top: 20px;
 
-  .display-shows {
-    transition: all 2000ms linear;
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: 2fr 2fr 1fr;
-    grid-gap: 10px;
+		display: none;
+		overflow: hidden;
+		p {
+			text-align: center;
+		}
+	}
 
-    height: 0px;
-    overflow: hidden;
-    p {
-      text-align: left;
-    }
-  }
+	.pointer {
+		cursor: pointer;
+	}
+}
 
-  .display-years-active {
-    transition: all 2000ms linear;
-    margin-top: 20px;
-    height: auto;
+@media screen and (max-width: 415px) {
+	.user-stats-component {
+		width: 90vw;
 
+		.btn-container {
+			width: 75vw;
+			display: flex;
+			flex-direction: column;
+		}
 
-    p {
-      text-align: center;
-    }
-  }
+		.btn-container button {
+			width: 100%;
+			margin-bottom: 10px;
+		}
 
-  .display-years {
-    transition: all 2000ms linear;
-    margin-top: 20px;
-
-    display: none;
-    overflow: hidden;
-    p {
-      text-align: center;
-    }
-  }
-
-  .pointer {
-    cursor: pointer;
-  }
+		.all-stats {
+			width: 100vw;
+			.stat {
+				margin-bottom: 35px;
+			}
+		}
+	}
 }
