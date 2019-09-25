@@ -1,4 +1,4 @@
-# GoPhish
+# GoPhish <img src="https://i.imgur.com/7HfgHvv.png" width="200" align="right" />
 
 GoPhish is a web application for Phish fans by Phish fans. Phish fans may visit the application and see all of Phish's Tours, Songs, Shows, Set Lists, band information, and upcoming shows. Users also have the ability to save shows that they have been to and visit the 'My Stats' page to view their Phish Stats.
 
@@ -8,7 +8,7 @@ GoPhish is a web application for Phish fans by Phish fans. Phish fans may visit 
 
 ## Preview:
 
-![Start_Page](https://i.imgur.com/efke6kI.png)
+<img src="https://i.imgur.com/P159sJo.png" width="900" />
 
 | Home Page:  | Band Page: |
 | ------------- | ------------- |
